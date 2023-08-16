@@ -9,7 +9,7 @@ public class Creature : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRange;
-    [SerializeField] int attackDamage;
+    [SerializeField] float attackDamage;
     [SerializeField] Transform movementTarget;
 
     public bool isResurrected;
