@@ -13,15 +13,23 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        playerHoardMovementTransform = playerHoard.GetComponent<Transform>();
+        playerHoardMovementTransform = playerHoard.hoardMovementTransform;
     }
 
     private void Update()
+    {
+        MovePlayerHoard();
+    }
+
+    private void MovePlayerHoard()
     {
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
 
         Vector3 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(touchPosition);
-        playerHoardMovementTransform.Translate(worldPosition);
+        worldPosition.y = 0f;
+
+        playerHoardMovementTransform.position = worldPosition;
+        Debug.Log(worldPosition);
     }
 }

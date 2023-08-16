@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Hoard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform hoardMovementTransform;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
 }
