@@ -313,13 +313,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 25, z: -13.4}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1077314177
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: movementTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1940300333}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature

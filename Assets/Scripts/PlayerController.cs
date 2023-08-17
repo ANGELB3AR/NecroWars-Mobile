@@ -26,10 +26,13 @@ public class PlayerController : MonoBehaviour
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
 
         Vector3 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+        touchPosition.z = mainCamera.transform.position.y;
+
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(touchPosition);
         worldPosition.y = 0f;
 
         playerHoardMovementTransform.position = worldPosition;
-        Debug.Log(worldPosition);
+        Debug.Log($"Touch Position: {touchPosition}");
+        Debug.Log($"World Position: {worldPosition}");
     }
 }
