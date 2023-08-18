@@ -9,11 +9,12 @@ public class Hoard : MonoBehaviour
     public Transform hoardMovementTransform;
 
     [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
-    [SerializeField] bool isPlayer = false;
     [SerializeField] Vector2 mapBounds = new Vector2();
     [SerializeField] float randomMovementInterval;
 
     private float timer;
+
+    public bool isPlayer = false;
 
     private void Update()
     {

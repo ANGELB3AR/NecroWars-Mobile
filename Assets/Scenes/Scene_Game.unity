@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: movementTarget
       value: 
       objectReference: {fileID: 556623519}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: designatedHoard
+      value: 
+      objectReference: {fileID: 854819905}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature
@@ -462,6 +466,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1282950507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9072858627575158791, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
+  m_PrefabInstance: {fileID: 1792554733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7eaa252b87ed7438aa41c608aaf5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1754882733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +489,10 @@ PrefabInstance:
       propertyPath: movementTarget
       value: 
       objectReference: {fileID: 1792554734}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: designatedHoard
+      value: 
+      objectReference: {fileID: 1282950507}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature (1)
@@ -488,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_LocalRotation.w
