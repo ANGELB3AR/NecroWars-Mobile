@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] Health health;
-
+    [SerializeField] Transform movementTarget;
+    [Header("Movement")]
     [SerializeField] float movementSpeed;
+    [SerializeField] float stopDistance = 0.1f;
+    [Header("Attacking")]
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
-    [SerializeField] Transform movementTarget;
-    [SerializeField] float stopDistance = 0.1f;
 
     public bool isResurrected;
 
@@ -33,5 +35,10 @@ public class Creature : MonoBehaviour
 
         Vector3 direction = (movementTarget.position - transform.position).normalized;
         transform.Translate(direction * movementSpeed * Time.deltaTime);
+    }
+
+    private void Attack()
+    {
+
     }
 }
