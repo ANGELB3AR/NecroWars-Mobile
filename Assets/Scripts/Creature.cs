@@ -14,6 +14,8 @@ public class Creature : MonoBehaviour
     [Header("Attacking")]
     [SerializeField] float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
+    [SerializeField] float chaseRange;
+    [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
     [Header("Health")]
@@ -59,7 +61,7 @@ public class Creature : MonoBehaviour
 
     private void SearchForOpposingCreatures()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, chaseRange);
 
         foreach (Collider collider in colliders)
         {
@@ -67,17 +69,39 @@ public class Creature : MonoBehaviour
 
             if (targetCreature.designatedHoard.isPlayer == designatedHoard.isPlayer) { return; }    // If on the same team then do nothing
 
+            ChaseTargetCreature(targetCreature);
+        }
+    }
+
+    private void ChaseTargetCreature(Creature targetCreature)
+    {
+        if (Vector3.Distance(transform.position, targetCreature.transform.position) < stopDistance) { return; }
+
+        Vector3 direction = (targetCreature.transform.position - transform.position).normalized;
+        transform.Translate(direction * movementSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
+        {
             Attack();
         }
     }
 
     private void Attack()
     {
+        if (Time.time - lastAttackTime < attackCooldown) { return; }
+
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
         {
             Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
+
+            if (TryGetComponent<Health>(out Health health))
+            {
+                health.TakeDamage(attackDamage);
+            }
         }
+
+        lastAttackTime = Time.time;    // Reset attack cooldown
     }
 }

@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 4678969933692926431}
-  movementTarget: {fileID: 0}
-  attackLineRenderer: {fileID: 0}
+  designatedHoard: {fileID: 0}
   movementSpeed: 5
   stopDistance: 0.1
   attackCooldown: 1.5
-  attackRange: 1.5
+  chaseRange: 10
+  attackRange: 5
   attackDamage: 10
   isResurrected: 0
 --- !u!114 &4678969933692926431
