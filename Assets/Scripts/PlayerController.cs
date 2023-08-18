@@ -32,7 +32,5 @@ public class PlayerController : MonoBehaviour
         worldPosition.y = 0f;
 
         playerHoardMovementTransform.position = worldPosition;
-        Debug.Log($"Touch Position: {touchPosition}");
-        Debug.Log($"World Position: {worldPosition}");
     }
 }

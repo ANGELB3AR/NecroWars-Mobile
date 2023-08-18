@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 7395427679116060339}
   - component: {fileID: 976722230488660312}
   - component: {fileID: 4678969933692926431}
-  m_Layer: 0
+  - component: {fileID: 7314928758502062919}
+  m_Layer: 6
   m_Name: Creature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,11 +133,15 @@ MonoBehaviour:
   health: {fileID: 4678969933692926431}
   designatedHoard: {fileID: 0}
   movementSpeed: 5
+  rotationSpeed: 5
   stopDistance: 0.1
   attackCooldown: 1.5
   chaseRange: 10
   attackRange: 5
   attackDamage: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
   isResurrected: 0
 --- !u!114 &4678969933692926431
 MonoBehaviour:
@@ -153,3 +158,26 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isDead: 0
+--- !u!136 &7314928758502062919
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983122159434143473}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
