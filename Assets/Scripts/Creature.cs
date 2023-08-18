@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,8 @@ public class Creature : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
-
-    public bool isResurrected;
+    [Header("Health")]
+    [SerializeField] bool isResurrected;
 
     private float lastAttackTime;
 
@@ -27,6 +28,7 @@ public class Creature : MonoBehaviour
     private void Update()
     {
         MoveTowardTarget();
+        SearchForOpposingCreatures();
     }
 
     private void MoveTowardTarget()
@@ -37,8 +39,18 @@ public class Creature : MonoBehaviour
         transform.Translate(direction * movementSpeed * Time.deltaTime);
     }
 
+    private void SearchForOpposingCreatures()
+    {
+        
+    }
+
     private void Attack()
     {
+        RaycastHit hit;
 
+        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+        {
+            Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
+        }
     }
 }
