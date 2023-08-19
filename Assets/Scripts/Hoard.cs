@@ -13,8 +13,28 @@ public class Hoard : MonoBehaviour
     [SerializeField] float randomMovementInterval;
 
     private float timer;
+    private bool canBeResurrected = false;
+    private int creaturesAliveInHoard;
 
     public bool isPlayer = false;
+
+    public event Action CreatureDied;
+
+
+    private void OnEnable()
+    {
+        CreatureDied += HandleCreatureDied;
+    }
+
+    private void Start()
+    {
+        creaturesAliveInHoard = creaturesInHoard.Count;
+    }
+
+    private void OnDisable()
+    {
+        CreatureDied -= HandleCreatureDied;
+    }
 
     private void Update()
     {
@@ -47,5 +67,15 @@ public class Hoard : MonoBehaviour
         randomLocation.z = Random.Range(-mapBounds.y, mapBounds.y);
 
         return randomLocation;
+    }
+
+    private void HandleCreatureDied()
+    {
+        creaturesAliveInHoard--;
+
+        if (creaturesAliveInHoard == 0)
+        {
+            canBeResurrected = true;
+        }
     }
 }
