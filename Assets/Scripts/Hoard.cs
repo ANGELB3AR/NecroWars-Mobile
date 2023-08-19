@@ -49,6 +49,28 @@ public class Hoard : MonoBehaviour
         ProcessRandomMovementTimer();
     }
 
+    public void ResurrectHoard()
+    {
+        Hoard playerHoard = FindObjectOfType<PlayerController>().playerHoard;
+
+        foreach (Creature creature in creaturesInHoard)
+        {
+            creature.GetHealthComponent().Resurrect();
+
+            playerHoard.AddToHoard(creature);
+            creaturesInHoard.Remove(creature);
+        }
+
+        Destroy(gameObject);
+    }
+
+    public void AddToHoard(Creature creature)
+    {
+        creaturesInHoard.Add(creature);
+        creature.SetDesignatedHoard(this);
+        creaturesAliveInHoard = creaturesInHoard.Count;
+    }
+
     private void ProcessRandomMovementTimer()
     {
         timer += Time.deltaTime;

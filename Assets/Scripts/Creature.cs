@@ -22,7 +22,6 @@ public class Creature : MonoBehaviour
     [SerializeField] float attackDamage;
     [SerializeField] LayerMask targetMask;
     [Header("Health")]
-    [SerializeField] bool isResurrected;
 
     private float lastAttackTime;
     private Transform movementTarget;
@@ -52,6 +51,12 @@ public class Creature : MonoBehaviour
     public Health GetHealthComponent()
     {
         return health;
+    }
+
+    public void SetDesignatedHoard(Hoard hoard)
+    {
+        designatedHoard = hoard;
+        movementTarget = designatedHoard.hoardMovementTransform;
     }
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update

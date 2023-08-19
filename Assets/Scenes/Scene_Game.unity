@@ -464,6 +464,10 @@ PrefabInstance:
       propertyPath: designatedHoard
       value: 
       objectReference: {fileID: 854819905}
+    - target: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: isResurrected
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature

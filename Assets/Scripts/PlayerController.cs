@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Hoard playerHoard;
-
     private Camera mainCamera;
     private Transform playerHoardMovementTransform;
+
+    public Hoard playerHoard;
+
 
     private void Start()
     {

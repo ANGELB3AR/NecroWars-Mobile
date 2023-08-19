@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] bool isDead;
 
+    [SerializeField] private bool isResurrected;
+
     public event Action OnCreatureDied;
 
     private void Start()
@@ -51,7 +53,10 @@ public class Health : MonoBehaviour
 
     public void Resurrect()
     {
+        if (isResurrected) { return; }
+
         isDead = false;
         currentHealth = maxHealth;
+        isResurrected = true;
     }
 }

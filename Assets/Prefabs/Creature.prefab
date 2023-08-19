@@ -134,7 +134,7 @@ MonoBehaviour:
   designatedHoard: {fileID: 0}
   movementSpeed: 5
   rotationSpeed: 500
-  stopDistance: 0.1
+  stopDistance: 2
   attackCooldown: 1.5
   chaseRange: 10
   attackRange: 5
@@ -142,7 +142,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  isResurrected: 0
 --- !u!114 &4678969933692926431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +157,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   isDead: 0
+  isResurrected: 0
 --- !u!136 &7314928758502062919
 CapsuleCollider:
   m_ObjectHideFlags: 0
