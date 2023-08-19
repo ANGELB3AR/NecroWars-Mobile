@@ -133,7 +133,7 @@ MonoBehaviour:
   health: {fileID: 4678969933692926431}
   designatedHoard: {fileID: 0}
   movementSpeed: 5
-  rotationSpeed: 5
+  rotationSpeed: 500
   stopDistance: 0.1
   attackCooldown: 1.5
   chaseRange: 10

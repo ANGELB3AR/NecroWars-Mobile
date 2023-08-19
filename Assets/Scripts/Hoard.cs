@@ -9,7 +9,7 @@ public class Hoard : MonoBehaviour
 {
     public Transform hoardMovementTransform;
 
-    [SerializeField] Canvas resurrectUI;
+    [SerializeField] GameObject resurrectUI;
     [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
     [SerializeField] Vector2 mapBounds = new Vector2();
     [SerializeField] float randomMovementInterval;
@@ -20,24 +20,26 @@ public class Hoard : MonoBehaviour
 
     public bool isPlayer = false;
 
-    public event Action CreatureDied;
-
 
     private void OnEnable()
     {
-        CreatureDied += HandleCreatureDied;
+        foreach (Creature creature in creaturesInHoard)
+        {
+            creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
+        }
     }
 
     private void Start()
     {
-        resurrectUI.worldCamera = Camera.main;
-
         creaturesAliveInHoard = creaturesInHoard.Count;
     }
 
     private void OnDisable()
     {
-        CreatureDied -= HandleCreatureDied;
+        foreach (Creature creature in creaturesInHoard)
+        {
+            creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
+        }
     }
 
     private void Update()
@@ -83,7 +85,7 @@ public class Hoard : MonoBehaviour
             {
                 canBeResurrected = true;
                 transform.position = CalculateCenterPosition();
-                resurrectUI.enabled = canBeResurrected;
+                resurrectUI.SetActive(canBeResurrected);
             }
         }
     }

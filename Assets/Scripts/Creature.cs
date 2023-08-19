@@ -40,11 +40,18 @@ public class Creature : MonoBehaviour
 
     private void Update()
     {
+        if (health.IsDead()) { return; }
+
         FollowHoard();
 
         if (!isAttacking) { return; }
 
         ChaseTargetCreature();
+    }
+
+    public Health GetHealthComponent()
+    {
+        return health;
     }
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update
@@ -64,7 +71,7 @@ public class Creature : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, movementTarget.position) < stopDistance) { return; }
 
-        RotateTowardMovementDirection(movementTarget);
+        //RotateTowardMovementDirection(movementTarget);
 
         Vector3 direction = (movementTarget.position - transform.position).normalized;
         transform.Translate(direction * movementSpeed * Time.deltaTime);
@@ -96,7 +103,7 @@ public class Creature : MonoBehaviour
             if (Touchscreen.current.primaryTouch.press.isPressed) { return; }
         }
 
-        RotateTowardMovementDirection(targetCreature.transform);
+        //RotateTowardMovementDirection(targetCreature.transform);
 
         if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
         {

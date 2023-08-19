@@ -9,14 +9,23 @@ public class Health : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] bool isDead;
 
+    public event Action OnCreatureDied;
+
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
     private void Die()
     {
         isDead = true;
+
+        OnCreatureDied?.Invoke();
     }
 
     public void TakeDamage(float damageAmount)
@@ -24,7 +33,7 @@ public class Health : MonoBehaviour
         if (isDead) { return; }
 
         currentHealth -= damageAmount;
-        Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
         if (currentHealth == 0)
         {
