@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Hoard : MonoBehaviour
 {
     public Transform hoardMovementTransform;
 
+    [SerializeField] Canvas resurrectUI;
     [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
     [SerializeField] Vector2 mapBounds = new Vector2();
     [SerializeField] float randomMovementInterval;
@@ -28,6 +30,8 @@ public class Hoard : MonoBehaviour
 
     private void Start()
     {
+        resurrectUI.worldCamera = Camera.main;
+
         creaturesAliveInHoard = creaturesInHoard.Count;
     }
 
@@ -75,7 +79,26 @@ public class Hoard : MonoBehaviour
 
         if (creaturesAliveInHoard == 0)
         {
-            canBeResurrected = true;
+            if (!isPlayer)
+            {
+                canBeResurrected = true;
+                transform.position = CalculateCenterPosition();
+                resurrectUI.enabled = canBeResurrected;
+            }
         }
+    }
+
+    private Vector3 CalculateCenterPosition()
+    {
+        Vector3 centerPosition = Vector3.zero;
+
+        foreach (Creature creature in creaturesInHoard)
+        {
+            centerPosition += creature.transform.position;
+        }
+
+        centerPosition /= creaturesInHoard.Count;
+        
+        return centerPosition;
     }
 }
