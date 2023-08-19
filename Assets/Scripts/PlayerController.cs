@@ -5,8 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] float movementSpeed;
+
     private Camera mainCamera;
     private Transform playerHoardMovementTransform;
+    private Vector3 targetPosition;
 
     public Hoard playerHoard;
 
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MovePlayerHoard();
+
+        LerpHoardTransform();
     }
 
     private void MovePlayerHoard()
@@ -32,6 +37,14 @@ public class PlayerController : MonoBehaviour
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(touchPosition);
         worldPosition.y = 0f;
 
-        playerHoardMovementTransform.position = worldPosition;
+        targetPosition = worldPosition;
+    }
+
+    private void LerpHoardTransform()
+    {
+        if (playerHoardMovementTransform.position != targetPosition)
+        {
+            playerHoardMovementTransform.position = Vector3.Lerp(playerHoardMovementTransform.position, targetPosition, movementSpeed * Time.deltaTime);
+        }
     }
 }
