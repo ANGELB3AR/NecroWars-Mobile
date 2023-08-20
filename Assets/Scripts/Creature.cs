@@ -8,6 +8,7 @@ public class Creature : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Health health;
+    [SerializeField] Animator animator;
     [SerializeField] Hoard designatedHoard;
     [Header("Movement")]
     [SerializeField] float movementSpeed;
@@ -20,13 +21,13 @@ public class Creature : MonoBehaviour
     [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
-    [SerializeField] LayerMask targetMask;
-    [Header("Health")]
+    [SerializeField] LayerMask targetMask;    
 
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
     private Creature targetCreature;
+    readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
 
     private void Start()
     {
@@ -41,11 +42,14 @@ public class Creature : MonoBehaviour
     {
         if (health.IsDead()) { return; }
 
-        FollowHoard();
-
-        if (!isAttacking) { return; }
-
-        ChaseTargetCreature();
+        if (isAttacking)
+        {
+            ChaseTargetCreature();
+        }
+        else
+        {
+            FollowHoard();
+        }
     }
 
     public Health GetHealthComponent()
@@ -68,18 +72,29 @@ public class Creature : MonoBehaviour
         while (true)
         {
             yield return wait;
-            SearchForOpposingCreatures();
+
+            if (targetCreature == null)
+            {
+                SearchForOpposingCreatures();
+            }
         }
     }
 
     private void FollowHoard()
     {
-        if (Vector3.Distance(transform.position, movementTarget.position) < stopDistance) { return; }
+        targetCreature = null;
 
-        //RotateTowardMovementDirection(movementTarget);
+        if (Vector3.Distance(transform.position, movementTarget.position) < stopDistance) 
+        {
+            animator.SetFloat(movementSpeedHash, 0f);
+            return; 
+        }
+
+        RotateTowardMovementDirection(movementTarget);
 
         Vector3 direction = (movementTarget.position - transform.position).normalized;
         transform.Translate(direction * movementSpeed * Time.deltaTime);
+        animator.SetFloat(movementSpeedHash, 1f);
     }
 
     private void SearchForOpposingCreatures()
@@ -108,7 +123,7 @@ public class Creature : MonoBehaviour
             if (Touchscreen.current.primaryTouch.press.isPressed) { return; }
         }
 
-        //RotateTowardMovementDirection(targetCreature.transform);
+        RotateTowardMovementDirection(targetCreature.transform);
 
         if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
         {

@@ -17,12 +17,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 3386730770040399856}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: chaseRange
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackDamage
@@ -173,5 +177,10 @@ PrefabInstance:
 --- !u!4 &2607416255100148850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8653610650304649905, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
+  m_PrefabInstance: {fileID: 6645248499235473091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3386730770040399856 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8302597003234533683, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
   m_PrefabInstance: {fileID: 6645248499235473091}
   m_PrefabAsset: {fileID: 0}

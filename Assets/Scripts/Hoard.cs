@@ -38,7 +38,7 @@ public class Hoard : MonoBehaviour
     {
         foreach (Creature creature in creaturesInHoard)
         {
-            creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
+            creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
         }
     }
 
