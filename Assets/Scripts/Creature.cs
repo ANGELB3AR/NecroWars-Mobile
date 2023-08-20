@@ -13,10 +13,9 @@ public class Creature : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Hoard designatedHoard;
     [Header("Movement")]
-    [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
-    [SerializeField] float stopDistance = 0.1f;
     [Header("Attacking")]
+    [SerializeField] GameObject attackRaycastOrigin;
     [SerializeField] float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
     [SerializeField] float chaseRange;
@@ -145,25 +144,26 @@ public class Creature : MonoBehaviour
 
         if (Time.time - lastAttackTime < attackCooldown) { return; }
 
-        RaycastHit hit;
+        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, attackRange, targetMask);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+        foreach (Collider collider in hitColliders)
         {
-            Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
-
-            if (TryGetComponent<Health>(out Health health))
+            if (collider.gameObject.GetComponent<Creature>().designatedHoard.isPlayer != designatedHoard.isPlayer)
             {
-                health.TakeDamage(attackDamage);
+                if (collider.TryGetComponent<Health>(out Health targetHealth))
+                {
+                    targetHealth.TakeDamage(attackDamage);
+
+                    if (targetHealth.IsDead())
+                    {
+                        targetCreature = null;
+                    }
+                }
             }
         }
 
         animator.SetTrigger(attackHash);
         lastAttackTime = Time.time;    // Reset attack cooldown
-
-        if (targetCreature.GetHealthComponent().IsDead())
-        {
-            targetCreature = null;
-        }
     }
 
     private void RotateTowardTarget(Transform targetPosition)

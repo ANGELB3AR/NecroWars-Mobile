@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 3386730770040399856}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: chaseRange
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackRange
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackDamage
@@ -35,6 +35,14 @@ PrefabInstance:
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: movementSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496731594712668073, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496731594712668073, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.372
       objectReference: {fileID: 0}
     - target: {fileID: 3587120141738084596, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_SizeDelta.x
@@ -109,12 +117,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-      propertyPath: m_Radius
-      value: 0.35
+      propertyPath: m_Height
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.2
+      propertyPath: m_Radius
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
