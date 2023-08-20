@@ -8,9 +8,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 582522608030915981, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 582522608030915981, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: chaseRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: attackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587120141738084596, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587120141738084596, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587120141738084596, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature_Bunny
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_Height
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_Center.y
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653610650304649905, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8653610650304649905, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
       propertyPath: m_LocalPosition.z
