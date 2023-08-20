@@ -121,6 +121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit White
       objectReference: {fileID: 0}
+    - target: {fileID: 8302597003234533683, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d9bf2b0537bb2304080d94faa77ab623, type: 2}
     - target: {fileID: 8653610650304649905, guid: f68032e1649da3f4b8501b2cabc6d90a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
