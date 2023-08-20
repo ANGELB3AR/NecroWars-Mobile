@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 public class Creature : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Health health;
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
     [SerializeField] Hoard designatedHoard;
     [Header("Movement")]
@@ -28,6 +30,7 @@ public class Creature : MonoBehaviour
     private bool isAttacking;
     private Creature targetCreature;
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
+    readonly int attackHash = Animator.StringToHash("attack");
 
     private void Start()
     {
@@ -41,6 +44,8 @@ public class Creature : MonoBehaviour
     private void Update()
     {
         if (health.IsDead()) { return; }
+
+        animator.SetFloat(movementSpeedHash, agent.velocity.magnitude);
 
         if (isAttacking)
         {
@@ -84,17 +89,7 @@ public class Creature : MonoBehaviour
     {
         targetCreature = null;
 
-        if (Vector3.Distance(transform.position, movementTarget.position) < stopDistance) 
-        {
-            animator.SetFloat(movementSpeedHash, 0f);
-            return; 
-        }
-
-        RotateTowardMovementDirection(movementTarget);
-
-        Vector3 direction = (movementTarget.position - transform.position).normalized;
-        transform.Translate(direction * movementSpeed * Time.deltaTime);
-        animator.SetFloat(movementSpeedHash, 1f);
+        agent.SetDestination(movementTarget.position);
     }
 
     private void SearchForOpposingCreatures()
@@ -106,6 +101,7 @@ public class Creature : MonoBehaviour
             targetCreature = collider.GetComponent<Creature>();
 
             if (targetCreature.designatedHoard.isPlayer == designatedHoard.isPlayer) { continue; }    // If on the same team then move on to the next creature
+            if (targetCreature.GetHealthComponent().IsDead()) { return; }   // If already dead then move on to the next creature
 
             ChaseTargetCreature();
             return;
@@ -120,23 +116,33 @@ public class Creature : MonoBehaviour
 
         if (designatedHoard.isPlayer)
         {
-            if (Touchscreen.current.primaryTouch.press.isPressed) { return; }
+            if (Touchscreen.current.primaryTouch.press.isPressed) 
+            {
+                agent.SetDestination(movementTarget.position);
+                return; 
+            }
         }
 
-        RotateTowardMovementDirection(targetCreature.transform);
+        if (targetCreature == null)
+        {
+            isAttacking = false;
+            return;
+        }
 
         if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
         {
             Attack();
-            return; // Stop moving when attacking
+            agent.ResetPath();  // Stop moving when attacking
+            return;
         }
 
-        Vector3 direction = (targetCreature.transform.position - transform.position).normalized;
-        transform.Translate(direction * movementSpeed * Time.deltaTime);
+        agent.SetDestination(targetCreature.transform.position);
     }
 
     private void Attack()
     {
+        RotateTowardTarget(targetCreature.transform);
+
         if (Time.time - lastAttackTime < attackCooldown) { return; }
 
         RaycastHit hit;
@@ -149,13 +155,18 @@ public class Creature : MonoBehaviour
             {
                 health.TakeDamage(attackDamage);
             }
-            Debug.Log(hit.transform.gameObject.name);
         }
-        
+
+        animator.SetTrigger(attackHash);
         lastAttackTime = Time.time;    // Reset attack cooldown
+
+        if (targetCreature.GetHealthComponent().IsDead())
+        {
+            targetCreature = null;
+        }
     }
 
-    private void RotateTowardMovementDirection(Transform targetPosition)
+    private void RotateTowardTarget(Transform targetPosition)
     {
         Vector3 targetDirection = (targetPosition.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);

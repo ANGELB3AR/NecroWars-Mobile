@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     [SerializeField] GameObject healthCanvas;
     [SerializeField] Slider healthSlider;
     [SerializeField] float maxHealth;
@@ -13,6 +14,7 @@ public class Health : MonoBehaviour
     [SerializeField] bool isDead;
 
     [SerializeField] private bool isResurrected;
+    readonly int isDeadHash = Animator.StringToHash("isDead");
 
     public event Action OnCreatureDied;
 
@@ -31,10 +33,11 @@ public class Health : MonoBehaviour
     private void Die()
     {
         isDead = true;
+        animator.SetBool(isDeadHash, isDead);
 
         OnCreatureDied?.Invoke();
 
-        healthCanvas.SetActive(!isDead);
+        //healthCanvas.SetActive(!isDead);
     }
 
     public void TakeDamage(float damageAmount)
@@ -67,9 +70,10 @@ public class Health : MonoBehaviour
         if (isResurrected) { return; }
 
         isDead = false;
+        animator.SetBool(isDeadHash, isDead);
         currentHealth = maxHealth;
         isResurrected = true;
-        healthCanvas.SetActive(!isDead);
+        //healthCanvas.SetActive(!isDead);
         healthSlider.value = currentHealth;
     }
 }

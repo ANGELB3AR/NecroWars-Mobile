@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 137bb83651b6ddc43a65079b3f43bdc9, type: 2}
 --- !u!114 &117557117 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 1282950507}
     - target: {fileID: 2607416255100148850, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_Name
@@ -1408,7 +1408,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1941231044
 BoxCollider:
