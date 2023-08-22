@@ -444,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.52
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 2.763
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1266,6 +1266,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dddab60322a6b34eb3416d2ba44f3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoardQuantityBounds: {x: 0, y: 0}
+  hoardCapacityBounds: {x: 0, y: 0}
+  minHoardPlacementBounds: {x: 0, y: 0}
+  maxHoardPlacementBounds: {x: 0, y: 0}
+  difficultyCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hoardPrefab: {fileID: 0}
 --- !u!4 &1646029905
 Transform:
   m_ObjectHideFlags: 0
