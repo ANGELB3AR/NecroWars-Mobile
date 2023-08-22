@@ -20,7 +20,7 @@ public class Progression : SerializedMonoBehaviour
 
     [HideInInspector]
     public const string CURRENT_LEVEL_KEY = "Level";
-    public Dictionary<int, Creature> creatureDB;
+    public Dictionary<int, GameObject> creatureDB;
 
     private void Start()
     {
@@ -57,9 +57,9 @@ public class Progression : SerializedMonoBehaviour
 
         for (int i = 0; i < hoardCapacity; i++)
         {
-            Creature nextCreature = creatureDB[Random.Range(Mathf.FloorToInt(creatureDifficultyRatingBounds.x * difficultyRating), Mathf.FloorToInt(creatureDifficultyRatingBounds.y * difficultyRating))];
+            GameObject creaturePrefab = creatureDB[Random.Range(Mathf.FloorToInt(creatureDifficultyRatingBounds.x * difficultyRating), Mathf.FloorToInt(creatureDifficultyRatingBounds.y * difficultyRating))];
 
-            newHoard.AddToHoard(nextCreature);
+            newHoard.CreateNewCreature(creaturePrefab);
         }
     }
 }
