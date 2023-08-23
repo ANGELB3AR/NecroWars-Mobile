@@ -449,6 +449,6 @@ MonoBehaviour:
   hoardMovementTransform: {fileID: 892501808918517889}
   resurrectUI: {fileID: 6321882226075095235}
   creaturesInHoard: []
-  mapBounds: {x: 250, y: 250}
+  mapBounds: {x: 50, y: 50}
   randomMovementInterval: 5
   isPlayer: 0
