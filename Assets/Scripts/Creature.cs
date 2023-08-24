@@ -144,7 +144,7 @@ public class Creature : MonoBehaviour
 
         if (Time.time - lastAttackTime < attackCooldown) { return; }
 
-        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, attackRange, targetMask);
+        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
 
         foreach (Collider collider in hitColliders)
         {
