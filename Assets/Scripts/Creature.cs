@@ -177,4 +177,22 @@ public class Creature : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
+
+    private void OnDrawGizmos()
+    {
+        if (GetHealthComponent().IsDead()) { return;}
+
+        Vector3 endPoint = transform.position + transform.forward * attackRange / 2;
+        
+        if (designatedHoard.isPlayer)
+        {
+            Gizmos.color = Color.blue;
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+        }
+
+        Gizmos.DrawWireSphere(endPoint, attackRange);
+    }
 }
