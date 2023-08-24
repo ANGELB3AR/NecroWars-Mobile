@@ -78,6 +78,7 @@ public class Hoard : MonoBehaviour
     public void AddToHoard(Creature creature)
     {
         creaturesInHoard.Add(creature);
+        creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
         creature.SetDesignatedHoard(this);
         creaturesAliveInHoard++;
     }
@@ -116,7 +117,7 @@ public class Hoard : MonoBehaviour
         {
             if (!creaturesInHoard.Contains(creature))
             {
-                Debug.LogWarning($"{creature.name} was not found in hoard");
+                Debug.LogError($"{creature.name} was not found in hoard");
             }
 
             creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
