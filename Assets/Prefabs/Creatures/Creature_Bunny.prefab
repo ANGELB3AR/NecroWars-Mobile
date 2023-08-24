@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 3386730770040399856}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: chaseRange
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackRange
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: attackDamage

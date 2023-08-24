@@ -40,6 +40,8 @@ public class Hoard : MonoBehaviour
         {
             creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
         }
+
+        creaturesInHoard.Clear();
     }
 
     private void Update()
@@ -58,8 +60,9 @@ public class Hoard : MonoBehaviour
             creature.GetHealthComponent().Resurrect();
 
             playerHoard.AddToHoard(creature);
-            creaturesInHoard.Remove(creature);
         }
+
+        creaturesInHoard.Clear();
 
         Destroy(gameObject);
     }
@@ -75,7 +78,7 @@ public class Hoard : MonoBehaviour
     {
         creaturesInHoard.Add(creature);
         creature.SetDesignatedHoard(this);
-        creaturesAliveInHoard = creaturesInHoard.Count;
+        creaturesAliveInHoard++;
     }
 
     private void ProcessRandomMovementTimer()
@@ -116,6 +119,11 @@ public class Hoard : MonoBehaviour
                 transform.position = CalculateCenterPosition();
                 resurrectUI.SetActive(canBeResurrected);
             }
+        }
+        else
+        {
+            Debug.Log("GAME OVER");
+            Application.Quit();
         }
     }
 
