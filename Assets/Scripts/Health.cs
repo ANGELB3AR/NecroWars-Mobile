@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool isResurrected;
     readonly int isDeadHash = Animator.StringToHash("isDead");
 
-    public event Action OnCreatureDied;
+    public event Action<Creature> OnCreatureDied;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         isDead = true;
         animator.SetBool(isDeadHash, isDead);
 
-        OnCreatureDied?.Invoke();
+        OnCreatureDied?.Invoke(this.GetComponent<Creature>());
 
         //healthCanvas.SetActive(!isDead);
     }

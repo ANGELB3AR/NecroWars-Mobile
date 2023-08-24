@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using Sirenix.OdinInspector;
 
 public class Hoard : MonoBehaviour
 {
@@ -107,23 +108,28 @@ public class Hoard : MonoBehaviour
         return randomLocation;
     }
 
-    private void HandleCreatureDied()
+    private void HandleCreatureDied(Creature creature)
     {
         creaturesAliveInHoard--;
 
+        if (isPlayer)
+        {
+            creaturesInHoard.Remove(creature);
+        }
+
         if (creaturesAliveInHoard == 0)
         {
-            if (!isPlayer)
+            if (isPlayer)
+            {
+                Debug.Log("GAME OVER");
+                Application.Quit();
+            }
+            else
             {
                 canBeResurrected = true;
                 transform.position = CalculateCenterPosition();
                 resurrectUI.SetActive(canBeResurrected);
             }
-        }
-        else
-        {
-            Debug.Log("GAME OVER");
-            Application.Quit();
         }
     }
 
@@ -139,5 +145,14 @@ public class Hoard : MonoBehaviour
         centerPosition /= creaturesInHoard.Count;
         
         return centerPosition;
+    }
+
+    [Button]
+    private void KillAllCreaturesInHoard()
+    {
+        foreach (Creature creature in creaturesInHoard)
+        {
+            creature.GetHealthComponent().TakeDamage(100);
+        }
     }
 }
