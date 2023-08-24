@@ -36,6 +36,7 @@ public class Creature : MonoBehaviour
     private void OnEnable()
     {
         animationEventReceiver.OnAttackAnimationEvent += Attack;
+        health.OnCreatureDied += HandleCreatureDied;
     }
 
     private void Start()
@@ -50,6 +51,7 @@ public class Creature : MonoBehaviour
     private void OnDisable()
     {
         animationEventReceiver.OnAttackAnimationEvent -= Attack;
+        health.OnCreatureDied -= HandleCreatureDied;
     }
 
     private void Update()
@@ -76,8 +78,12 @@ public class Creature : MonoBehaviour
     public void SetDesignatedHoard(Hoard hoard)
     {
         designatedHoard = hoard;
-        movementTarget = designatedHoard.hoardMovementTransform;
         targetCreature = null;
+        
+        if (hoard != null)
+        {
+            movementTarget = designatedHoard.hoardMovementTransform;
+        }
     }
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update
@@ -157,6 +163,8 @@ public class Creature : MonoBehaviour
 
     private void Attack()
     {
+        if (targetCreature == null) { return; }
+
         RotateTowardTarget(targetCreature.transform);
 
         if (Time.time - lastAttackTime < attackCooldown) { return; }
@@ -189,11 +197,17 @@ public class Creature : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
+    private void HandleCreatureDied(Creature creature)
+    {
+        targetCreature = null;
+    }
+
+
     private void OnDrawGizmos()
     {
         if (GetHealthComponent().IsDead()) { return;}
 
-        Vector3 endPoint = transform.position + transform.forward * attackRange / 2;
+        Vector3 endPoint = transform.position + transform.forward * attackRange;
         
         if (designatedHoard.isPlayer)
         {

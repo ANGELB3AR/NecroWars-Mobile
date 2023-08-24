@@ -119,8 +119,10 @@ public class Hoard : MonoBehaviour
                 Debug.LogWarning($"{creature.name} was not found in hoard");
             }
 
+            creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
             creaturesInHoard.Remove(creature);
             creature.SetDesignatedHoard(null);
+            creature.gameObject.SetActive(false);
         }
 
         if (creaturesAliveInHoard == 0)
@@ -158,7 +160,7 @@ public class Hoard : MonoBehaviour
     {
         foreach (Creature creature in creaturesInHoard)
         {
-            creature.GetHealthComponent().TakeDamage(100);
+            creature.GetHealthComponent().TakeDamage(10000);
         }
     }
 }

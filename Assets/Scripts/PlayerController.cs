@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayerHoard()
     {
+        if (!Application.isFocused) { return; }
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
 
         Vector3 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();

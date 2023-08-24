@@ -836,6 +836,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: designatedHoard
       value: 
       objectReference: {fileID: 854819905}
@@ -995,6 +999,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: designatedHoard
       value: 
@@ -1730,6 +1738,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: designatedHoard
       value: 
       objectReference: {fileID: 854819905}
@@ -2057,6 +2069,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: designatedHoard
       value: 
       objectReference: {fileID: 854819905}
@@ -2070,7 +2086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.642
       objectReference: {fileID: 0}
     - target: {fileID: 9154857675534330228, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2452,6 +2468,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1451077679569073823, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
       propertyPath: designatedHoard
       value: 
