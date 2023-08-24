@@ -114,7 +114,13 @@ public class Hoard : MonoBehaviour
 
         if (isPlayer)
         {
+            if (!creaturesInHoard.Contains(creature))
+            {
+                Debug.LogWarning($"{creature.name} was not found in hoard");
+            }
+
             creaturesInHoard.Remove(creature);
+            creature.SetDesignatedHoard(null);
         }
 
         if (creaturesAliveInHoard == 0)

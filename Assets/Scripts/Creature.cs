@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
+using Sirenix.OdinInspector;
 
 public class Creature : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Creature : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
     [SerializeField] Hoard designatedHoard;
+    [SerializeField] AnimationEventReceiver animationEventReceiver;
     [Header("Movement")]
     [SerializeField] float rotationSpeed;
     [Header("Attacking")]
@@ -27,9 +29,14 @@ public class Creature : MonoBehaviour
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    private Creature targetCreature;
+    [ShowInInspector] private Creature targetCreature;
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
+
+    private void OnEnable()
+    {
+        animationEventReceiver.OnAttackAnimationEvent += Attack;
+    }
 
     private void Start()
     {
@@ -38,6 +45,11 @@ public class Creature : MonoBehaviour
         lastAttackTime = -attackCooldown;
 
         StartCoroutine(SearchRoutine());
+    }
+
+    private void OnDisable()
+    {
+        animationEventReceiver.OnAttackAnimationEvent -= Attack;
     }
 
     private void Update()
@@ -135,7 +147,7 @@ public class Creature : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
         {
-            Attack();
+            animator.SetTrigger(attackHash);
             agent.ResetPath();  // Stop moving when attacking
             return;
         }
@@ -167,7 +179,6 @@ public class Creature : MonoBehaviour
             }
         }
 
-        animator.SetTrigger(attackHash);
         lastAttackTime = Time.time;    // Reset attack cooldown
     }
 
