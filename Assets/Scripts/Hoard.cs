@@ -58,13 +58,13 @@ public class Hoard : MonoBehaviour
 
         foreach (Creature creature in creaturesInHoard)
         {
-            creature.GetHealthComponent().Resurrect();
-
             playerHoard.AddToHoard(creature);
+
+            creature.GetHealthComponent().Resurrect();
         }
 
         creaturesInHoard.Clear();
-
+        resurrectUI.SetActive(false);
         Destroy(gameObject);
     }
 

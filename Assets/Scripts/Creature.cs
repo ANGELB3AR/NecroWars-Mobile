@@ -65,6 +65,7 @@ public class Creature : MonoBehaviour
     {
         designatedHoard = hoard;
         movementTarget = designatedHoard.hoardMovementTransform;
+        targetCreature = null;
     }
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update
@@ -77,10 +78,7 @@ public class Creature : MonoBehaviour
         {
             yield return wait;
 
-            if (targetCreature == null)
-            {
-                SearchForOpposingCreatures();
-            }
+            SearchForOpposingCreatures();
         }
     }
 
@@ -94,16 +92,23 @@ public class Creature : MonoBehaviour
     private void SearchForOpposingCreatures()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, chaseRange, targetMask);
+        bool foundTarget = false;
 
         foreach (Collider collider in colliders)
         {
             targetCreature = collider.GetComponent<Creature>();
 
             if (targetCreature.designatedHoard.isPlayer == designatedHoard.isPlayer) { continue; }    // If on the same team then move on to the next creature
-            if (targetCreature.GetHealthComponent().IsDead()) { return; }   // If already dead then move on to the next creature
+            if (targetCreature.GetHealthComponent().IsDead()) { continue; }   // If already dead then move on to the next creature
 
+            foundTarget = true;
             ChaseTargetCreature();
             return;
+        }
+
+        if (!foundTarget)
+        {
+            targetCreature = null;
         }
 
         isAttacking = false;
