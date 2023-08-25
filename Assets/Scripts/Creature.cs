@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
 
-public class Creature : MonoBehaviour
+public abstract class Creature : MonoBehaviour, IAttack
 {
     [Header("Components")]
     [SerializeField] Health health;
@@ -171,34 +171,6 @@ public class Creature : MonoBehaviour
         agent.SetDestination(targetCreature.transform.position);
     }
 
-    private void Attack()
-    {
-        if (targetCreature == null) { return; }
-
-        RotateTowardTarget(targetCreature.transform);
-
-        if (Time.time - lastAttackTime < attackCooldown) { return; }
-
-        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
-
-        foreach (Collider collider in hitColliders)
-        {
-            if (collider.gameObject.GetComponent<Creature>().designatedHoard.isPlayer != designatedHoard.isPlayer)
-            {
-                if (collider.TryGetComponent<Health>(out Health targetHealth))
-                {
-                    targetHealth.TakeDamage(attackDamage);
-
-                    if (targetHealth.IsDead())
-                    {
-                        targetCreature = null;
-                    }
-                }
-            }
-        }
-
-        lastAttackTime = Time.time;    // Reset attack cooldown
-    }
 
     private void RotateTowardTarget(Transform targetPosition)
     {
@@ -230,4 +202,7 @@ public class Creature : MonoBehaviour
 
         Gizmos.DrawWireSphere(endPoint, attackRange);
     }
+
+    public abstract void Attack();
+
 }
