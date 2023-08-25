@@ -6,30 +6,25 @@ public class Bunny : Creature
 {
     public override void Attack()
     {
-        //if (targetCreature == null) { return; }
 
-        //RotateTowardTarget(targetCreature.transform);
+        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
 
-        //if (Time.time - lastAttackTime < attackCooldown) { return; }
+        foreach (Collider collider in hitColliders)
+        {
+            Bunny bunny = collider.GetComponent<Bunny>();
 
-        //Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
+            if (bunny.designatedHoard.isPlayer != designatedHoard.isPlayer)
+            {
+                if (collider.TryGetComponent<Health>(out Health targetHealth))
+                {
+                    targetHealth.TakeDamage(attackDamage);
 
-        //foreach (Collider collider in hitColliders)
-        //{
-        //    if (collider.gameObject.GetComponent<Creature>().designatedHoard.isPlayer != designatedHoard.isPlayer)
-        //    {
-        //        if (collider.TryGetComponent<Health>(out Health targetHealth))
-        //        {
-        //            targetHealth.TakeDamage(attackDamage);
-
-        //            if (targetHealth.IsDead())
-        //            {
-        //                targetCreature = null;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //lastAttackTime = Time.time;    // Reset attack cooldown
+                    if (targetHealth.IsDead())
+                    {
+                        targetCreature = null;
+                    }
+                }
+            }
+        }
     }
 }

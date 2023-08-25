@@ -136,14 +136,70 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2607416255100148850}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3837659323735072104}
   m_SourcePrefab: {fileID: 100100000, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+--- !u!1 &2563148858778589188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4197181718974994371, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5378724162462390582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3837659323735072104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378724162462390582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ce944943cdf0f41bba691c00c3c3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 6431785247230752280}
+  agent: {fileID: 8393705121801663935}
+  animator: {fileID: 3386730770040399856}
+  designatedHoard: {fileID: 0}
+  animationEventReceiver: {fileID: 3063808386551928473}
+  rotationSpeed: 500
+  attackRaycastOrigin: {fileID: 2563148858778589188}
+  attackCooldown: 1.5
+  chaseRange: 4
+  attackRange: 1.2
+  attackDamage: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &6431785247230752280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378724162462390582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6c4289a9aaaae478c5947bc2264486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &8393705121801663935 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9154857675534330228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}

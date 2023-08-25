@@ -226,7 +226,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7395427679116060339}
-  - component: {fileID: 976722230488660312}
   - component: {fileID: 4678969933692926431}
   - component: {fileID: 7314928758502062919}
   - component: {fileID: 7913157223238072952}
@@ -254,31 +253,6 @@ Transform:
   - {fileID: 5202915953989670396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &976722230488660312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5983122159434143473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4307cab3729431e42a83bfa4fe82c887, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 4678969933692926431}
-  agent: {fileID: 7913157223238072952}
-  animator: {fileID: 0}
-  designatedHoard: {fileID: 0}
-  rotationSpeed: 500
-  attackRaycastOrigin: {fileID: 4197181718974994371}
-  attackCooldown: 1.5
-  chaseRange: 10
-  attackRange: 5
-  attackDamage: 10
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &4678969933692926431
 MonoBehaviour:
   m_ObjectHideFlags: 0

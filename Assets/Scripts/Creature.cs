@@ -12,7 +12,7 @@ public abstract class Creature : MonoBehaviour, IAttack
     [SerializeField] Health health;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
-    [SerializeField] Hoard designatedHoard;
+    [SerializeField] protected Hoard designatedHoard;
     [SerializeField] AnimationEventReceiver animationEventReceiver;
     [Header("Movement")]
     [SerializeField] float rotationSpeed;
@@ -22,14 +22,14 @@ public abstract class Creature : MonoBehaviour, IAttack
     [Tooltip("Must be greater than Attack Range")]
     [SerializeField] float chaseRange;
     [Tooltip("Must be lesser than Chase Range")]
-    [SerializeField] float attackRange;
-    [SerializeField] float attackDamage;
-    [SerializeField] LayerMask targetMask;    
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected LayerMask targetMask;    
 
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    [ShowInInspector] private Creature targetCreature;
+    [ShowInInspector] protected Creature targetCreature;
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
 
@@ -163,8 +163,17 @@ public abstract class Creature : MonoBehaviour, IAttack
 
         if (Vector3.Distance(transform.position, targetCreature.transform.position) <= attackRange)
         {
+            if (targetCreature == null) { return; }
+
+            RotateTowardTarget(targetCreature.transform);
+
+            if (Time.time - lastAttackTime < attackCooldown) { return; }
+
             animator.SetTrigger(attackHash);
             agent.ResetPath();  // Stop moving when attacking
+
+            lastAttackTime = Time.time;    // Reset attack cooldown
+
             return;
         }
 
