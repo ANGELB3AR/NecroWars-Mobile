@@ -7,6 +7,10 @@ using Sirenix.OdinInspector;
 
 public class Progression : SerializedMonoBehaviour
 {
+    [Header("Testing")]
+    [SerializeField] int testLevel = 1;
+
+    [Header("Settings")]
     [SerializeField] Vector2 hoardQuantityBounds = new Vector2();
     [SerializeField] Vector2 hoardCapacityBounds = new Vector2();
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
@@ -33,6 +37,10 @@ public class Progression : SerializedMonoBehaviour
     {
         currentLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
 
+#if UNITY_EDITOR
+        currentLevel = testLevel;
+#endif
+
         CalculateDifficultyRating();
 
         int hoardQuantity = Random.Range(Mathf.FloorToInt(hoardQuantityBounds.x * difficultyRating), Mathf.FloorToInt(hoardQuantityBounds.y * difficultyRating));
@@ -43,6 +51,8 @@ public class Progression : SerializedMonoBehaviour
         }
 
         GeneratePlayerHoard();
+
+        Debug.Log($"Starting level {currentLevel}");
     }
 
     private void CalculateDifficultyRating()
