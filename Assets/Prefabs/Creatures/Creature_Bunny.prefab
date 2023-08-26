@@ -179,7 +179,7 @@ MonoBehaviour:
   attackRaycastOrigin: {fileID: 2563148858778589188}
   attackCooldown: 1.5
   chaseRange: 4
-  attackRange: 1.2
+  attackRange: 2
   attackDamage: 5
   targetMask:
     serializedVersion: 2

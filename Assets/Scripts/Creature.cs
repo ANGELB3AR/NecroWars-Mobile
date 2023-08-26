@@ -56,8 +56,6 @@ public abstract class Creature : MonoBehaviour, IAttack
 
     private void Update()
     {
-        DebugCheck();
-
         if (health.IsDead()) { return; }
 
         animator.SetFloat(movementSpeedHash, agent.velocity.magnitude);
@@ -69,14 +67,6 @@ public abstract class Creature : MonoBehaviour, IAttack
         else
         {
             FollowHoard();
-        }
-    }
-
-    private void DebugCheck()
-    {
-        if (GetHealthComponent().IsDead() && designatedHoard.isPlayer)
-        {
-            Debug.LogError($"{gameObject.name} should be disabled");
         }
     }
 
