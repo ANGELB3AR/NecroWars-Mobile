@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
 
     public event Action<Creature> OnCreatureDied;
+    public event Action OnCreatureResurrected;
 
     private void Start()
     {
@@ -84,5 +85,7 @@ public class Health : MonoBehaviour
         isResurrected = true;
         //healthCanvas.SetActive(!isDead);
         healthSlider.value = currentHealth;
+
+        OnCreatureResurrected?.Invoke();
     }
 }

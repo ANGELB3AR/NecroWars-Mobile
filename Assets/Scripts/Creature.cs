@@ -14,8 +14,9 @@ public abstract class Creature : MonoBehaviour, IAttack
     [SerializeField] Animator animator;
     [SerializeField] protected Hoard designatedHoard;
     [SerializeField] AnimationEventReceiver animationEventReceiver;
+    [SerializeField] Collider collider;
     [Header("Movement")]
-    [SerializeField] float rotationSpeed;
+    [SerializeField] float rotationSpeed = 500f;
     [Header("Attacking")]
     [SerializeField] GameObject attackRaycastOrigin;
     [SerializeField] float attackCooldown;
@@ -37,6 +38,7 @@ public abstract class Creature : MonoBehaviour, IAttack
     {
         animationEventReceiver.OnAttackAnimationEvent += Attack;
         health.OnCreatureDied += HandleCreatureDied;
+        health.OnCreatureResurrected += HandleCreatureResurrected;
     }
 
     private void Start()
@@ -52,6 +54,7 @@ public abstract class Creature : MonoBehaviour, IAttack
     {
         animationEventReceiver.OnAttackAnimationEvent -= Attack;
         health.OnCreatureDied -= HandleCreatureDied;
+        health.OnCreatureResurrected -= HandleCreatureResurrected;
     }
 
     private void Update()
@@ -186,6 +189,12 @@ public abstract class Creature : MonoBehaviour, IAttack
     private void HandleCreatureDied(Creature creature)
     {
         targetCreature = null;
+        collider.enabled = false;
+    }
+
+    private void HandleCreatureResurrected()
+    {
+        collider.enabled = true;
     }
 
 

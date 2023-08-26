@@ -175,6 +175,7 @@ MonoBehaviour:
   animator: {fileID: 3386730770040399856}
   designatedHoard: {fileID: 0}
   animationEventReceiver: {fileID: 3063808386551928473}
+  collider: {fileID: 8948256861547361408}
   rotationSpeed: 500
   attackRaycastOrigin: {fileID: 2563148858778589188}
   attackCooldown: 1.5
@@ -198,6 +199,11 @@ MonoBehaviour:
 --- !u!195 &8393705121801663935 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &8948256861547361408 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   m_PrefabInstance: {fileID: 1850206248460783559}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9154857675534330228 stripped
