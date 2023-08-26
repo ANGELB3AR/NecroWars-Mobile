@@ -728,7 +728,15 @@ MonoBehaviour:
     m_RotationOrder: 4
   hoardPrefab: {fileID: 8118818380258703946, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
   playerHoard: {fileID: 6858539747560966005, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
-  playerStartingHoard: []
+  playerStartingHoard:
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
+  - {fileID: 5378724162462390582, guid: 59cbbbe31e91e544c9daf674e96d4e50, type: 3}
 --- !u!4 &1646029905
 Transform:
   m_ObjectHideFlags: 0
