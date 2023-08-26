@@ -14,6 +14,8 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] Vector2 creatureDifficultyRatingBounds = new Vector2();
     [SerializeField] AnimationCurve difficultyCurve;
     [SerializeField] GameObject hoardPrefab;
+    [SerializeField] GameObject playerHoard;
+    [SerializeField] GameObject[] playerStartingHoard;
 
     private int currentLevel;
     private float difficultyRating;
@@ -39,6 +41,8 @@ public class Progression : SerializedMonoBehaviour
         {
             GenerateHoard();
         }
+
+        GeneratePlayerHoard();
     }
 
     private void CalculateDifficultyRating()
@@ -60,6 +64,22 @@ public class Progression : SerializedMonoBehaviour
             GameObject creaturePrefab = creatureDB[Random.Range(Mathf.FloorToInt(creatureDifficultyRatingBounds.x * difficultyRating), Mathf.FloorToInt(creatureDifficultyRatingBounds.y * difficultyRating))];
 
             newHoard.CreateNewCreature(creaturePrefab);
+        }
+    }
+
+    private void GeneratePlayerHoard()
+    {
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+
+        Hoard playerHoardInstance = Instantiate(playerHoard, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Hoard>();
+
+        playerController.SetPlayerHoard(playerHoardInstance);
+
+        foreach (GameObject creaturePrefab in playerStartingHoard)
+        {
+            Creature creatureInstance = playerHoardInstance.CreateNewCreature(creaturePrefab);
+
+            creatureInstance.GetHealthComponent().SetIsResurrected(true);
         }
     }
 }

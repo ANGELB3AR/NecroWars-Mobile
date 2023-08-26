@@ -75,6 +75,11 @@ public abstract class Creature : MonoBehaviour, IAttack
         return health;
     }
 
+    public Hoard GetDesignatedHoard()
+    {
+        return designatedHoard;
+    }
+
     public void SetDesignatedHoard(Hoard hoard)
     {
         designatedHoard = hoard;

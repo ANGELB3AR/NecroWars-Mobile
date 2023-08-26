@@ -33,6 +33,11 @@ public class Health : MonoBehaviour
         return isDead;
     }
 
+    public void SetIsResurrected(bool status)
+    {
+        isResurrected = status;
+    }
+
     private void Die()
     {
         isDead = true;

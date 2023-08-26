@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
         LerpHoardTransform();
     }
 
+    public void SetPlayerHoard(Hoard hoard)
+    {
+        playerHoard = hoard;
+    }
+
     private void MovePlayerHoard()
     {
         if (!Application.isFocused) { return; }

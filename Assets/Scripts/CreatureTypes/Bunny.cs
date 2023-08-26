@@ -6,17 +6,16 @@ public class Bunny : Creature
 {
     public override void Attack()
     {
-
         Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
 
         foreach (Collider collider in hitColliders)
         {
-            Bunny bunny = collider.GetComponent<Bunny>();
-
-            if (bunny.designatedHoard.isPlayer != designatedHoard.isPlayer)
+            if (collider.TryGetComponent<Creature>(out Creature targetCreature))
             {
-                if (collider.TryGetComponent<Health>(out Health targetHealth))
+                if (targetCreature.GetDesignatedHoard().isPlayer != designatedHoard.isPlayer)
                 {
+                    Health targetHealth = targetCreature.GetHealthComponent();
+
                     targetHealth.TakeDamage(attackDamage);
 
                     if (targetHealth.IsDead())
