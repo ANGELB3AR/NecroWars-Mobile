@@ -714,8 +714,8 @@ MonoBehaviour:
   testLevel: 4
   hoardQuantity: 0
   hoardCapacity: 0
-  minHoardPlacementBounds: {x: -60, y: -45}
-  maxHoardPlacementBounds: {x: 60, y: 46}
+  minHoardPlacementBounds: {x: -45, y: -45}
+  maxHoardPlacementBounds: {x: 45, y: 45}
   creatureDifficultyRating: 0
   difficultyCurve:
     serializedVersion: 2
@@ -755,7 +755,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 100
+      value: 50
       inSlope: 0
       outSlope: 0
       tangentMode: 0
