@@ -711,12 +711,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  testLevel: 4
-  hoardQuantity: 0
-  hoardCapacity: 0
+  testLevel: 10
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
-  creatureDifficultyRating: 0
   difficultyCurve:
     serializedVersion: 2
     m_Curve:
@@ -730,8 +727,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 100
+      value: 50
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -754,7 +751,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 10
       value: 50
       inSlope: 0
       outSlope: 0
@@ -778,7 +775,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 8
       value: 20
       inSlope: 0
       outSlope: 0
