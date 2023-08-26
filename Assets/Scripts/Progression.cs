@@ -17,6 +17,9 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 creatureDifficultyRatingBounds = new Vector2();
     [SerializeField] AnimationCurve difficultyCurve;
+    [SerializeField] AnimationCurve hoardQuantityCurve;
+    [SerializeField] AnimationCurve hoardCapacityCurve;
+    [SerializeField] AnimationCurve creatureDifficultyCurve;
     [SerializeField] GameObject hoardPrefab;
     [SerializeField] GameObject playerHoard;
     [SerializeField] GameObject[] playerStartingHoard;
