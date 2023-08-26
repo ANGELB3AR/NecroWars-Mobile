@@ -11,11 +11,11 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] int testLevel = 1;
 
     [Header("Settings")]
-    [SerializeField] Vector2 hoardQuantityBounds = new Vector2();
-    [SerializeField] Vector2 hoardCapacityBounds = new Vector2();
+    [SerializeField] float hoardQuantity;
+    [SerializeField] float hoardCapacity;
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
-    [SerializeField] Vector2 creatureDifficultyRatingBounds = new Vector2();
+    [SerializeField] float creatureDifficultyRating;
     [SerializeField] AnimationCurve difficultyCurve;
     [SerializeField] AnimationCurve hoardQuantityCurve;
     [SerializeField] AnimationCurve hoardCapacityCurve;
@@ -34,6 +34,7 @@ public class Progression : SerializedMonoBehaviour
     private void Start()
     {
         StartNewLevel();
+        PrintLevelData();
     }
 
     private void StartNewLevel()
@@ -44,9 +45,7 @@ public class Progression : SerializedMonoBehaviour
         currentLevel = testLevel;
 #endif
 
-        CalculateDifficultyRating();
-
-        int hoardQuantity = Random.Range(Mathf.FloorToInt(hoardQuantityBounds.x * difficultyRating), Mathf.FloorToInt(hoardQuantityBounds.y * difficultyRating));
+        CalculateDifficultySettings();
 
         for (int i = 0; i < hoardQuantity; i++)
         {
@@ -58,15 +57,18 @@ public class Progression : SerializedMonoBehaviour
         Debug.Log($"Starting level {currentLevel}");
     }
 
-    private void CalculateDifficultyRating()
+    private void CalculateDifficultySettings()
     {
         difficultyRating = difficultyCurve.Evaluate(currentLevel);
+
+        hoardQuantity = hoardQuantityCurve.Evaluate(difficultyRating);
+        hoardCapacity = hoardCapacityCurve.Evaluate(difficultyRating);
+        creatureDifficultyRating = creatureDifficultyCurve.Evaluate(difficultyRating);
+
     }
 
     private void GenerateHoard()
     {
-        int hoardCapacity = Random.Range(Mathf.FloorToInt(hoardCapacityBounds.x * difficultyRating), Mathf.FloorToInt(hoardCapacityBounds.y * difficultyRating));
-        
         Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
 
         GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
@@ -74,7 +76,7 @@ public class Progression : SerializedMonoBehaviour
 
         for (int i = 0; i < hoardCapacity; i++)
         {
-            GameObject creaturePrefab = creatureDB[Random.Range(Mathf.FloorToInt(creatureDifficultyRatingBounds.x * difficultyRating), Mathf.FloorToInt(creatureDifficultyRatingBounds.y * difficultyRating))];
+            GameObject creaturePrefab = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
             newHoard.CreateNewCreature(creaturePrefab);
         }
@@ -94,5 +96,11 @@ public class Progression : SerializedMonoBehaviour
 
             creatureInstance.GetHealthComponent().SetIsResurrected(true);
         }
+    }
+
+    private void PrintLevelData()
+    {
+        Debug.Log($"****LEVEL SUMMARY****\nCurrent Level: {currentLevel}\nDifficulty Rating: {difficultyRating}\nHoard Quantity: {hoardQuantity}" +
+                    $"\nHoard Capacity: {hoardCapacity}\nCreature Difficulty Rating: {creatureDifficultyRating}");
     }
 }
