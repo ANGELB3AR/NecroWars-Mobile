@@ -212,7 +212,7 @@ MonoBehaviour:
   rotationSpeed: 500
   attackCooldown: 3
   chaseRange: 5
-  attackRange: 3
+  attackRange: 2
   attackDamage: 15
   targetMask:
     serializedVersion: 2
