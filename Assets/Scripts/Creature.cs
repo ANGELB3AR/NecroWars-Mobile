@@ -12,13 +12,11 @@ public abstract class Creature : MonoBehaviour, IAttack
     [SerializeField] Health health;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
-    [SerializeField] protected Hoard designatedHoard;
     [SerializeField] AnimationEventReceiver animationEventReceiver;
-    [SerializeField] Collider collider;
+    [SerializeField] Collider creatureCollider;
     [Header("Movement")]
     [SerializeField] float rotationSpeed = 500f;
     [Header("Attacking")]
-    [SerializeField] GameObject attackRaycastOrigin;
     [SerializeField] float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
     [SerializeField] float chaseRange;
@@ -27,10 +25,11 @@ public abstract class Creature : MonoBehaviour, IAttack
     [SerializeField] protected float attackDamage;
     [SerializeField] protected LayerMask targetMask;    
 
+    protected Hoard designatedHoard;
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    [ShowInInspector] protected Creature targetCreature;
+    protected Creature targetCreature;
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
 
@@ -189,12 +188,12 @@ public abstract class Creature : MonoBehaviour, IAttack
     private void HandleCreatureDied(Creature creature)
     {
         targetCreature = null;
-        collider.enabled = false;
+        creatureCollider.enabled = false;
     }
 
     private void HandleCreatureResurrected()
     {
-        collider.enabled = true;
+        creatureCollider.enabled = true;
     }
 
 

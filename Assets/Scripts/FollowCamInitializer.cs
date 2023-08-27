@@ -8,11 +8,6 @@ public class FollowCamInitializer : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera followCam;
 
-    private void Start()
-    {
-        InitializeFollowCam();
-    }
-
     private void Update()
     {
         if (followCam.m_Follow != null) { return; }
