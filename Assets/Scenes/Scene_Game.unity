@@ -755,7 +755,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  testLevel: 5
+  testLevel: 1
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
   difficultyCurve:
@@ -865,6 +865,7 @@ MonoBehaviour:
   - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
   - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
   - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 3488143248105710784, guid: 3aab66d869996b248ac507e92306c26b, type: 3}
 --- !u!4 &1646029905
 Transform:
   m_ObjectHideFlags: 0

@@ -4,28 +4,8 @@ using UnityEngine;
 
 public class Chicken : Creature
 {
-    public override void Attack()
+    public override void BonusAttack()
     {
-        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
-
-        foreach (Collider collider in hitColliders)
-        {
-            if (collider.TryGetComponent<Creature>(out Creature targetCreature))
-            {
-                if (targetCreature.GetDesignatedHoard().isPlayer != designatedHoard.isPlayer)
-                {
-                    Health targetHealth = targetCreature.GetHealthComponent();
-
-                    targetHealth.TakeDamage(attackDamage);
-
-                    if (targetHealth.IsDead())
-                    {
-                        targetCreature = null;
-                    }
-
-                    return;
-                }
-            }
-        }
+        throw new System.NotImplementedException();
     }
 }

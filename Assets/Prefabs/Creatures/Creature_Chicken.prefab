@@ -162,11 +162,14 @@ MonoBehaviour:
   animator: {fileID: 6914425752326729610}
   animationEventReceiver: {fileID: 4953929366975035586}
   creatureCollider: {fileID: 8948256861547361408}
+  bonusAttackOutline: {fileID: 8638036702700374249}
   rotationSpeed: 500
   attackCooldown: 0.5
   chaseRange: 5
   attackRange: 2
   attackDamage: 5
+  hasBonusAttack: 0
+  bonusAttackChargeTime: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -187,6 +190,17 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   m_PrefabInstance: {fileID: 1850206248460783559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8638036702700374249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7948070880293717806, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  m_PrefabInstance: {fileID: 1850206248460783559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378724162462390582}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &8948256861547361408 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}

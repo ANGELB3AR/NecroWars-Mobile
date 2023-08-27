@@ -92,6 +92,7 @@ public class Progression : SerializedMonoBehaviour
             Creature creatureInstance = playerHoardInstance.CreateNewCreature(creaturePrefab);
 
             creatureInstance.GetHealthComponent().SetIsResurrected(true);
+            creatureInstance.GetComponentInChildren<Renderer>().material = creatureInstance.GetResurrectionMaterial();
         }
     }
 

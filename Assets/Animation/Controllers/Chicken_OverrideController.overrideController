@@ -9,11 +9,11 @@ AnimatorOverrideController:
   m_Name: Chicken_OverrideController
   m_Controller: {fileID: 9100000, guid: d9bf2b0537bb2304080d94faa77ab623, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 0ebb1fab1cc6f694e8780f2e71d99a00, type: 2}
-    m_OverrideClip: {fileID: 7400006, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}
-  - m_OriginalClip: {fileID: 7400000, guid: dea765a9967b7cc4a980a48c3a092d4d, type: 2}
-    m_OverrideClip: {fileID: 7400016, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}
-  - m_OriginalClip: {fileID: 7400000, guid: 84b38535471863d4eb335724c0118236, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 99ac468b8c27a43418f62068dad1d33e, type: 3}
     m_OverrideClip: {fileID: 7400000, guid: cb6aeb448005e4e4a9be7557f088b529, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 36d18ef929699c045aff81bd255f2790, type: 2}
+  - m_OriginalClip: {fileID: 7400006, guid: 99ac468b8c27a43418f62068dad1d33e, type: 3}
+    m_OverrideClip: {fileID: 7400006, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}
+  - m_OriginalClip: {fileID: 7400016, guid: 99ac468b8c27a43418f62068dad1d33e, type: 3}
+    m_OverrideClip: {fileID: 7400016, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}
+  - m_OriginalClip: {fileID: 7400026, guid: 99ac468b8c27a43418f62068dad1d33e, type: 3}
     m_OverrideClip: {fileID: 7400026, guid: 8374733306c3d3c46aa3e956993d7273, type: 3}

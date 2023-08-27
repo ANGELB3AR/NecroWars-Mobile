@@ -6,14 +6,16 @@ using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
 
-public abstract class Creature : MonoBehaviour, IAttack
+public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 {
     [Header("Components")]
     [SerializeField] Health health;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator animator;
+    [SerializeField] protected Animator animator;
     [SerializeField] AnimationEventReceiver animationEventReceiver;
     [SerializeField] Collider creatureCollider;
+    [ShowIf(nameof(hasBonusAttack))]
+    [SerializeField] Outline bonusAttackOutline = null;
     [Header("Movement")]
     [SerializeField] float rotationSpeed = 500f;
     [Header("Attacking")]
@@ -23,6 +25,9 @@ public abstract class Creature : MonoBehaviour, IAttack
     [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackDamage;
+    [SerializeField] protected bool hasBonusAttack;
+    [ShowIf(nameof(hasBonusAttack))]
+    [SerializeField] protected float bonusAttackChargeTime;
     [SerializeField] protected LayerMask targetMask;
     [Header("Other Settings")]
     [SerializeField] Material resurrectedMaterial;
@@ -32,8 +37,12 @@ public abstract class Creature : MonoBehaviour, IAttack
     private Transform movementTarget;
     private bool isAttacking;
     protected Creature targetCreature;
+    protected bool bonusAttackReady = false;
+    protected float lastBonusAttackTime;
+
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
+    protected readonly int bonusAttackHash = Animator.StringToHash("bonusAttack");
 
     private void OnEnable()
     {
@@ -47,6 +56,9 @@ public abstract class Creature : MonoBehaviour, IAttack
         movementTarget = designatedHoard.hoardMovementTransform;
 
         lastAttackTime = -attackCooldown;
+        lastBonusAttackTime = bonusAttackChargeTime;
+
+        bonusAttackOutline.enabled = false;
 
         StartCoroutine(SearchRoutine());
 
@@ -77,6 +89,11 @@ public abstract class Creature : MonoBehaviour, IAttack
         {
             FollowHoard();
         }
+
+        if (!hasBonusAttack) { return; }
+
+        bonusAttackReady = Time.time - lastBonusAttackTime > bonusAttackChargeTime;
+        bonusAttackOutline.enabled = bonusAttackReady;
     }
 
     public Health GetHealthComponent()
@@ -87,6 +104,11 @@ public abstract class Creature : MonoBehaviour, IAttack
     public Hoard GetDesignatedHoard()
     {
         return designatedHoard;
+    }
+
+    public Material GetResurrectionMaterial()
+    {
+        return resurrectedMaterial;
     }
 
     public void SetDesignatedHoard(Hoard hoard)
@@ -204,5 +226,35 @@ public abstract class Creature : MonoBehaviour, IAttack
         gameObject.GetComponentInChildren<Renderer>().material = resurrectedMaterial;
     }
 
-    public abstract void Attack();
+    public void Attack()
+    {
+        Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
+
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.TryGetComponent<Creature>(out Creature targetCreature))
+            {
+                if (targetCreature.GetDesignatedHoard().isPlayer != designatedHoard.isPlayer)
+                {
+                    Health targetHealth = targetCreature.GetHealthComponent();
+
+                    targetHealth.TakeDamage(attackDamage);
+
+                    if (targetHealth.IsDead())
+                    {
+                        targetCreature = null;
+                    }
+
+                    return;
+                }
+            }
+        }
+    }
+
+    public virtual void BonusAttack()
+    {
+        animator.SetTrigger(bonusAttackHash);
+
+        lastBonusAttackTime = Time.time;
+    }
 }
