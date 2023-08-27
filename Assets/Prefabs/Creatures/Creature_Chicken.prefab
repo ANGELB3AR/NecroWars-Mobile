@@ -170,6 +170,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  resurrectedMaterial: {fileID: 2100000, guid: 039848a67e0d93a4a969830432630d5e, type: 2}
 --- !u!114 &6431785247230752280 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}

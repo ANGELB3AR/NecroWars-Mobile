@@ -23,7 +23,9 @@ public abstract class Creature : MonoBehaviour, IAttack
     [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackDamage;
-    [SerializeField] protected LayerMask targetMask;    
+    [SerializeField] protected LayerMask targetMask;
+    [Header("Other Settings")]
+    [SerializeField] Material resurrectedMaterial;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -47,6 +49,11 @@ public abstract class Creature : MonoBehaviour, IAttack
         lastAttackTime = -attackCooldown;
 
         StartCoroutine(SearchRoutine());
+
+        if (health.IsResurrected())
+        {
+            gameObject.GetComponentInChildren<Renderer>().material = resurrectedMaterial;
+        }
     }
 
     private void OnDisable()
@@ -194,6 +201,7 @@ public abstract class Creature : MonoBehaviour, IAttack
     private void HandleCreatureResurrected()
     {
         creatureCollider.enabled = true;
+        gameObject.GetComponentInChildren<Renderer>().material = resurrectedMaterial;
     }
 
 
