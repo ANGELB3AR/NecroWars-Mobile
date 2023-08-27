@@ -191,8 +191,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.66
-  m_DeadZoneHeight: 0.66
+  m_DeadZoneWidth: 0.5
+  m_DeadZoneHeight: 0.5
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -755,7 +755,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  testLevel: 1
+  testLevel: 5
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
   difficultyCurve:
@@ -820,7 +820,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 8
-      value: 20
+      value: 15
       inSlope: 0
       outSlope: 0
       tangentMode: 0

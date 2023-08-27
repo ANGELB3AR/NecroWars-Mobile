@@ -204,25 +204,5 @@ public abstract class Creature : MonoBehaviour, IAttack
         gameObject.GetComponentInChildren<Renderer>().material = resurrectedMaterial;
     }
 
-
-    private void OnDrawGizmos()
-    {
-        if (GetHealthComponent().IsDead()) { return;}
-
-        Vector3 endPoint = transform.position + transform.forward * attackRange;
-        
-        if (designatedHoard.isPlayer)
-        {
-            Gizmos.color = Color.blue;
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-        }
-
-        Gizmos.DrawWireSphere(endPoint, attackRange);
-    }
-
     public abstract void Attack();
-
 }
