@@ -22,6 +22,8 @@ public class Chicken : Creature, IAttack
                     {
                         targetCreature = null;
                     }
+
+                    return;
                 }
             }
         }

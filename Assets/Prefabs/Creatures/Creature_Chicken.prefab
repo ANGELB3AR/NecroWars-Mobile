@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_StoppingDistance
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 976722230488660312, guid: 24da216c34a779c4099943a1e063a904, type: 3}
@@ -164,8 +164,8 @@ MonoBehaviour:
   creatureCollider: {fileID: 8948256861547361408}
   rotationSpeed: 500
   attackCooldown: 0.5
-  chaseRange: 3
-  attackRange: 1
+  chaseRange: 5
+  attackRange: 2
   attackDamage: 5
   targetMask:
     serializedVersion: 2
