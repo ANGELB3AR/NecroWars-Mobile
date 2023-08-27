@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chicken : Creature
+public class Stag : Creature
 {
     public override void Attack()
     {
