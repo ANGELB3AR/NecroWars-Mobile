@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
+using UnityEngine.UI;
 
 public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 {
@@ -14,6 +15,7 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [SerializeField] protected Animator animator;
     [SerializeField] AnimationEventReceiver animationEventReceiver;
     [SerializeField] Collider creatureCollider;
+    [SerializeField] Material resurrectedMaterial;
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] Outline bonusAttackOutline = null;
     [Header("Movement")]
@@ -25,12 +27,13 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackDamage;
+    [SerializeField] protected LayerMask targetMask;
+    [Header("Bonus Attack")]
     [SerializeField] protected bool hasBonusAttack;
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] protected float bonusAttackChargeTime;
-    [SerializeField] protected LayerMask targetMask;
-    [Header("Other Settings")]
-    [SerializeField] Material resurrectedMaterial;
+    [ShowIf(nameof(hasBonusAttack))]
+    [SerializeField] Button bonusAttackButton = null;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -94,6 +97,7 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 
         bonusAttackReady = Time.time - lastBonusAttackTime > bonusAttackChargeTime;
         bonusAttackOutline.enabled = bonusAttackReady;
+        bonusAttackButton.interactable = bonusAttackReady;
     }
 
     public Health GetHealthComponent()
@@ -109,6 +113,11 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     public Material GetResurrectionMaterial()
     {
         return resurrectedMaterial;
+    }
+
+    public NavMeshAgent GetNavMeshAgent()
+    {
+        return agent;
     }
 
     public void SetDesignatedHoard(Hoard hoard)
