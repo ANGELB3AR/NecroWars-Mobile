@@ -11,11 +11,12 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject healthCanvas;
     [SerializeField] Slider healthSlider;
     [SerializeField] float maxHealth;
-    [ProgressBar(0, 100, MaxGetter = nameof(maxHealth))]
-    [SerializeField] float currentHealth;
-    [SerializeField] bool isDead;
+    [SerializeField] ParticleSystem impactParticleEffect;
 
-    [SerializeField] private bool isResurrected;
+    [ProgressBar(0, 100, MaxGetter = nameof(maxHealth))]
+    private float currentHealth;
+    private bool isDead;
+    private bool isResurrected;
     readonly int isDeadHash = Animator.StringToHash("isDead");
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
 
@@ -63,6 +64,8 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
         healthSlider.value = currentHealth;
+
+        Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
         if (currentHealth == 0)
         {
