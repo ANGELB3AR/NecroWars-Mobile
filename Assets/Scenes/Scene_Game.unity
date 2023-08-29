@@ -691,7 +691,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 6298783632408530869, guid: f2e4b15460ce55041a92a9a138049bdd, type: 3}
+    - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+    - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -710,7 +711,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -720,6 +721,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -831,13 +844,13 @@ MonoBehaviour:
   hoardPrefab: {fileID: 8118818380258703946, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
   playerHoard: {fileID: 6858539747560966005, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
   playerStartingHoard:
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-  - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
+  - {fileID: 5378724162462390582, guid: ad55f84ec1c0d5b4fa7de7d0bace4c62, type: 3}
   - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
 --- !u!4 &1646029905
 Transform:
