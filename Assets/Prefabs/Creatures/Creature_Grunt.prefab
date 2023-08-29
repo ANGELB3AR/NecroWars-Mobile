@@ -112,7 +112,7 @@ MonoBehaviour:
   animator: {fileID: 72117436669716075}
   animationEventReceiver: {fileID: 6292631115267073925}
   creatureCollider: {fileID: 7134630210233334958}
-  resurrectedMaterial: {fileID: 0}
+  resurrectedMaterial: {fileID: 2100000, guid: 4a74f7d52478b3e40ab726a4367e7747, type: 2}
   bonusAttackOutline: {fileID: 0}
   rotationSpeed: 500
   attackCooldown: 1.5
@@ -148,6 +148,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6926891204143112538}
     m_Modifications:
+    - target: {fileID: 3677653116100553614, guid: f2e4b15460ce55041a92a9a138049bdd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6298783632408530869, guid: f2e4b15460ce55041a92a9a138049bdd, type: 3}
       propertyPath: m_Name
       value: Grunt

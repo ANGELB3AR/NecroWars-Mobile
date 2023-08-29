@@ -232,7 +232,17 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     private void HandleCreatureResurrected()
     {
         creatureCollider.enabled = true;
-        gameObject.GetComponentInChildren<Renderer>().material = resurrectedMaterial;
+        ChangeMaterial(resurrectedMaterial);
+    }
+
+    public void ChangeMaterial(Material newMaterial)
+    {
+        Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material = newMaterial;
+        }
     }
 
     public void Attack()
