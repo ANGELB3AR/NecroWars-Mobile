@@ -34,7 +34,6 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [SerializeField] protected float bonusAttackChargeTime;
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] Button bonusAttackButton = null;
-    [SerializeField] bool isSearchingForOpposingCreatures = false;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -62,7 +61,10 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
         lastAttackTime = -attackCooldown;
         lastBonusAttackTime = bonusAttackChargeTime;
 
-        bonusAttackOutline.enabled = false;
+        if (bonusAttackOutline != null)
+        {
+            bonusAttackOutline.enabled = false;
+        }
 
         StartCoroutine(SearchRoutine());
 
@@ -155,7 +157,6 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 
     private void SearchForOpposingCreatures()
     {
-        isSearchingForOpposingCreatures = true;
         Collider[] colliders = Physics.OverlapSphere(transform.position, chaseRange, targetMask);
         bool foundTarget = false;
 
@@ -277,11 +278,5 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
         animator.SetTrigger(bonusAttackHash);
 
         lastBonusAttackTime = Time.time;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }
