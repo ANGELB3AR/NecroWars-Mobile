@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] float maxHealth;
     [SerializeField] ParticleSystem impactParticleEffect;
+    [SerializeField] bool isImpervious = false;
 
     [ProgressBar(0, 100, MaxGetter = nameof(maxHealth))]
     private float currentHealth;
@@ -59,6 +60,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         if (isDead) { return; }
+        if (isImpervious) { return; }
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);

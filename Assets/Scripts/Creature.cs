@@ -34,12 +34,13 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [SerializeField] protected float bonusAttackChargeTime;
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] Button bonusAttackButton = null;
+    [SerializeField] bool isSearchingForOpposingCreatures = false;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    protected Creature targetCreature;
+    [SerializeField] protected Creature targetCreature;
     protected bool bonusAttackReady = false;
     protected float lastBonusAttackTime;
 
@@ -154,6 +155,7 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 
     private void SearchForOpposingCreatures()
     {
+        isSearchingForOpposingCreatures = true;
         Collider[] colliders = Physics.OverlapSphere(transform.position, chaseRange, targetMask);
         bool foundTarget = false;
 
@@ -248,7 +250,7 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     public void Attack()
     {
         Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
-
+        
         foreach (Collider collider in hitColliders)
         {
             if (collider.TryGetComponent<Creature>(out Creature targetCreature))
@@ -275,5 +277,11 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
         animator.SetTrigger(bonusAttackHash);
 
         lastBonusAttackTime = Time.time;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }

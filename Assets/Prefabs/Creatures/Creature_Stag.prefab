@@ -16,14 +16,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Creature_Stag
       objectReference: {fileID: 0}
-    - target: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -112,6 +104,8 @@ MonoBehaviour:
   animator: {fileID: 172211376598360644}
   animationEventReceiver: {fileID: 8556192946911997080}
   creatureCollider: {fileID: 7812946231173407587}
+  resurrectedMaterial: {fileID: 2100000, guid: 98f283223437b7c408b5dc61de944fc4, type: 2}
+  bonusAttackOutline: {fileID: 0}
   rotationSpeed: 500
   attackCooldown: 2
   chaseRange: 5
@@ -120,7 +114,9 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  resurrectedMaterial: {fileID: 2100000, guid: 98f283223437b7c408b5dc61de944fc4, type: 2}
+  hasBonusAttack: 0
+  bonusAttackChargeTime: 0
+  bonusAttackButton: {fileID: 0}
 --- !u!195 &7223737867778351708 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}

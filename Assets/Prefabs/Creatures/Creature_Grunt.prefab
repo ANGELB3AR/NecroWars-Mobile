@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 72117436669716075}
+    - target: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: isImpervious
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
       value: Creature_Grunt
@@ -68,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Height
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -115,7 +123,7 @@ MonoBehaviour:
   resurrectedMaterial: {fileID: 2100000, guid: 4a74f7d52478b3e40ab726a4367e7747, type: 2}
   bonusAttackOutline: {fileID: 0}
   rotationSpeed: 500
-  attackCooldown: 1.5
+  attackCooldown: 0.5
   chaseRange: 5
   attackRange: 2
   attackDamage: 5
@@ -125,6 +133,7 @@ MonoBehaviour:
   hasBonusAttack: 0
   bonusAttackChargeTime: 0
   bonusAttackButton: {fileID: 0}
+  targetCreature: {fileID: 0}
 --- !u!4 &6926891204143112538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
