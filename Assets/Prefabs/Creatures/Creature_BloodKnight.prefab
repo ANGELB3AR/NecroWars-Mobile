@@ -130,7 +130,10 @@ MonoBehaviour:
     m_Bits: 64
   hasBonusAttack: 1
   bonusAttackChargeTime: 5
-  bonusAttackButton: {fileID: 0}
+  bonusAttackRange: 5
+  percentageHealthToSteal: 5
+  impactEffect: {fileID: 6051970949436589566, guid: 6209da0533802fc4b9864163f5b617da, type: 3}
+  healingEffect: {fileID: 1170323598496597506, guid: 5bad5bfdec01dcb489874588ad35e789, type: 3}
 --- !u!114 &4160822158321692657 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}

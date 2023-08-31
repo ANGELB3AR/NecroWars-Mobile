@@ -8,8 +8,6 @@ using Sirenix.OdinInspector;
 public class Health : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] GameObject healthCanvas;
-    [SerializeField] Slider healthSlider;
     [SerializeField] float maxHealth;
     [SerializeField] ParticleSystem impactParticleEffect;
     [SerializeField] bool isImpervious = false;
@@ -27,13 +25,16 @@ public class Health : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
     }
 
     public bool IsDead()
     {
         return isDead;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public bool IsResurrected()
@@ -53,8 +54,6 @@ public class Health : MonoBehaviour
         animator.SetFloat(movementSpeedHash, 0f);
 
         OnCreatureDied?.Invoke(this.GetComponent<Creature>());
-
-        //healthCanvas.SetActive(!isDead);
     }
 
     public void TakeDamage(float damageAmount)
@@ -64,8 +63,6 @@ public class Health : MonoBehaviour
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-
-        healthSlider.value = currentHealth;
 
         Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
@@ -81,8 +78,7 @@ public class Health : MonoBehaviour
 
         currentHealth += healAmount;
         Mathf.Clamp(currentHealth, 0f, maxHealth);
-
-        healthSlider.value = currentHealth;
+        Debug.Log($"{gameObject.name} healed for {healAmount} HP");
     }
 
     public void Resurrect()
@@ -93,8 +89,6 @@ public class Health : MonoBehaviour
         animator.SetBool(isDeadHash, isDead);
         currentHealth = maxHealth;
         isResurrected = true;
-        //healthCanvas.SetActive(!isDead);
-        healthSlider.value = currentHealth;
 
         OnCreatureResurrected?.Invoke();
     }

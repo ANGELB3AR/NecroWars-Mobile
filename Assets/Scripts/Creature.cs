@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 {
     [Header("Components")]
-    [SerializeField] Health health;
+    [SerializeField] protected Health health;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] AnimationEventReceiver animationEventReceiver;

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 72117436669716075}
     - target: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: isImpervious
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: m_Name
@@ -122,7 +122,6 @@ MonoBehaviour:
   creatureCollider: {fileID: 7134630210233334958}
   resurrectedMaterial: {fileID: 2100000, guid: 4a74f7d52478b3e40ab726a4367e7747, type: 2}
   bonusAttackOutline: {fileID: 0}
-  rotationSpeed: 500
   attackCooldown: 0.5
   chaseRange: 5
   attackRange: 2
@@ -132,8 +131,6 @@ MonoBehaviour:
     m_Bits: 64
   hasBonusAttack: 0
   bonusAttackChargeTime: 0
-  bonusAttackButton: {fileID: 0}
-  targetCreature: {fileID: 0}
 --- !u!4 &6926891204143112538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
