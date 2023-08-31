@@ -82,123 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61f1030db6eeb8428a6ffb2b53ba068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4875057772837245021
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 414850549437846658}
-    m_Modifications:
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482567613233797076, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_Name
-      value: BonusAttackButtonCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323967801368708409, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 385093316433695709}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
---- !u!114 &1469457719830222180 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6323967801368708409, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-  m_PrefabInstance: {fileID: 4875057772837245021}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!224 &5749261446624013619 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 895888552190541166, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
-  m_PrefabInstance: {fileID: 4875057772837245021}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7160738985060577841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,9 +152,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       insertIndex: 0
       addedObject: {fileID: 7680193068712351548}
-    - targetCorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5749261446624013619}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       insertIndex: 1
@@ -338,7 +218,6 @@ MonoBehaviour:
   creatureCollider: {fileID: 496476615499204982}
   resurrectedMaterial: {fileID: 2100000, guid: 8d5b11b9100e5434d88fbbce2122bd48, type: 2}
   bonusAttackOutline: {fileID: 949474951920563487}
-  rotationSpeed: 500
   attackCooldown: 3
   chaseRange: 5
   attackRange: 2
@@ -348,8 +227,6 @@ MonoBehaviour:
     m_Bits: 64
   hasBonusAttack: 1
   bonusAttackChargeTime: 20
-  bonusAttackButton: {fileID: 1469457719830222180}
-  targetCreature: {fileID: 0}
   bonusAttackRadius: 4
   bonusAttackPushForce: 5
   bonusAttackParticleEffect: {fileID: 4271093393614929224, guid: 87ee7299dd44ed747af24dbb91bcd33b, type: 3}

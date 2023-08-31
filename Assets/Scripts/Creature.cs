@@ -31,7 +31,6 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] protected float bonusAttackChargeTime;
     [ShowIf(nameof(hasBonusAttack))]
-    [SerializeField] Button bonusAttackButton = null;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -99,7 +98,6 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
 
         bonusAttackReady = Time.time - lastBonusAttackTime > bonusAttackChargeTime;
         bonusAttackOutline.enabled = bonusAttackReady;
-        bonusAttackButton.interactable = bonusAttackReady;
     }
 
     public Health GetHealthComponent()
