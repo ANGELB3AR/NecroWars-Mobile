@@ -78,7 +78,6 @@ public class Health : MonoBehaviour
 
         currentHealth += healAmount;
         Mathf.Clamp(currentHealth, 0f, maxHealth);
-        Debug.Log($"{gameObject.name} healed for {healAmount} HP");
     }
 
     public void Resurrect()
