@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BonusAttackButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1482567613233797076, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6323967801368708409, guid: e88c4a11ead84a445b54d3664be2487d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

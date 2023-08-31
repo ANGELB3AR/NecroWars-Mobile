@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BloodKnight : Creature
 {
-    public void BonusAttack()
+    public override void BonusAttack()
     {
+        if (!bonusAttackReady) { return; }
+
         base.BonusAttack();
 
         Debug.Log("BONUS ATTACK!");
