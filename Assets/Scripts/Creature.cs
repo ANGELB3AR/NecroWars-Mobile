@@ -18,8 +18,6 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [SerializeField] Material resurrectedMaterial;
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] Outline bonusAttackOutline = null;
-    [Header("Movement")]
-    [SerializeField] float rotationSpeed = 500f;
     [Header("Attacking")]
     [SerializeField] float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
@@ -39,9 +37,10 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    [SerializeField] protected Creature targetCreature;
+    protected Creature targetCreature;
     protected bool bonusAttackReady = false;
     protected float lastBonusAttackTime;
+    private float rotationSpeed = 500f;
 
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
