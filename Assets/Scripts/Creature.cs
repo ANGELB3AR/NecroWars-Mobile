@@ -13,7 +13,7 @@ public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
     [SerializeField] protected Health health;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] protected Animator animator;
-    [SerializeField] AnimationEventReceiver animationEventReceiver;
+    [SerializeField] protected AnimationEventReceiver animationEventReceiver;
     [SerializeField] Collider creatureCollider;
     [SerializeField] Material resurrectedMaterial;
     [ShowIf(nameof(hasBonusAttack))]
