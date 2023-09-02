@@ -755,7 +755,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  testLevel: 1
+  testLevel: 5
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
   difficultyCurve:
