@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
-public abstract class Creature : MonoBehaviour, IAttack, IBonusAttack
+public abstract class Creature : MonoBehaviour, IBonusAttack
 {
     [Header("Components")]
     [SerializeField] protected Health health;
