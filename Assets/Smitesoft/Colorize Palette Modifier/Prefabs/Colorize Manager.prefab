@@ -1,0 +1,1527 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7070052151032558469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8402604453407500030}
+  - component: {fileID: 5593147721049873434}
+  - component: {fileID: 2351195896677757608}
+  m_Layer: 0
+  m_Name: Colorize Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8402604453407500030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070052151032558469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5593147721049873434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070052151032558469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2108585221, guid: 907e6e4b27549ee4ebd1ca9d217c474b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderPipeline: 0
+  multiObjectReference: {fileID: 0}
+  objectReference: {fileID: 0}
+  errorWrongRP: 0
+  showTexturePreview: 0
+  textureRef: {fileID: 2800000, guid: a39874eda00cb4f4e820617f296e580d, type: 3}
+  meshFilterRef: {fileID: 0}
+  skinnedMeshRendererRef: {fileID: 0}
+  containsPatterns: 1
+  wasSetUpToContainsPatterns: 1
+  uvPointsRef: []
+  trianglesRef: 
+  preFilteredColors: []
+  filteredColors: []
+  colorsIncludedInPatterns: []
+  isPrefabUnpacked: 1
+  showColorMerging: 0
+  HLColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  enableCopyPasteFunctions: 0
+  maxColorsPerPatternRegion: 100
+  containsGradients: 0
+  numberOfReferences: 0
+  multiObjectReferencingList: []
+  multiObjectsManualReferencingList: []
+  multiObjectsManualReferencingListRefined: []
+  multiObjectsManualListOfMaterials: []
+  gradientFiltering: 0
+  autoCleanPatterns: 1
+  autoCleanSensitivity: 0
+  mergeSimilarColors: 1
+  groupingTolerance: 0
+  groupSimilarColors: 1
+  materialReferenceMode: 0
+  specifyMaterialOfInterest: {fileID: 0}
+  currentObjectMaterial: {fileID: 2100000, guid: 29f1f775c6629cc4ca630db9df038790, type: 2}
+  previousObjectMaterial: {fileID: 2100000, guid: 29f1f775c6629cc4ca630db9df038790, type: 2}
+  originalMaterialRef: {fileID: 2100000, guid: 29f1f775c6629cc4ca630db9df038790, type: 2}
+  materialToCopyFrom: {fileID: 2100000, guid: 72be1cf66e353614ba877ba40051c494, type: 2}
+  setupMetallicSmoothness: 0
+  wasMetallicSmoothnessSetup: 0
+  overrideMetallicTexture: 0
+  metallicTextureRef: {fileID: 0}
+  universalMetallicStrength: 0
+  universalSmoothnessStrength: 0
+  metallicAndSmoothnessMode: 0
+  emissionTextureColorMode: 0
+  emissionManualTextureColor: {r: 0, g: 0, b: 0, a: 0}
+  emissionHDROverlayColor: {r: 0.8679245, g: 0, b: 0, a: 0}
+  setupEmissions: 1
+  wasEmissionsSetup: 1
+  overrideEmissionsTexture: 1
+  emissionTextureRef: {fileID: 2800000, guid: bc01b99baf88cd846b49f88b978a13ea, type: 3}
+  advancedOptionType: 0
+  colorTintingValue: 0
+  colorForColorTinting1: {r: 1, g: 1, b: 1, a: 1}
+  colorForColorTinting2: {r: 1, g: 1, b: 1, a: 1}
+  colorForColorTinting3: {r: 1, g: 1, b: 1, a: 1}
+  colorForColorTinting4: {r: 1, g: 1, b: 1, a: 1}
+  colorForColorTinting5: {r: 1, g: 1, b: 1, a: 1}
+  colorForColorTinting6: {r: 1, g: 1, b: 1, a: 1}
+  listOfRandomColors: []
+  gradientColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 65535
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  mergeSelectionArea: 1
+  gradientDirectionOffset: 0
+  gradientPaintMode: 0
+  textureForGradientInjectionPainting: {fileID: 0}
+  xTextureOffset: 0
+  yTextureOffset: 0
+  textureSize: 0
+  colorPalette: 0
+  skinTonesPalette:
+    colorSelectionsX: 
+    colorsX: []
+  natureColorPalette:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Platinum:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Gold:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_WhiteGold:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Silver:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Bronze:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Copper:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Tin:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_CopperRose:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_HeavyMetals:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_Steel:
+    colorSelectionsX: 
+    colorsX: []
+  metallicPalette_RustedIron:
+    colorSelectionsX: 
+    colorsX: []
+  paintMode: 1
+  groupsListWithNames:
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 1
+    colorLabel: 'Name: Default'
+    collectionsSize: 16
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 2
+    colorLabel: 'Name: Default'
+    collectionsSize: 21
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 3
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 4
+    colorLabel: 'Name: Default'
+    collectionsSize: 20
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 5
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 6
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 7
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 8
+    colorLabel: 'Name: Default'
+    collectionsSize: 13
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 9
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 10
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 11
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 12
+    colorLabel: 'Name: Default'
+    collectionsSize: 11
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 13
+    colorLabel: 'Name: Default'
+    collectionsSize: 7
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 14
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 15
+    colorLabel: 'Name: Default'
+    collectionsSize: 21
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 16
+    colorLabel: 'Name: Default'
+    collectionsSize: 11
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 17
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 18
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 19
+    colorLabel: 'Name: Default'
+    collectionsSize: 10
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 20
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 21
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 22
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 23
+    colorLabel: 'Name: Default'
+    collectionsSize: 7
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 24
+    colorLabel: 'Name: Default'
+    collectionsSize: 10
+    isSelectedForAdvancedPainting: 1
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 25
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 26
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 27
+    colorLabel: 'Name: Default'
+    collectionsSize: 10
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 28
+    colorLabel: 'Name: Default'
+    collectionsSize: 16
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 29
+    colorLabel: 'Name: Default'
+    collectionsSize: 8
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 30
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 31
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 32
+    colorLabel: 'Name: Default'
+    collectionsSize: 10
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 33
+    colorLabel: 'Name: Default'
+    collectionsSize: 18
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 34
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 35
+    colorLabel: 'Name: Default'
+    collectionsSize: 22
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 36
+    colorLabel: 'Name: Default'
+    collectionsSize: 18
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 37
+    colorLabel: 'Name: Default'
+    collectionsSize: 13
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 38
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 39
+    colorLabel: 'Name: Default'
+    collectionsSize: 4
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 40
+    colorLabel: 'Name: Default'
+    collectionsSize: 4
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 41
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 42
+    colorLabel: 'Name: Default'
+    collectionsSize: 24
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 43
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 44
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 45
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 46
+    colorLabel: 'Name: Default'
+    collectionsSize: 4
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 47
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 48
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 49
+    colorLabel: 'Name: Default'
+    collectionsSize: 4
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 50
+    colorLabel: 'Name: Default'
+    collectionsSize: 5
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 51
+    colorLabel: 'Name: Default'
+    collectionsSize: 5
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 52
+    colorLabel: 'Name: Default'
+    collectionsSize: 4
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 53
+    colorLabel: 'Name: Default'
+    collectionsSize: 14
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 54
+    colorLabel: 'Name: Default'
+    collectionsSize: 11
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 55
+    colorLabel: 'Name: Default'
+    collectionsSize: 18
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 56
+    colorLabel: 'Name: Default'
+    collectionsSize: 12
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 57
+    colorLabel: 'Name: Default'
+    collectionsSize: 21
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 58
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 59
+    colorLabel: 'Name: Default'
+    collectionsSize: 19
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 60
+    colorLabel: 'Name: Default'
+    collectionsSize: 8
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 61
+    colorLabel: 'Name: Default'
+    collectionsSize: 11
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 62
+    colorLabel: 'Name: Default'
+    collectionsSize: 5
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 63
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 64
+    colorLabel: 'Name: Default'
+    collectionsSize: 13
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 65
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 66
+    colorLabel: 'Name: Default'
+    collectionsSize: 19
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 67
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 68
+    colorLabel: 'Name: Default'
+    collectionsSize: 6
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 69
+    colorLabel: 'Name: Default'
+    collectionsSize: 9
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 70
+    colorLabel: 'Name: Default'
+    collectionsSize: 7
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 71
+    colorLabel: 'Name: Default'
+    collectionsSize: 8
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  - colorAverage: {r: 0, g: 0, b: 0, a: 0}
+    colorID: 72
+    colorLabel: 'Name: Default'
+    collectionsSize: 10
+    isSelectedForAdvancedPainting: 0
+    emission: 0
+    metallic: 0
+    colorRangeRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    yMax: 0
+    yMin: 0
+    xMax: 0
+    xMin: 0
+    frozenByAdvanceGradientPainting: 0
+  groupsList: 010000000200000003000000190000000400000005000000070000000600000008000000210000001d0000001c000000090000000f0000000a0000000b0000000c0000000e0000000d0000001300000015000000100000001100000014000000120000001600000017000000180000001a000000240000001e0000001b0000001f000000200000004800000023000000360000002200000040000000250000003e000000260000002700000028000000290000002a0000002b0000002c000000410000002d00000047000000460000002e000000300000002f0000003100000032000000330000003400000035000000370000003f00000039000000380000003a0000003c0000003b0000003d00000043000000420000004400000045000000
+  groupAssignmentsValue: -1
+  groupByValueIgnoreSameColorPreventionID: 1
+  mergeToNewGroup: 0
+  mergeToNewColor: {r: 0, g: 0, b: 0, a: 1}
+  copiedColor: {r: 0, g: 0, b: 0, a: 1}
+  hexColor: 
+  enableGroupDividers: 1
+  highlightColor: 0
+  useShiftForHighLight: 0
+  includeInactiveMaterialsAndTextures: 0
+  multiObjectsParents: []
+  lastIndexHighlighted: -1
+  lastGroupIndexHighlighted: -1
+  unFocusedCounter: 0
+  highLighting: 0
+  paintBuildAssignMode: 0
+  preventExactColorsFromMerging: 1
+  suffix: BloodKnight_Resurrected
+  didWeBuildLastSession: 0
+  didWeOverrideLastSession: 0
+  objectsReference: []
+  materialToMassAssign: {fileID: 0}
+  customPaletteMode: 0
+  paletteName: 
+  includeDupes: 0
+  customPaletteDatabaseRef: {fileID: 0}
+  loadedCustomPalette: []
+  currentCustomPaletteIndex: 0
+  tempListOfNewCustomColorsForSaving: []
+  currentCustomPaletteIndexForPaletteEditing: 0
+  loadedForEditingCustomPalette: []
+--- !u!114 &2351195896677757608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070052151032558469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0040782a9f7d6e418b58bfb21a1f9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
