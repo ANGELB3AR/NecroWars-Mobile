@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static readonly string GAME_SCENE = "Scene_Game";
+
+    public void PlayGame()
     {
-        
+        SceneManager.LoadScene(GAME_SCENE);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAd()
     {
-        
+        Debug.Log("Ads coming soon!");
+    }
+
+    public void SwitchToSettingsMenu()
+    {
+        Debug.Log("Settings Menu under construction");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
