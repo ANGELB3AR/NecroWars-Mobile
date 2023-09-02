@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GameLoseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ReloadLevel()
     {
-        
+        GameManager.Instance.UpdateGameState(GameState.RoundStart);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadMainMenu()
     {
-        
+        GameManager.Instance.UpdateGameState(GameState.MainMenu);
     }
 }

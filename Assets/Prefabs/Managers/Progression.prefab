@@ -112,7 +112,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  testLevel: 5
+  testLevel: 1
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
   difficultyCurve:
@@ -212,7 +212,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   hoardPrefab: {fileID: 8118818380258703946, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
-  playerHoard: {fileID: 6858539747560966005, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
+  playerHoard: {fileID: 5939402490721805624, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
   playerStartingHoard:
   - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
   - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}

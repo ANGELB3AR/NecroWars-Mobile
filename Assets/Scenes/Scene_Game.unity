@@ -871,13 +871,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 167735057430892925, guid: 5861fe1ff5c38994cbc9a61a42301564, type: 3}
-      propertyPath: playerHoard
-      value: 
-      objectReference: {fileID: 5939402490721805624, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
-    - target: {fileID: 167735057430892925, guid: 5861fe1ff5c38994cbc9a61a42301564, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 167735057430892925, guid: 5861fe1ff5c38994cbc9a61a42301564, type: 3}
     - target: {fileID: 3487460943696995462, guid: 5861fe1ff5c38994cbc9a61a42301564, type: 3}
       propertyPath: m_Name
       value: Progression

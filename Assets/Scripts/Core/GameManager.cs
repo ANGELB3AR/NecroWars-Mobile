@@ -56,7 +56,7 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleGameWon()
     {
-        int currentLevel = PlayerPrefs.GetInt(Progression.CURRENT_LEVEL_KEY);
+        int currentLevel = PlayerPrefs.GetInt(Progression.CURRENT_LEVEL_KEY, 1);
         int nextLevel = currentLevel++;
 
         PlayerPrefs.SetInt(Progression.CURRENT_LEVEL_KEY, nextLevel);
@@ -65,8 +65,6 @@ public class GameManager : Singleton<GameManager>
     private void HandleRoundStart()
     {
         SceneManager.LoadScene(GAME_SCENE);
-
-        progression = FindObjectOfType<Progression>();
     }
 }
 
