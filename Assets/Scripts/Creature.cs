@@ -11,17 +11,17 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 {
     [Header("Components")]
     [SerializeField] protected Health health;
-    [SerializeField] NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AnimationEventReceiver animationEventReceiver;
-    [SerializeField] Collider creatureCollider;
-    [SerializeField] Material resurrectedMaterial;
+    [SerializeField] private Collider creatureCollider;
+    [SerializeField] private Material resurrectedMaterial;
     [ShowIf(nameof(hasBonusAttack))]
-    [SerializeField] Outline bonusAttackOutline = null;
+    [SerializeField] private Outline bonusAttackOutline = null;
     [Header("Attacking")]
-    [SerializeField] float attackCooldown;
+    [SerializeField] private float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
-    [SerializeField] float chaseRange;
+    [SerializeField] private float chaseRange;
     [Tooltip("Must be lesser than Chase Range")]
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackDamage;
