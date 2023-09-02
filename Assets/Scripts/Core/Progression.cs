@@ -17,17 +17,18 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] AnimationCurve hoardCapacityCurve;
     [SerializeField] AnimationCurve creatureDifficultyCurve;
     [SerializeField] GameObject hoardPrefab;
-    [SerializeField] GameObject playerHoard;
+    [SerializeField] Hoard playerHoard;
     [SerializeField] GameObject[] playerStartingHoard;
 
     private int currentLevel;
     private float difficultyRating;
-    private float hoardQuantity;
-    private float hoardCapacity;
-    private float creatureDifficultyRating;
+    private int hoardQuantity;
+    private int hoardCapacity;
+    private int creatureDifficultyRating;
 
-    [HideInInspector]
-    public const string CURRENT_LEVEL_KEY = "Level";
+    private int currentNumberOfHoards;
+
+    public static readonly string CURRENT_LEVEL_KEY = "Level";
     public Dictionary<int, GameObject> creatureDB;
 
     private void Start()
@@ -50,6 +51,8 @@ public class Progression : SerializedMonoBehaviour
             GenerateHoard();
         }
 
+        currentNumberOfHoards = hoardQuantity;
+
         GeneratePlayerHoard();
         PrintLevelData();
     }
@@ -61,7 +64,6 @@ public class Progression : SerializedMonoBehaviour
         hoardQuantity = Mathf.FloorToInt(hoardQuantityCurve.Evaluate(difficultyRating));
         hoardCapacity = Mathf.FloorToInt(hoardCapacityCurve.Evaluate(difficultyRating));
         creatureDifficultyRating = Mathf.FloorToInt(creatureDifficultyCurve.Evaluate(difficultyRating));
-
     }
 
     private void GenerateHoard()
@@ -71,12 +73,29 @@ public class Progression : SerializedMonoBehaviour
         GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
         Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
 
+        newHoard.OnHoardDied += HandleHoardDied;
+        newHoard.OnPlayerDied += HandlePlayerDied;
+
         for (int i = 0; i < hoardCapacity; i++)
         {
             GameObject creaturePrefab = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
             newHoard.CreateNewCreature(creaturePrefab);
         }
+    }
+
+    private void HandleHoardDied()
+    {
+        currentNumberOfHoards--;
+
+        if (currentNumberOfHoards != 0) { return; }
+
+        GameManager.Instance.UpdateGameState(GameState.GameWon);
+    }
+
+    private void HandlePlayerDied()
+    {
+        GameManager.Instance.UpdateGameState(GameState.GameLost);
     }
 
     private void GeneratePlayerHoard()

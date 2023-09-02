@@ -21,6 +21,9 @@ public class Hoard : MonoBehaviour
 
     public bool isPlayer = false;
 
+    public event Action OnHoardDied;
+    public event Action OnPlayerDied;
+
 
     private void OnEnable()
     {
@@ -132,14 +135,15 @@ public class Hoard : MonoBehaviour
         {
             if (isPlayer)
             {
-                Debug.Log("GAME OVER");
-                Application.Quit();
+                OnPlayerDied.Invoke();
             }
             else
             {
                 canBeResurrected = true;
                 transform.position = CalculateCenterPosition();
                 resurrectUI.SetActive(canBeResurrected);
+
+                OnHoardDied?.Invoke();
             }
         }
     }
