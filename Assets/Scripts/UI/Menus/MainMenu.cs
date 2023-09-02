@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public static readonly string GAME_SCENE = "Scene_Game";
-
     public void PlayGame()
     {
-        SceneManager.LoadScene(GAME_SCENE);
+        GameManager.Instance.UpdateGameState(GameState.RoundStart);
     }
 
     public void PlayAd()

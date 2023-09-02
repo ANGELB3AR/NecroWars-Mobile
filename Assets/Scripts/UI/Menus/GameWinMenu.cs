@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameWinMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void LoadNextLevel()
     {
-        
+        GameManager.Instance.UpdateGameState(GameState.RoundStart);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadMainMenu()
     {
-        
+        GameManager.Instance.UpdateGameState(GameState.MainMenu);
     }
 }
