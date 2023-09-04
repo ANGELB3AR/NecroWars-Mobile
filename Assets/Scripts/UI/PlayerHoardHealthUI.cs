@@ -10,8 +10,8 @@ public class PlayerHoardHealthUI : MonoBehaviour
     [SerializeField] Slider healthBarSlider;
 
     private Hoard playerHoard;
-    private float maxHoardHealth = 0f;
-    private float currentHoardHealth = 0f;
+    [SerializeField] private float maxHoardHealth = 0f;
+    [SerializeField] private float currentHoardHealth = 0f;
 
 
     private void OnEnable()
@@ -56,5 +56,7 @@ public class PlayerHoardHealthUI : MonoBehaviour
     private void Creature_OnHealthUpdated(float changeInHealth)
     {
         currentHoardHealth += changeInHealth;
+        
+        healthBarSlider.value = currentHoardHealth;
     }
 }

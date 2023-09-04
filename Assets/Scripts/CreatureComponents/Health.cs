@@ -72,9 +72,9 @@ public class Health : MonoBehaviour
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
-        float changeInHealth = currentHealth - originalHealth;
+        float deltaHealth = currentHealth - originalHealth;
 
-        OnHealthUpdated?.Invoke(changeInHealth);
+        OnHealthUpdated?.Invoke(deltaHealth);
 
         Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
@@ -93,9 +93,9 @@ public class Health : MonoBehaviour
         currentHealth += healAmount;
         Mathf.Clamp(currentHealth, 0f, maxHealth);
        
-        float changeInHealth = currentHealth - originalHealth;
+        float deltaHealth = currentHealth - originalHealth;
 
-        OnHealthUpdated?.Invoke(changeInHealth);
+        OnHealthUpdated?.Invoke(deltaHealth);
     }
 
     public void Resurrect()
