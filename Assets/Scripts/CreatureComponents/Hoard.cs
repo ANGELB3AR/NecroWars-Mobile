@@ -23,6 +23,7 @@ public class Hoard : MonoBehaviour
 
     public event Action OnHoardDied;
     public event Action OnPlayerDied;
+    public event Action<Creature> OnCreatureAddedToHoard;
 
 
     private void OnEnable()
@@ -86,6 +87,7 @@ public class Hoard : MonoBehaviour
         creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
         creature.SetDesignatedHoard(this);
         creaturesAliveInHoard++;
+        OnCreatureAddedToHoard?.Invoke(creature);
     }
 
     private void ProcessRandomMovementTimer()

@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
     public event Action<Creature> OnCreatureDied;
     public event Action OnCreatureResurrected;
+    public event Action<float> OnHealthUpdated;
 
     private void Start()
     {
@@ -35,6 +36,11 @@ public class Health : MonoBehaviour
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public bool IsResurrected()
@@ -61,8 +67,14 @@ public class Health : MonoBehaviour
         if (isDead) { return; }
         if (isImpervious) { return; }
 
+        float originalHealth = currentHealth;
+
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+
+        float changeInHealth = currentHealth - originalHealth;
+
+        OnHealthUpdated?.Invoke(changeInHealth);
 
         Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
@@ -76,8 +88,14 @@ public class Health : MonoBehaviour
     {
         if (isDead) { return; }
 
+        float originalHealth = currentHealth;
+
         currentHealth += healAmount;
         Mathf.Clamp(currentHealth, 0f, maxHealth);
+       
+        float changeInHealth = currentHealth - originalHealth;
+
+        OnHealthUpdated?.Invoke(changeInHealth);
     }
 
     public void Resurrect()

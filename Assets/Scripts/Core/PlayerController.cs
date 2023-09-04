@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public Hoard playerHoard;
 
+    public event Action OnPlayerHoardInitiated;
+
 
     private void Start()
     {
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public void SetPlayerHoard(Hoard hoard)
     {
         playerHoard = hoard;
+
+        OnPlayerHoardInitiated?.Invoke();
     }
 
     private void HandlePlayerInput()
