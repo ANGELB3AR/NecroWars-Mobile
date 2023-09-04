@@ -96,7 +96,7 @@ public class Hoard : MonoBehaviour
         
         if (isPlayer)
         {
-            targetGroup.AddMember(creature.transform, 1, 1);
+            //targetGroup.AddMember(creature.transform, 1, 1);
         }
     }
 
