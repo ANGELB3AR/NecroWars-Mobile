@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
+using Cinemachine;
 
 public class Hoard : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Hoard : MonoBehaviour
     [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
     [SerializeField] Vector2 mapBounds = new Vector2();
     [SerializeField] float randomMovementInterval;
+    
+    private CinemachineTargetGroup targetGroup;
 
     private float timer;
     private bool canBeResurrected = false;
@@ -37,6 +40,8 @@ public class Hoard : MonoBehaviour
     private void Start()
     {
         creaturesAliveInHoard = creaturesInHoard.Count;
+
+        targetGroup = FindObjectOfType<CinemachineTargetGroup>();
     }
 
     private void OnDisable()
@@ -88,6 +93,11 @@ public class Hoard : MonoBehaviour
         creature.SetDesignatedHoard(this);
         creaturesAliveInHoard++;
         OnCreatureAddedToHoard?.Invoke(creature);
+        
+        if (isPlayer)
+        {
+            targetGroup.AddMember(creature.transform, 1, 1);
+        }
     }
 
     private void ProcessRandomMovementTimer()
@@ -127,6 +137,7 @@ public class Hoard : MonoBehaviour
                 Debug.LogError($"{creature.name} was not found in hoard");
             }
 
+            targetGroup.RemoveMember(creature.transform);
             creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
             creaturesInHoard.Remove(creature);
             creature.SetDesignatedHoard(null);
