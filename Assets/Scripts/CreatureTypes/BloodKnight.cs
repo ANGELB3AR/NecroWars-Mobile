@@ -40,7 +40,5 @@ public class BloodKnight : Creature
 
         health.Heal(healthStolen);
         Instantiate(healingEffect, transform.position, Quaternion.identity);
-
-        Debug.Log($"Blood Knight stole {healthStolen} health from your enemies!");
     }
 }
