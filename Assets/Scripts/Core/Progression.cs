@@ -31,9 +31,16 @@ public class Progression : SerializedMonoBehaviour
     public static readonly string CURRENT_LEVEL_KEY = "Level";
     public Dictionary<int, GameObject> creatureDB;
 
+    public event Action OnHoardDefeated;
+
     private void Start()
     {
         StartNewLevel();
+    }
+
+    public int GetStartingHoardQuantity()
+    {
+        return hoardQuantity;
     }
 
     private void StartNewLevel()
@@ -87,6 +94,8 @@ public class Progression : SerializedMonoBehaviour
     private void HandleHoardDied()
     {
         currentNumberOfHoards--;
+
+        OnHoardDefeated?.Invoke();
 
         if (currentNumberOfHoards != 0) { return; }
 
