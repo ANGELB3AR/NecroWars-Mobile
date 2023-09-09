@@ -57,7 +57,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         movementTarget = designatedHoard.hoardMovementTransform;
 
         lastAttackTime = -attackCooldown;
-        lastBonusAttackTime = bonusAttackChargeTime;
+        lastBonusAttackTime = Time.time;
 
         if (bonusAttackOutline != null)
         {
