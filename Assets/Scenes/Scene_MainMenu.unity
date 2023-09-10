@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &485774816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3816016492693015041, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+  m_PrefabInstance: {fileID: 7939686681853765494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7e69f8675a83d45be5006176ff2c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798300141
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +490,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1625905981375358726, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 485774816}
+    - target: {fileID: 1625905981375358726, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625905981375358726, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameLoseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1805108988451578757, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -542,6 +565,18 @@ PrefabInstance:
     - target: {fileID: 4547650460643647499, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032780254772358222, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 485774816}
+    - target: {fileID: 5032780254772358222, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032780254772358222, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameLoseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5255407477990755535, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: m_AnchorMax.y
