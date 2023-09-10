@@ -23,10 +23,13 @@ public class Health : MonoBehaviour
     public event Action OnCreatureResurrected;
     public event Action<float> OnHealthUpdated;
 
+
     private void Start()
     {
         currentHealth = maxHealth;
     }
+
+    #region Public Getters & Setters
 
     public bool IsDead()
     {
@@ -52,6 +55,8 @@ public class Health : MonoBehaviour
     {
         isResurrected = status;
     }
+
+    #endregion
 
     private void Die()
     {
