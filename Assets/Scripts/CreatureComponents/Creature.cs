@@ -98,7 +98,11 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
         bonusAttackReady = Time.time - lastBonusAttackTime > bonusAttackChargeTime;
         bonusAttackOutline.enabled = bonusAttackReady;
+
+        
     }
+
+    #region Public Getters & Setters
 
     public Health GetHealthComponent()
     {
@@ -130,6 +134,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
             movementTarget = designatedHoard.hoardMovementTransform;
         }
     }
+
+    #endregion
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update
     IEnumerator SearchRoutine()
