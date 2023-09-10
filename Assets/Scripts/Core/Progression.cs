@@ -156,4 +156,35 @@ public class Progression : SerializedMonoBehaviour
         Debug.Log($"****LEVEL SUMMARY****\nCurrent Level: {currentLevel}\nDifficulty Rating: {difficultyRating}\nHoard Quantity: {hoardQuantity}" +
                     $"\nHoard Capacity: {hoardCapacity}\nCreature Difficulty Rating: {creatureDifficultyRating}");
     }
+
+    [Button]
+    private void CountCreatures()
+    {
+        Dictionary<string, int> creatureCounts = new Dictionary<string, int>();
+
+        Creature[] allCreatures = FindObjectsOfType<Creature>();
+
+        foreach (Creature creature in allCreatures)
+        {
+            if (creature.GetDesignatedHoard().isPlayer) { continue; }
+
+            if (creatureCounts.ContainsKey(creature.name))
+            {
+                creatureCounts[creature.name]++;
+            }
+            else
+            {
+                creatureCounts[creature.name] = 1;
+            }
+        }
+
+
+        foreach (string creature in creatureCounts.Keys)
+        {
+            string modifiedName = creature.Substring(9, creature.Length - 16);
+            creatureCounts.TryGetValue(creature, out int count);
+            
+            Debug.Log($"{modifiedName}: {count}");
+        }
+    }
 }
