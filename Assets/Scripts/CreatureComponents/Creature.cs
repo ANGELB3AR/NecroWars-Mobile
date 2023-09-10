@@ -62,6 +62,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         if (bonusAttackOutline != null)
         {
             bonusAttackOutline.enabled = false;
+            bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
         }
 
         StartCoroutine(SearchRoutine());
@@ -249,6 +250,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     {
         creatureCollider.enabled = true;
         ChangeMaterial(resurrectedMaterial);
+        bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
     }
 
     public void ChangeMaterial(Material newMaterial)
