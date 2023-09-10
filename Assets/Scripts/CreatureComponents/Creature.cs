@@ -99,7 +99,17 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         bonusAttackReady = Time.time - lastBonusAttackTime > bonusAttackChargeTime;
         bonusAttackOutline.enabled = bonusAttackReady;
 
-        
+        AITriggerBonusAttack();
+    }
+
+    private void AITriggerBonusAttack()
+    {
+        if (!hasBonusAttack) { return; }
+        if (designatedHoard.isPlayer) { return; }
+        if (targetCreature == null) { return; }
+        if (!bonusAttackReady) { return; }
+
+        BonusAttack();
     }
 
     #region Public Getters & Setters
