@@ -81,7 +81,6 @@ public class Progression : SerializedMonoBehaviour
         Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
 
         newHoard.OnHoardDied += HandleHoardDied;
-        newHoard.OnPlayerDied += HandlePlayerDied;
 
         for (int i = 0; i < hoardCapacity; i++)
         {
@@ -96,18 +95,12 @@ public class Progression : SerializedMonoBehaviour
         currentNumberOfHoards--;
 
         hoard.OnHoardDied -= HandleHoardDied;
-        hoard.OnPlayerDied -= HandlePlayerDied;
 
         OnHoardDefeated?.Invoke();
 
         if (currentNumberOfHoards != 0) { return; }
 
         GameManager.Instance.UpdateGameState(GameState.GameWon);
-    }
-
-    private void HandlePlayerDied()
-    {
-        GameManager.Instance.UpdateGameState(GameState.GameLost);
     }
 
     private void GeneratePlayerHoard()

@@ -22,7 +22,6 @@ public class Hoard : MonoBehaviour
     public bool isPlayer = false;
 
     public event Action<Hoard> OnHoardDied;
-    public event Action OnPlayerDied;
     public event Action<Creature> OnCreatureAddedToHoard;
 
 
@@ -137,7 +136,7 @@ public class Hoard : MonoBehaviour
         {
             if (isPlayer)
             {
-                OnPlayerDied?.Invoke();
+                GameManager.Instance.UpdateGameState(GameState.GameLost);
             }
             else
             {
