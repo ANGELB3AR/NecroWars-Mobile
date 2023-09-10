@@ -85,7 +85,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       insertIndex: 1
-      addedObject: {fileID: -2451068253463634517}
+      addedObject: {fileID: 4675764515144604947}
   m_SourcePrefab: {fileID: 100100000, guid: 24da216c34a779c4099943a1e063a904, type: 3}
 --- !u!114 &5075449913862028854 stripped
 MonoBehaviour:
@@ -103,7 +103,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   m_PrefabInstance: {fileID: 468537720520017897}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-2451068253463634517
+--- !u!114 &4675764515144604947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6163393194137522456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab099aabf5e9a3448ea561b2f4ad72f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4892204e8bc46d9498ab63e732abe84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 5075449913862028854}
@@ -120,7 +120,7 @@ MonoBehaviour:
   animator: {fileID: 6691518530767697502}
   animationEventReceiver: {fileID: 760774512311875504}
   creatureCollider: {fileID: 7134630210233334958}
-  resurrectedMaterial: {fileID: 2100000, guid: 4a74f7d52478b3e40ab726a4367e7747, type: 2}
+  resurrectedMaterial: {fileID: 2100000, guid: 76c31c9a8ff875646a6b72c904e9e84e, type: 2}
   bonusAttackOutline: {fileID: 0}
   attackCooldown: 0.5
   chaseRange: 5

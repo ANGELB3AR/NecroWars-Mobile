@@ -132,7 +132,8 @@ MonoBehaviour:
   bonusAttackChargeTime: 30
   bonusAttackRange: 5
   percentageHealthToSteal: 30
-  impactEffect: {fileID: 6051970949436589566, guid: 6209da0533802fc4b9864163f5b617da, type: 3}
+  playerImpactEffect: {fileID: 6051970949436589566, guid: 6209da0533802fc4b9864163f5b617da, type: 3}
+  aiImpactEffect: {fileID: 6051970949436589566, guid: e989237450d7a1d4ab7aca3dafa34860, type: 3}
   healingEffect: {fileID: 1170323598496597506, guid: 5bad5bfdec01dcb489874588ad35e789, type: 3}
 --- !u!114 &4160822158321692657 stripped
 MonoBehaviour:

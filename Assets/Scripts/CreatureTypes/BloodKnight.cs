@@ -8,7 +8,8 @@ public class BloodKnight : Creature
     [SerializeField] float bonusAttackRange;
     [PropertyRange(0,100)]
     [SerializeField] float percentageHealthToSteal;
-    [SerializeField] ParticleSystem impactEffect;
+    [SerializeField] ParticleSystem playerImpactEffect;
+    [SerializeField] ParticleSystem aiImpactEffect;
     [SerializeField] ParticleSystem healingEffect;
 
     public override void BonusAttack()
@@ -34,7 +35,9 @@ public class BloodKnight : Creature
                 targetHealth.TakeDamage(healthToSteal);
                 healthStolen += healthToSteal;
 
-                Instantiate(impactEffect, targetCreature.transform.position, Quaternion.identity);
+                Instantiate((designatedHoard.isPlayer) ? playerImpactEffect : aiImpactEffect,
+                    targetCreature.transform.position,
+                    Quaternion.identity);
             }
         }
 
