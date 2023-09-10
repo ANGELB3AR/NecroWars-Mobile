@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTapOnCreature(Creature creature)
     {
+        if (!creature.GetDesignatedHoard().isPlayer) { return; }
+
         if (creature is IBonusAttack bonusAttackCreature)
         {
             bonusAttackCreature.BonusAttack();
