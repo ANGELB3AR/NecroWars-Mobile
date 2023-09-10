@@ -250,7 +250,11 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     {
         creatureCollider.enabled = true;
         ChangeMaterial(resurrectedMaterial);
-        bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
+
+        if (bonusAttackOutline != null)
+        {
+            bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
+        }
     }
 
     public void ChangeMaterial(Material newMaterial)
