@@ -105,16 +105,19 @@ public class Progression : SerializedMonoBehaviour
 
         newHoard.OnHoardDied += HandleHoardDied;
 
-        float cumulativeWeight = 0f;
+        float cumulativeOdds = 0f;
         for (int i = 0; i < hoardCapacity; i++)
         {
-            float randomWeight = Random.Range(0, creatureTotalWeight);
+            CreatureType prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
+            float odds = prospectiveCreature.WeightedScore.Evaluate(difficultyRating) / creatureTotalWeight;
+            cumulativeOdds += odds;
 
-
-            GameObject creaturePrefab = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
-
-            newHoard.CreateNewCreature(creaturePrefab);
+            if (cumulativeOdds <= Random.value)
+            {
+                GameObject creaturePrefab = prospectiveCreature.Prefab;
+                newHoard.CreateNewCreature(creaturePrefab);
+            }
         }
     }
 
