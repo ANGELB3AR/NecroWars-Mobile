@@ -169,7 +169,7 @@ public class Hoard : MonoBehaviour
     {
         foreach (Creature creature in creaturesInHoard)
         {
-            creature.GetHealthComponent().TakeDamage(10000);
+            creature.GetHealthComponent().TakeDamage(Mathf.Infinity);
         }
     }
 }
