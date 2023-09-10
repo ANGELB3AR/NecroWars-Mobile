@@ -91,9 +91,12 @@ public class Progression : SerializedMonoBehaviour
         }
     }
 
-    private void HandleHoardDied()
+    private void HandleHoardDied(Hoard hoard)
     {
         currentNumberOfHoards--;
+
+        hoard.OnHoardDied -= HandleHoardDied;
+        hoard.OnPlayerDied -= HandlePlayerDied;
 
         OnHoardDefeated?.Invoke();
 

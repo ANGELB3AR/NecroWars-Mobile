@@ -21,7 +21,7 @@ public class Hoard : MonoBehaviour
 
     public bool isPlayer = false;
 
-    public event Action OnHoardDied;
+    public event Action<Hoard> OnHoardDied;
     public event Action OnPlayerDied;
     public event Action<Creature> OnCreatureAddedToHoard;
 
@@ -145,7 +145,7 @@ public class Hoard : MonoBehaviour
                 transform.position = CalculateCenterPosition();
                 resurrectUI.SetActive(canBeResurrected);
 
-                OnHoardDied?.Invoke();
+                OnHoardDied?.Invoke(this);
             }
         }
     }
