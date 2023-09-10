@@ -137,7 +137,7 @@ public class Hoard : MonoBehaviour
         {
             if (isPlayer)
             {
-                OnPlayerDied.Invoke();
+                OnPlayerDied?.Invoke();
             }
             else
             {
