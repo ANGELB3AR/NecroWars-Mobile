@@ -128,9 +128,9 @@ public class Hoard : MonoBehaviour
             }
 
             creature.GetHealthComponent().OnCreatureDied -= HandleCreatureDied;
-            creaturesInHoard.Remove(creature);
             creature.SetDesignatedHoard(null);
             creature.gameObject.SetActive(false);
+            creaturesInHoard.Remove(creature);
         }
 
         if (creaturesAliveInHoard == 0)
