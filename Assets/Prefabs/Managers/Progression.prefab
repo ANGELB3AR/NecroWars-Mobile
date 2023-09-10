@@ -48,10 +48,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 3051591235320824031, guid: 903c7dc3f08c7ca42adfc7eb2c2b7dd8, type: 3}
-    - {fileID: 6163393194137522456, guid: 29bc4dc68b6157c4bbaaf1a940947a8d, type: 3}
-    - {fileID: 6163393194137522456, guid: a2134c51956040e47942c81c83308522, type: 3}
-    - {fileID: 2346334646152283863, guid: 3df98387d7e9c254d92b48feeeafcbfc, type: 3}
+    - {fileID: 11400000, guid: 0869b787ae0964648a9e1c272cac84b9, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -59,8 +56,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: creatureDB
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.GameObject,
-        UnityEngine.CoreModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[CreatureType,
+        Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
@@ -70,31 +67,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
       Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 7
       Data: 
@@ -103,19 +76,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 10
-      Data: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

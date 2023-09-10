@@ -25,11 +25,12 @@ public class Progression : SerializedMonoBehaviour
     private int hoardQuantity;
     private int hoardCapacity;
     private int creatureDifficultyRating;
+    private float creatureTotalWeight;
 
     private int currentNumberOfHoards;
 
     public static readonly string CURRENT_LEVEL_KEY = "Level";
-    public Dictionary<int, GameObject> creatureDB;
+    public Dictionary<int, CreatureType> creatureDB;
 
     public event Action OnHoardDefeated;
 
@@ -71,6 +72,28 @@ public class Progression : SerializedMonoBehaviour
         hoardQuantity = Mathf.FloorToInt(hoardQuantityCurve.Evaluate(difficultyRating));
         hoardCapacity = Mathf.FloorToInt(hoardCapacityCurve.Evaluate(difficultyRating));
         creatureDifficultyRating = Mathf.FloorToInt(creatureDifficultyCurve.Evaluate(difficultyRating));
+
+        CalculateCreatureTotalWeight();
+    }
+
+    private void CalculateCreatureTotalWeight()
+    {
+        List<int> eligibleCreatureIndexes = new List<int>();
+        for (int i = 0; i < creatureDB.Count; i++)
+        {
+            if (i <= creatureDifficultyRating && creatureDB.ContainsKey(i))
+            {
+                eligibleCreatureIndexes.Add(i);
+            }
+        }
+
+        float totalWeight = 0f;
+        foreach (int i in eligibleCreatureIndexes)
+        {
+            float weight = creatureDB[i].WeightedScore.Evaluate(difficultyRating);
+            totalWeight += weight;
+        }
+        creatureTotalWeight = totalWeight;
     }
 
     private void GenerateHoard()
@@ -82,8 +105,13 @@ public class Progression : SerializedMonoBehaviour
 
         newHoard.OnHoardDied += HandleHoardDied;
 
+        float cumulativeWeight = 0f;
         for (int i = 0; i < hoardCapacity; i++)
         {
+            float randomWeight = Random.Range(0, creatureTotalWeight);
+
+
+
             GameObject creaturePrefab = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
             newHoard.CreateNewCreature(creaturePrefab);
