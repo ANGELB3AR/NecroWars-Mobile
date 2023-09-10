@@ -214,7 +214,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.33
-      value: 3
+      value: 4
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.66
-      value: 3
+      value: 4
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 3
+      value: 4
       inSlope: 0
       outSlope: 0
       tangentMode: 0
