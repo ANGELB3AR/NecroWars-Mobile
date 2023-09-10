@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] bool isImpervious = false;
 
     [ProgressBar(0, 100, MaxGetter = nameof(maxHealth))]
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     private bool isDead;
     private bool isResurrected;
     readonly int isDeadHash = Animator.StringToHash("isDead");
