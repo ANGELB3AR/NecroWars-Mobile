@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (playerHoardMovementTransform == null)
+        {
+            playerHoardMovementTransform = playerHoard.hoardMovementTransform;
+        }
+
         HandlePlayerInput();
         LerpHoardTransform();
     }
