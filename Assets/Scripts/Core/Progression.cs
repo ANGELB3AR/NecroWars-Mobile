@@ -106,6 +106,7 @@ public class Progression : SerializedMonoBehaviour
         newHoard.OnHoardDied += HandleHoardDied;
 
         float cumulativeOdds = 0f;
+
         for (int i = 0; i < hoardCapacity; i++)
         {
             CreatureType prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
