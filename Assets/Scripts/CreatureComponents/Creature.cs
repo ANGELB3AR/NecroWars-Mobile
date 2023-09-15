@@ -15,9 +15,9 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [SerializeField] protected Animator animator;
     [SerializeField] protected AnimationEventReceiver animationEventReceiver;
     [SerializeField] private Collider creatureCollider;
-    [SerializeField] private Material resurrectedMaterial;
+    [SerializeField] protected Material resurrectedMaterial;
     [ShowIf(nameof(hasBonusAttack))]
-    [SerializeField] private Outline bonusAttackOutline = null;
+    [SerializeField] protected Outline bonusAttackOutline = null;
     [Header("Attacking")]
     [SerializeField] private float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]

@@ -15,11 +15,13 @@ public class Dragon : Creature
     private void OnEnable()
     {
         animationEventReceiver.OnAttackAnimationEvent += BreathFire;
+        health.OnCreatureResurrected += Health_OnCreatureResurrected;
     }
 
     private void OnDisable()
     {
         animationEventReceiver.OnAttackAnimationEvent -= BreathFire;
+        health.OnCreatureResurrected -= Health_OnCreatureResurrected;
     }
 
     private void BreathFire()
@@ -50,5 +52,17 @@ public class Dragon : Creature
         }
 
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
+    }
+
+    private void Health_OnCreatureResurrected()
+    {
+        bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
+
+        Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material = resurrectedMaterial;
+        }
     }
 }
