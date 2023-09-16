@@ -122,19 +122,6 @@ public class Progression : SerializedMonoBehaviour
         }
     }
 
-    private void HandleHoardDied(Hoard hoard)
-    {
-        currentNumberOfHoards--;
-
-        hoard.OnHoardDied -= HandleHoardDied;
-
-        OnHoardDefeated?.Invoke();
-
-        if (currentNumberOfHoards != 0) { return; }
-
-        GameManager.Instance.UpdateGameState(GameState.GameWon);
-    }
-
     private void GeneratePlayerHoard()
     {
         PlayerController playerController = FindObjectOfType<PlayerController>();
@@ -150,6 +137,19 @@ public class Progression : SerializedMonoBehaviour
             creatureInstance.GetHealthComponent().SetIsResurrected(true);
             creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
         }
+    }
+
+    private void HandleHoardDied(Hoard hoard)
+    {
+        currentNumberOfHoards--;
+
+        hoard.OnHoardDied -= HandleHoardDied;
+
+        OnHoardDefeated?.Invoke();
+
+        if (currentNumberOfHoards != 0) { return; }
+
+        GameManager.Instance.UpdateGameState(GameState.GameWon);
     }
 
     private void PrintLevelData()
