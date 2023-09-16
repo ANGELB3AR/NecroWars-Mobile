@@ -55,6 +55,11 @@ public class Hoard : MonoBehaviour
         ProcessRandomMovementTimer();
     }
 
+    public List<Creature> GetCreaturesInHoard()
+    {
+        return creaturesInHoard;
+    }
+
     public void ResurrectHoard()
     {
         Hoard playerHoard = FindObjectOfType<PlayerController>().playerHoard;

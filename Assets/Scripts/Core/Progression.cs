@@ -56,7 +56,7 @@ public class Progression : SerializedMonoBehaviour
 
         for (int i = 0; i < hoardQuantity; i++)
         {
-            GenerateHoard();
+            GenerateHoard(hoardCapacity);
         }
 
         currentNumberOfHoards = hoardQuantity;
@@ -96,7 +96,7 @@ public class Progression : SerializedMonoBehaviour
         creatureTotalWeight = totalWeight;
     }
 
-    private void GenerateHoard()
+    private void GenerateHoard(int numberOfCreaturesToGenerate)
     {
         Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
 
@@ -107,7 +107,7 @@ public class Progression : SerializedMonoBehaviour
 
         float cumulativeOdds = 0f;
 
-        for (int i = 0; i < hoardCapacity; i++)
+        for (int i = 0; i < numberOfCreaturesToGenerate; i++)
         {
             CreatureType prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
@@ -119,6 +119,12 @@ public class Progression : SerializedMonoBehaviour
                 GameObject creaturePrefab = prospectiveCreature.Prefab;
                 newHoard.CreateNewCreature(creaturePrefab);
             }
+        }
+
+        if (newHoard.GetCreaturesInHoard().Count == 0)
+        {
+            Destroy(newHoard.gameObject);
+            GenerateHoard(1);
         }
     }
 
