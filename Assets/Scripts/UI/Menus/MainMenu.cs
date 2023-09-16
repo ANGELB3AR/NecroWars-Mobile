@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI currentLevelText;
+
+    private void Start()
+    {
+        currentLevelText.text = $"Current Level: {PlayerPrefs.GetInt(Progression.CURRENT_LEVEL_KEY, 1)}";
+    }
+
     public void PlayGame()
     {
         GameManager.Instance.UpdateGameState(GameState.RoundStart);
