@@ -171,6 +171,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     private void SearchForOpposingCreatures()
     {
+        if (health.IsDead()) { return; }
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, chaseRange, targetMask);
         bool foundTarget = false;
 
@@ -196,6 +198,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     private void ChaseTargetCreature()
     {
+        if (health.IsDead()) { return; }
+
         isAttacking = true;
 
         if (designatedHoard.isPlayer)
@@ -269,6 +273,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     public void Attack()
     {
+        if (health.IsDead()) { return; }
+
         Collider[] hitColliders = Physics.OverlapCapsule(transform.position, transform.forward * attackRange, 1f, targetMask);
         
         foreach (Collider collider in hitColliders)
