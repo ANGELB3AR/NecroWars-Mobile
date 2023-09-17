@@ -9,14 +9,18 @@ using UnityEngine.UI;
 
 public abstract class Creature : MonoBehaviour, IBonusAttack
 {
-    protected Health health;
-    private NavMeshAgent agent;
-    protected Animator animator;
-    protected AnimationEventReceiver animationEventReceiver;
-    private Collider creatureCollider;
-    protected Outline bonusAttackOutline = null;
+    [TabGroup("General", "Components")]
+    [SerializeField] protected Health health;
+    [TabGroup("General", "Components")]
+    [SerializeField] private NavMeshAgent agent;
+    [TabGroup("General", "Components")]
+    [SerializeField] protected Animator animator;
+    [TabGroup("General", "Components")]
+    [SerializeField] protected AnimationEventReceiver animationEventReceiver;
+    [TabGroup("General", "Components")]
+    [SerializeField] private Collider creatureCollider;
 
-    [TabGroup("General Settings")]
+    [TabGroup("General", "Settings")]
     [PreviewField]
     [SerializeField] protected Material resurrectedMaterial;
 
@@ -29,13 +33,18 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [TabGroup("Combat", "Normal Attack")]
     [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
-    protected LayerMask targetMask;
+    [PropertyTooltip("This should ALWAYS be set to Creatures")]
+    [SerializeField] protected LayerMask targetMask;
 
-    [TabGroup("Combat", "Bonus Attack")] [DisallowModificationsIn(PrefabKind.Regular)]
+    [TabGroup("Combat", "Bonus Attack")]
+    [PropertyOrder(-1)]
     [SerializeField] protected bool hasBonusAttack;
     [TabGroup("Combat", "Bonus Attack")]
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] protected float bonusAttackChargeTime;
+    [TabGroup("Combat", "Bonus Attack")]
+    [ShowIf(nameof(hasBonusAttack))]
+    [SerializeField] protected Outline bonusAttackOutline = null;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -59,14 +68,6 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     private void Start()
     {
-        health = GetComponent<Health>();
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponentInChildren<Animator>();
-        animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
-        creatureCollider = GetComponent<Collider>();
-        bonusAttackOutline = GetComponent<Outline>();
-        targetMask = LayerMask.NameToLayer("Creatures");
-
         movementTarget = designatedHoard.hoardMovementTransform;
 
         lastAttackTime = -attackCooldown;

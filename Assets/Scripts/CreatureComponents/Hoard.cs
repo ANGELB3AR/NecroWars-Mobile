@@ -87,10 +87,17 @@ public class Hoard : MonoBehaviour
 
     public void AddToHoard(Creature creature)
     {
+        if (creature == null)
+        {
+            Debug.LogWarning("Attempted to add nullified creature to hoard");
+        }
+
         creaturesInHoard.Add(creature);
+        creaturesAliveInHoard++;
+
         creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
         creature.SetDesignatedHoard(this);
-        creaturesAliveInHoard++;
+
         OnCreatureAddedToHoard?.Invoke(creature);
     }
 
