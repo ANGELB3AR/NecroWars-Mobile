@@ -2,14 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Dragon : Creature
 {
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] ParticleSystem explosionEffect;
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] float damage;
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] float range;
-    [Header("Regular Attack Modifications")]
+    [TabGroup("Combat", "Normal Attack")]
     [SerializeField] Transform fireBreathOrigin;
+    [TabGroup("Combat", "Normal Attack")]
     [SerializeField] ParticleSystem fireBreathEffect;
 
     private void OnEnable()

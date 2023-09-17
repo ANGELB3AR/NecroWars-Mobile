@@ -7,11 +7,19 @@ using Sirenix.OdinInspector;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    [SerializeField] float maxHealth;
+    Animator animator;
+
+    [TabGroup("General Settings")] [DisallowModificationsIn(PrefabKind.Variant)]
     [SerializeField] ParticleSystem impactParticleEffect;
+    [TabGroup("General Settings")]
+    [ProgressBar(0,1000)] [DisallowModificationsIn(PrefabKind.Regular)]
+    [SerializeField] float maxHealth;
+
+    [TabGroup("Debug Options")] [PropertyTooltip("Disables creature from taking damage. Ensure this is disabled prior to building.")]
+    [DisallowModificationsIn(PrefabKind.Regular)]
     [SerializeField] bool isImpervious = false;
 
+    [PropertyOrder(-1)] [GUIColor(0,1,0,1)] [DisableInEditorMode] [HideInEditorMode]
     [ProgressBar(0, 100, MaxGetter = nameof(maxHealth))]
     [SerializeField] private float currentHealth;
     private bool isDead;
@@ -26,6 +34,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+
         currentHealth = maxHealth;
     }
 

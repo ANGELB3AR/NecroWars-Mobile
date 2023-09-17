@@ -14,24 +14,28 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     protected Animator animator;
     protected AnimationEventReceiver animationEventReceiver;
     private Collider creatureCollider;
-    protected Material resurrectedMaterial;
     protected Outline bonusAttackOutline = null;
 
+    [TabGroup("General Settings")]
+    [PreviewField]
+    [SerializeField] protected Material resurrectedMaterial;
 
+    [TabGroup("Combat", "Normal Attack")]
     [SerializeField] private float attackCooldown;
-    [Tooltip("Must be greater than Attack Range")]
     private float chaseRange = 5f;
-    [Tooltip("Must be lesser than Chase Range")]
+    [TabGroup("Combat", "Normal Attack")]
     [ProgressBar(0.1f, 4.9f)]
     [SerializeField] protected float attackRange;
+    [TabGroup("Combat", "Normal Attack")]
     [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
-    protected LayerMask targetMask = LayerMask.NameToLayer("Creatures");
-    [Header("Bonus Attack")]
+    protected LayerMask targetMask;
+
+    [TabGroup("Combat", "Bonus Attack")] [DisallowModificationsIn(PrefabKind.Regular)]
     [SerializeField] protected bool hasBonusAttack;
+    [TabGroup("Combat", "Bonus Attack")]
     [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] protected float bonusAttackChargeTime;
-    [ShowIf(nameof(hasBonusAttack))]
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -61,6 +65,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
         creatureCollider = GetComponent<Collider>();
         bonusAttackOutline = GetComponent<Outline>();
+        targetMask = LayerMask.NameToLayer("Creatures");
 
         movementTarget = designatedHoard.hoardMovementTransform;
 

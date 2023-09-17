@@ -5,11 +5,16 @@ using Sirenix.OdinInspector;
 
 public class BloodKnight : Creature
 {
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] float bonusAttackRange;
-    [PropertyRange(0,100)]
+    [TabGroup("Combat", "Bonus Attack")]
+    [ProgressBar(0,100)]
     [SerializeField] float percentageHealthToSteal;
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] ParticleSystem playerImpactEffect;
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] ParticleSystem aiImpactEffect;
+    [TabGroup("Combat", "Bonus Attack")]
     [SerializeField] ParticleSystem healingEffect;
 
     public override void BonusAttack()
