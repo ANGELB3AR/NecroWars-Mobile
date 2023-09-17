@@ -33,6 +33,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [TabGroup("Combat", "Normal Attack")]
     [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
+    
+    [TabGroup("General", "Settings")]
     [PropertyTooltip("This should ALWAYS be set to Creatures")]
     [SerializeField] protected LayerMask targetMask;
 

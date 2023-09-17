@@ -7,19 +7,18 @@ using Sirenix.OdinInspector;
 public class Dragon : Creature
 {
     [TabGroup("Combat", "Bonus Attack")]
-    [ShowIfGroup(nameof(hasBonusAttack))]
+    [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] ParticleSystem explosionEffect;
     [TabGroup("Combat", "Bonus Attack")]
-    [ShowIfGroup(nameof(hasBonusAttack))]
+    [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] float damage;
     [TabGroup("Combat", "Bonus Attack")]
-    [ShowIfGroup(nameof(hasBonusAttack))]
+    [ShowIf(nameof(hasBonusAttack))]
     [SerializeField] float range;
+
     [TabGroup("Combat", "Normal Attack")]
-    [ShowIfGroup(nameof(hasBonusAttack))]
     [SerializeField] Transform fireBreathOrigin;
     [TabGroup("Combat", "Normal Attack")]
-    [ShowIfGroup(nameof(hasBonusAttack))]
     [SerializeField] ParticleSystem fireBreathEffect;
 
     private void OnEnable()
