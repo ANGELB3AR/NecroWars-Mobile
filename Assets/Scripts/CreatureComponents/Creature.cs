@@ -9,28 +9,31 @@ using UnityEngine.UI;
 
 public abstract class Creature : MonoBehaviour, IBonusAttack
 {
-    [TabGroup("General", "Components")]
+    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the Health component into this slot")]
     [SerializeField] protected Health health;
-    [TabGroup("General", "Components")]
+    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the NavMeshAgent component into this slot")]
     [SerializeField] private NavMeshAgent agent;
-    [TabGroup("General", "Components")]
+    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the creature model from the prefab hierarchy into this slot")]
     [SerializeField] protected Animator animator;
-    [TabGroup("General", "Components")]
+    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the creature model from the prefab hierarchy into this slot")]
     [SerializeField] protected AnimationEventReceiver animationEventReceiver;
-    [TabGroup("General", "Components")]
+    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the Collider component into this slot")]
     [SerializeField] private Collider creatureCollider;
 
     [TabGroup("General", "Settings")]
-    [PreviewField]
+    [PreviewField] [PropertyTooltip("This is the material the creature will have on while on the player's team")]
     [SerializeField] protected Material resurrectedMaterial;
 
     [TabGroup("Combat", "Normal Attack")]
+    [PropertyTooltip("Time in seconds between normal attacks")]
     [SerializeField] private float attackCooldown;
     private float chaseRange = 5f;
     [TabGroup("Combat", "Normal Attack")]
+    [PropertyTooltip("Distance in meters that normal attack can reach")]
     [ProgressBar(0.1f, 4.9f)]
     [SerializeField] protected float attackRange;
     [TabGroup("Combat", "Normal Attack")]
+    [PropertyTooltip("Amount of damage normal attack will deal on each hit")]
     [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
     
@@ -39,13 +42,13 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [SerializeField] protected LayerMask targetMask;
 
     [TabGroup("Combat", "Bonus Attack")]
-    [PropertyOrder(-1)]
+    [PropertyOrder(-1)] [PropertyTooltip("Whether or not this creature will have a bonus attack")]
     [SerializeField] protected bool hasBonusAttack;
     [TabGroup("Combat", "Bonus Attack")]
-    [ShowIf(nameof(hasBonusAttack))]
+    [ShowIf(nameof(hasBonusAttack))] [PropertyTooltip("Time in seconds for bonus attack to recharge after use")]
     [SerializeField] protected float bonusAttackChargeTime;
     [TabGroup("Combat", "Bonus Attack")]
-    [ShowIf(nameof(hasBonusAttack))]
+    [ShowIf(nameof(hasBonusAttack))] [PropertyTooltip("Drag & drop the Outline component into this slot")]
     [SerializeField] protected Outline bonusAttackOutline = null;
 
     protected Hoard designatedHoard;

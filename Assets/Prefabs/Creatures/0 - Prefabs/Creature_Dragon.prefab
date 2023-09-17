@@ -256,9 +256,7 @@ MonoBehaviour:
   animationEventReceiver: {fileID: 4852857502277559966}
   creatureCollider: {fileID: 1586485299985492833}
   resurrectedMaterial: {fileID: 2100000, guid: 6637e1ad8b2dacc4bb59adaa0f87de2e, type: 2}
-  bonusAttackOutline: {fileID: 2146725329803597576}
   attackCooldown: 2
-  chaseRange: 5
   attackRange: 4
   attackDamage: 15
   targetMask:
@@ -266,6 +264,7 @@ MonoBehaviour:
     m_Bits: 64
   hasBonusAttack: 1
   bonusAttackChargeTime: 20
+  bonusAttackOutline: {fileID: 2146725329803597576}
   explosionEffect: {fileID: 1786077898442711710, guid: 4faff865b14499d4d8043eaacc3dee2e, type: 3}
   damage: 30
   range: 5
