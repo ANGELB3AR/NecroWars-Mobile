@@ -69,18 +69,18 @@ public class CreatureCreatorMenu : OdinMenuEditorWindow
         public CreateNewCreature()
         {
             creatureData = ScriptableObject.CreateInstance<CreatureData>();
-            creatureData.name = "New Creature";
+            creatureData.creatureName = "New Creature";
         }
 
         [Button("Create New Creature")]
         private void CreateNewCreatureData()
         {
-            AssetDatabase.CreateAsset(creatureData, CreatureCreatorMenu.folderPath + creatureData.name + ".asset");
+            AssetDatabase.CreateAsset(creatureData, CreatureCreatorMenu.folderPath + creatureData.creatureName + ".asset");
             AssetDatabase.SaveAssets();
 
             // Creates new instance
             creatureData = ScriptableObject.CreateInstance<CreatureData>();
-            creatureData.name = "New Creature";
+            creatureData.creatureName = "New Creature";
         }
     }
 }
