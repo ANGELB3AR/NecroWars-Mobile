@@ -9,23 +9,24 @@ using UnityEngine.UI;
 
 public abstract class Creature : MonoBehaviour, IBonusAttack
 {
-    [Header("Components")]
-    [SerializeField] protected Health health;
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected AnimationEventReceiver animationEventReceiver;
-    [SerializeField] private Collider creatureCollider;
-    [SerializeField] protected Material resurrectedMaterial;
-    [ShowIf(nameof(hasBonusAttack))]
-    [SerializeField] protected Outline bonusAttackOutline = null;
-    [Header("Attacking")]
+    protected Health health;
+    private NavMeshAgent agent;
+    protected Animator animator;
+    protected AnimationEventReceiver animationEventReceiver;
+    private Collider creatureCollider;
+    protected Material resurrectedMaterial;
+    protected Outline bonusAttackOutline = null;
+
+
     [SerializeField] private float attackCooldown;
     [Tooltip("Must be greater than Attack Range")]
-    [SerializeField] private float chaseRange;
+    private float chaseRange = 5f;
     [Tooltip("Must be lesser than Chase Range")]
+    [ProgressBar(0.1f, 4.9f)]
     [SerializeField] protected float attackRange;
+    [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
-    [SerializeField] protected LayerMask targetMask;
+    protected LayerMask targetMask = LayerMask.NameToLayer("Creatures");
     [Header("Bonus Attack")]
     [SerializeField] protected bool hasBonusAttack;
     [ShowIf(nameof(hasBonusAttack))]
@@ -54,6 +55,13 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     private void Start()
     {
+        health = GetComponent<Health>();
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+        animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
+        creatureCollider = GetComponent<Collider>();
+        bonusAttackOutline = GetComponent<Outline>();
+
         movementTarget = designatedHoard.hoardMovementTransform;
 
         lastAttackTime = -attackCooldown;
