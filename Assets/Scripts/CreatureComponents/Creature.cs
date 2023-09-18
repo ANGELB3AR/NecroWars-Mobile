@@ -65,21 +65,12 @@ public class Creature : MonoBehaviour, IBonusAttack
 
     private void Awake()
     {
-        InitializeConfig();
-
-        health = GetComponent<Health>();
-        agent = GetComponent<NavMeshAgent>();
-        creatureCollider = GetComponent<Collider>();
-
-        animator = GetComponentInChildren<Animator>();
-        animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
+        
     }
 
     private void OnEnable()
     {
-        animationEventReceiver.OnAttackAnimationEvent += Attack;
-        health.OnCreatureDied += HandleCreatureDied;
-        health.OnCreatureResurrected += HandleCreatureResurrected;
+        
     }
 
     private void Start()
@@ -194,7 +185,17 @@ public class Creature : MonoBehaviour, IBonusAttack
         
         Type scriptType = Type.GetType(creatureName);
         gameObject.AddComponent(scriptType);
-        Destroy(this);
+
+        health = GetComponent<Health>();
+        agent = GetComponent<NavMeshAgent>();
+        creatureCollider = GetComponent<Collider>();
+
+        animator = GetComponentInChildren<Animator>();
+        animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
+
+        animationEventReceiver.OnAttackAnimationEvent += Attack;
+        health.OnCreatureDied += HandleCreatureDied;
+        health.OnCreatureResurrected += HandleCreatureResurrected;
     }
 
     private void AITriggerBonusAttack()
