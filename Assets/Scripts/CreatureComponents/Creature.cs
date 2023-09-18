@@ -9,16 +9,13 @@ using UnityEngine.UI;
 
 public abstract class Creature : MonoBehaviour, IBonusAttack
 {
-    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the Health component into this slot")]
-    [SerializeField] protected Health health;
-    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the NavMeshAgent component into this slot")]
-    [SerializeField] private NavMeshAgent agent;
-    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the creature model from the prefab hierarchy into this slot")]
-    [SerializeField] protected Animator animator;
-    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the creature model from the prefab hierarchy into this slot")]
-    [SerializeField] protected AnimationEventReceiver animationEventReceiver;
-    [TabGroup("General", "Components")] [PropertyTooltip("Drag & drop the Collider component into this slot")]
-    [SerializeField] private Collider creatureCollider;
+    protected Health health;
+    private NavMeshAgent agent;
+    protected Animator animator;
+    protected AnimationEventReceiver animationEventReceiver;
+    private Collider creatureCollider;
+
+    private string creatureName;
 
     [TabGroup("General", "Settings")]
     [PreviewField] [PropertyTooltip("This is the material the creature will have on while on the player's team")]
@@ -51,6 +48,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [ShowIf(nameof(hasBonusAttack))] [PropertyTooltip("Drag & drop the Outline component into this slot")]
     [SerializeField] protected Outline bonusAttackOutline = null;
 
+    [SerializeField] CreatureSO creatureConfig = null;
+
     protected Hoard designatedHoard;
     private float lastAttackTime;
     private Transform movementTarget;
@@ -63,6 +62,18 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
     protected readonly int bonusAttackHash = Animator.StringToHash("bonusAttack");
+
+    private void Awake()
+    {
+        InitializeConfig();
+
+        health = GetComponent<Health>();
+        agent = GetComponent<NavMeshAgent>();
+        creatureCollider = GetComponent<Collider>();
+
+        animator = GetComponentInChildren<Animator>();
+        animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
+    }
 
     private void OnEnable()
     {
@@ -122,16 +133,6 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         AITriggerBonusAttack();
     }
 
-    private void AITriggerBonusAttack()
-    {
-        if (!hasBonusAttack) { return; }
-        if (designatedHoard.isPlayer) { return; }
-        if (targetCreature == null) { return; }
-        if (!bonusAttackReady) { return; }
-
-        BonusAttack();
-    }
-
     #region Public Getters & Setters
 
     public Health GetHealthComponent()
@@ -166,6 +167,38 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     }
 
     #endregion
+
+    private void InitializeConfig()
+    {
+        if (creatureConfig == null)
+        {
+            Debug.LogWarning("Creature config not found");
+            return;
+        }
+
+        creatureName = creatureConfig.creatureName;
+        resurrectedMaterial = creatureConfig.resurrectedMaterial;
+        attackCooldown = creatureConfig.attackCooldown;
+        attackRange = creatureConfig.attackRange;
+        attackDamage = creatureConfig.attackDamage;
+        hasBonusAttack = creatureConfig.hasBonusAttack;
+        bonusAttackChargeTime = creatureConfig.bonusAttackChargeTime;
+
+        Instantiate(creatureConfig.creatureModel, this.gameObject.transform);
+        
+        Type scriptType = Type.GetType(creatureName);
+        gameObject.AddComponent(scriptType);
+    }
+
+    private void AITriggerBonusAttack()
+    {
+        if (!hasBonusAttack) { return; }
+        if (designatedHoard.isPlayer) { return; }
+        if (targetCreature == null) { return; }
+        if (!bonusAttackReady) { return; }
+
+        BonusAttack();
+    }
 
     // Adds a delay between searches for better performance and to give priority to movement controls in Update
     IEnumerator SearchRoutine()
