@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
-public abstract class Creature : MonoBehaviour, IBonusAttack
+public class Creature : MonoBehaviour, IBonusAttack
 {
     protected Health health;
     private NavMeshAgent agent;
@@ -166,6 +166,12 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         }
     }
 
+    public void SetCreatureConfig(CreatureSO creatureConfig)
+    {
+        this.creatureConfig = creatureConfig;
+        InitializeConfig();
+    }
+
     #endregion
 
     private void InitializeConfig()
@@ -188,6 +194,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         
         Type scriptType = Type.GetType(creatureName);
         gameObject.AddComponent(scriptType);
+        Destroy(this);
     }
 
     private void AITriggerBonusAttack()

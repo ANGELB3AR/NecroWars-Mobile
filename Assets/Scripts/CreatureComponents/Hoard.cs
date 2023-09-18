@@ -76,9 +76,10 @@ public class Hoard : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public Creature CreateNewCreature(GameObject creaturePrefab)
+    public Creature CreateNewCreature(GameObject creaturePrefab, CreatureSO creatureConfig)
     {
         Creature newCreature = Instantiate(creaturePrefab, transform.position, Quaternion.identity).GetComponent<Creature>();
+        newCreature.SetCreatureConfig(creatureConfig);
 
         AddToHoard(newCreature);
 

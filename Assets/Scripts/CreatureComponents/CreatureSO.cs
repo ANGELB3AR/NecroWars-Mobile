@@ -8,6 +8,7 @@ public class CreatureSO : SerializedScriptableObject
 {
     public string creatureName;
     public GameObject creatureModel;
+    public AnimationCurve spawnWeight;
     public Material resurrectedMaterial;
     public float attackCooldown;
     public float attackRange;

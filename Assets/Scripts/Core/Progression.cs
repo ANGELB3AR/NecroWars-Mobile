@@ -18,7 +18,8 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] AnimationCurve creatureDifficultyCurve;
     [SerializeField] GameObject hoardPrefab;
     [SerializeField] Hoard playerHoard;
-    [SerializeField] GameObject[] playerStartingHoard;
+    [SerializeField] CreatureSO[] playerStartingHoard;
+    [SerializeField] GameObject creatureBasePrefab;
 
     private int currentLevel;
     private float difficultyRating;
@@ -30,7 +31,7 @@ public class Progression : SerializedMonoBehaviour
     private int currentNumberOfHoards;
 
     public static readonly string CURRENT_LEVEL_KEY = "Level";
-    public Dictionary<int, CreatureType> creatureDB;
+    public Dictionary<int, CreatureSO> creatureDB;
 
     public event Action OnHoardDefeated;
 
@@ -90,7 +91,7 @@ public class Progression : SerializedMonoBehaviour
         float totalWeight = 0f;
         foreach (int i in eligibleCreatureIndexes)
         {
-            float weight = creatureDB[i].WeightedScore.Evaluate(difficultyRating);
+            float weight = creatureDB[i].spawnWeight.Evaluate(difficultyRating);
             totalWeight += weight;
         }
         creatureTotalWeight = totalWeight;
@@ -109,15 +110,14 @@ public class Progression : SerializedMonoBehaviour
 
         for (int i = 0; i < numberOfCreaturesToGenerate; i++)
         {
-            CreatureType prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
+            CreatureSO prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
-            float odds = prospectiveCreature.WeightedScore.Evaluate(difficultyRating) / creatureTotalWeight;
+            float odds = prospectiveCreature.spawnWeight.Evaluate(difficultyRating) / creatureTotalWeight;
             cumulativeOdds += odds;
 
             if (cumulativeOdds <= Random.value)
             {
-                GameObject creaturePrefab = prospectiveCreature.Prefab;
-                newHoard.CreateNewCreature(creaturePrefab);
+                newHoard.CreateNewCreature(creatureBasePrefab, prospectiveCreature);
             }
         }
 
@@ -136,9 +136,9 @@ public class Progression : SerializedMonoBehaviour
 
         playerController.SetPlayerHoard(playerHoardInstance);
 
-        foreach (GameObject creaturePrefab in playerStartingHoard)
+        foreach (CreatureSO creatureConfig in playerStartingHoard)
         {
-            Creature creatureInstance = playerHoardInstance.CreateNewCreature(creaturePrefab);
+            Creature creatureInstance = playerHoardInstance.CreateNewCreature(creatureBasePrefab, creatureConfig);
 
             creatureInstance.GetHealthComponent().SetIsResurrected(true);
             creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
