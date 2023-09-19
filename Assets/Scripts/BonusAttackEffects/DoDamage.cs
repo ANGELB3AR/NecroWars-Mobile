@@ -7,7 +7,16 @@ using Sirenix.OdinInspector;
 
 public class DoDamage : SerializedScriptableObject, IBonusAttackEffect
 {
+    [EnumToggleButtons]
+    public DamageType damageType;
+
+    [ShowIf(nameof(damageType), DamageType.HitPoints)]
     public float damageAmount;
+    [ShowIf(nameof(damageType), DamageType.Percentage)]
+    [ProgressBar(0, 100)]
+    public float damagePercentage;
+    [ShowIf(nameof(damageType), DamageType.AreaMultiplier)]
+    public float baseDamage;
 
     public bool playerAndAIAreDifferent = false;
 
@@ -39,12 +48,34 @@ public class DoDamage : SerializedScriptableObject, IBonusAttackEffect
     {
         foreach (Health targetHealth in targets)
         {
-            targetHealth.TakeDamage(damageAmount);
+            DealDamage(targetHealth, targets.Length);
 
             PlayDamageVFX(isPlayer, targetHealth);
         }
 
         PlayAttackVFX(isPlayer, attacker);
+    }
+
+    private void DealDamage(Health targetHealth, int areaMultiplier)
+    {
+        float damageToDeal = 0f;
+
+        switch (damageType)
+        {
+            case DamageType.HitPoints:
+                damageToDeal = damageAmount;
+                break;
+            case DamageType.Percentage:
+                damageToDeal = targetHealth.GetCurrentHealth() * (damagePercentage / 100);
+                break;
+            case DamageType.AreaMultiplier:
+                damageToDeal = baseDamage * areaMultiplier;
+                break;
+            default:
+                break;
+        }
+
+        targetHealth.TakeDamage(damageToDeal);
     }
 
     private void PlayDamageVFX(bool isPlayer, Health targetHealth)
@@ -76,6 +107,5 @@ public class DoDamage : SerializedScriptableObject, IBonusAttackEffect
         {
             Instantiate(attackVFX, attacker.transform.position, Quaternion.identity);
         }
-
     }
 }

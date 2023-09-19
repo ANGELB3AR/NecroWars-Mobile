@@ -386,11 +386,6 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
                             Health targetHealth = targetCreature.GetHealthComponent();
                             targetCreatures.Add(targetHealth);
 
-                            foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
-                            {
-                                bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
-                            }
-
                             return;
                         }
                     }
@@ -413,11 +408,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
                         }
                     }
                 }
-
-                foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
-                {
-                    bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
-                }
+                
                 break;
             case AimType.SurroundingArea:
                 Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, 
@@ -436,17 +427,16 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
                         targetCreatures.Add(targetHealth);
                     }
-
-                    foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
-                    {
-                        bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
-                    }
                 }
+                
                 break;
             default:
                 break;
         }
 
-        // Use foreach loop to apply all assigned effects to the targets
+        foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
+        {
+            bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+        }
     }
 }
