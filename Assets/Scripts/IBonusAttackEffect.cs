@@ -5,5 +5,5 @@ using Sirenix.OdinInspector;
 
 public interface IBonusAttackEffect
 {
-    public void ApplyBonusAttackEffect(Health[] healths, bool isPlayer, Creature attacker);
+    public void ApplyBonusAttackEffect(Health[] targets, bool isPlayer, Creature attacker);
 }

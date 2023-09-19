@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class StealHealth : ScriptableObject, IBonusAttackEffect
+[CreateAssetMenu(fileName = "NewBonusAttackEffect", menuName = "Create New Bonus Attack Effect/StealHealth")]
+public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
 {
     // Enter fields available for Designer to customize
     public float percentageHealthToSteal;
     
-    public ParticleSystem playerAttackEffect;
-    public ParticleSystem aiAttackEffect;
-    public ParticleSystem healingEffect;
+    public ParticleSystem damageVFXIfPlayerAttacks;
+    public ParticleSystem damageVFXIfAIAttacks;
+    public ParticleSystem healingVFXOnPlayerAttacker;
+    public ParticleSystem healingVFXOnAIAttacker;
 
     // Enter logic for stealing health
     public void ApplyBonusAttackEffect(Health[] targets, bool isPlayer, Creature attacker)
@@ -23,12 +26,16 @@ public class StealHealth : ScriptableObject, IBonusAttackEffect
             healthStolen += healthToSteal;
 
             // Plays a VFX based on whether the attacking creature is the Player or AI
-            Instantiate((isPlayer) ? playerAttackEffect : aiAttackEffect,
+            Instantiate((isPlayer) ? damageVFXIfPlayerAttacks : damageVFXIfAIAttacks,
                 targetHealth.transform.position,
                 Quaternion.identity);
         }
 
         attacker.GetHealthComponent().Heal(healthStolen);
-        Instantiate(healingEffect, attacker.transform.position, Quaternion.identity);
+
+        // Plays a VFX based on whether the attacking creature is the Player or AI
+        Instantiate((isPlayer) ? healingVFXOnPlayerAttacker : healingVFXOnAIAttacker, 
+            attacker.transform.position, 
+            Quaternion.identity);
     }
 }
