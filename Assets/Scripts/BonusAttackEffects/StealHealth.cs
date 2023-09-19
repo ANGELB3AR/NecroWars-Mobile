@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "NewBonusAttackEffect", menuName = "Create New Bonus Attack Effect/StealHealth")]
+[CreateAssetMenu(fileName = "NewStealHealthEffect", menuName = "Create New Bonus Attack Effect/StealHealth")]
 public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
 {
     [EnumToggleButtons]
@@ -20,11 +20,19 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
     public bool playerAndAIAreDifferent = false;
 
     // IF PLAYER ATTACKING
+    [TabGroup("VFX", "Player Attacker")]
+    [ShowIf(nameof(playerAndAIAreDifferent))]
     public ParticleSystem healVFXOnPlayerAttacker = null;
+    [TabGroup("VFX", "Player Attacker")]
+    [ShowIf(nameof(playerAndAIAreDifferent))]
     public ParticleSystem damageVFXIfPlayerAttacks = null;
-    
+
     // IF AI ATTACKING
+    [TabGroup("VFX", "AI Attacker")]
+    [ShowIf(nameof(playerAndAIAreDifferent))]
     public ParticleSystem healVFXOnAIAttacker = null;
+    [TabGroup("VFX", "AI Attacker")]
+    [ShowIf(nameof(playerAndAIAreDifferent))]
     public ParticleSystem damageVFXIfAIAttacks = null;
 
     // IF NOT DIFFERENT
