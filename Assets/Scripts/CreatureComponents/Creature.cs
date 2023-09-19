@@ -68,6 +68,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         health = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         creatureCollider = GetComponent<Collider>();
+
+        targetMask = LayerMask.GetMask("Creatures");
     }
 
     private void OnEnable()
