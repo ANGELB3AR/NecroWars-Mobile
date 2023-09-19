@@ -14,5 +14,5 @@ public enum AimType
 {
     Line_FirstHit,
     Line_HitAll,
-    Area
+    SurroundingArea
 }

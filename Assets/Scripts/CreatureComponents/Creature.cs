@@ -367,6 +367,17 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         lastBonusAttackTime = Time.time;
 
         // Use switch statement to get all targets from AimType
+        switch (creatureConfig.bonusAttackConfig.aimType)
+        {
+            case AimType.Line_FirstHit:
+                break;
+            case AimType.Line_HitAll:
+                break;
+            case AimType.SurroundingArea:
+                break;
+            default:
+                break;
+        }
 
         // Use foreach loop to apply all assigned effects to the targets
     }

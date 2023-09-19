@@ -5,4 +5,5 @@ using UnityEngine;
 public class StealHealth : BonusAttackEffect
 {
     // Enter logic for stealing health
+    
 }
