@@ -366,14 +366,82 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
         lastBonusAttackTime = Time.time;
 
+        List<Health> targetCreatures = new List<Health>();
+
         // Use switch statement to get all targets from AimType
         switch (creatureConfig.bonusAttackConfig.aimType)
         {
             case AimType.Line_FirstHit:
+                Collider[] hitColliders = Physics.OverlapCapsule(transform.position, 
+                    transform.forward * creatureConfig.bonusAttackConfig.range, 
+                    1f, 
+                    targetMask);
+
+                foreach (Collider collider in hitColliders)
+                {
+                    if (collider.TryGetComponent<Creature>(out Creature targetCreature))
+                    {
+                        if (targetCreature.GetDesignatedHoard().isPlayer != designatedHoard.isPlayer)
+                        {
+                            Health targetHealth = targetCreature.GetHealthComponent();
+                            targetCreatures.Add(targetHealth);
+
+                            foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
+                            {
+                                bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+                            }
+
+                            return;
+                        }
+                    }
+                }
                 break;
             case AimType.Line_HitAll:
+                Collider[] hitColliders1 = Physics.OverlapCapsule(transform.position, 
+                    transform.forward * creatureConfig.bonusAttackConfig.range, 
+                    1f, 
+                    targetMask);
+
+                foreach (Collider collider in hitColliders1)
+                {
+                    if (collider.TryGetComponent<Creature>(out Creature targetCreature))
+                    {
+                        if (targetCreature.GetDesignatedHoard().isPlayer != designatedHoard.isPlayer)
+                        {
+                            Health targetHealth = targetCreature.GetHealthComponent();
+                            targetCreatures.Add(targetHealth);
+                        }
+                    }
+                }
+
+                foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
+                {
+                    bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+                }
                 break;
             case AimType.SurroundingArea:
+                Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, 
+                    creatureConfig.bonusAttackConfig.range, 
+                    targetMask);
+
+                foreach (Collider collider in hitColliders2)
+                {
+                    if (collider.TryGetComponent<Creature>(out Creature targetCreature))
+                    {
+                        if (targetCreature.GetDesignatedHoard().isPlayer == designatedHoard.isPlayer) { continue; }
+
+                        Health targetHealth = targetCreature.GetHealthComponent();
+
+                        if (targetHealth.IsDead()) { continue; }
+
+                        targetCreatures.Add(targetHealth);
+                    }
+
+                    foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
+                    {
+                        bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+                    }
+                }
                 break;
             default:
                 break;
