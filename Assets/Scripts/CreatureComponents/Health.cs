@@ -66,6 +66,11 @@ public class Health : MonoBehaviour
         isResurrected = status;
     }
 
+    public void SetMaxHealth(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+    }
+
     #endregion
 
     private void Die()

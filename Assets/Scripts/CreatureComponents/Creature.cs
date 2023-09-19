@@ -185,6 +185,9 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         hasBonusAttack = creatureConfig.hasBonusAttack;
         bonusAttackChargeTime = creatureConfig.bonusAttackChargeTime;
 
+        health.SetMaxHealth(creatureConfig.maxHealth);
+        agent.stoppingDistance = creatureConfig.stoppingDistance;
+
         Instantiate(creatureConfig.creatureModel, this.gameObject.transform);
         
         animator = GetComponentInChildren<Animator>();
