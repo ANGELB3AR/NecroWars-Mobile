@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
-public class Creature : MonoBehaviour, IBonusAttack
+public abstract class Creature : MonoBehaviour, IBonusAttack
 {
     protected Health health;
     private NavMeshAgent agent;
@@ -185,9 +185,6 @@ public class Creature : MonoBehaviour, IBonusAttack
 
         Instantiate(creatureConfig.creatureModel, this.gameObject.transform);
         
-        Type scriptType = Type.GetType(creatureName);
-        gameObject.AddComponent(scriptType);
-
         animator = GetComponentInChildren<Animator>();
         animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
 
