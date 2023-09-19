@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 334697844649902709}
     - target: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+      propertyPath: maxHealth
+      value: 111.4246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
       propertyPath: isImpervious
       value: 0
       objectReference: {fileID: 0}
@@ -87,17 +91,6 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: -2451068253463634517}
   m_SourcePrefab: {fileID: 100100000, guid: 24da216c34a779c4099943a1e063a904, type: 3}
---- !u!114 &5075449913862028854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 468537720520017897}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6163393194137522456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6c4289a9aaaae478c5947bc2264486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6163393194137522456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
@@ -115,15 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab099aabf5e9a3448ea561b2f4ad72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 5075449913862028854}
-  agent: {fileID: 7733166555434614161}
-  animator: {fileID: 334697844649902709}
-  animationEventReceiver: {fileID: 4162440258901579333}
-  creatureCollider: {fileID: 7134630210233334958}
   resurrectedMaterial: {fileID: 2100000, guid: 4a74f7d52478b3e40ab726a4367e7747, type: 2}
-  bonusAttackOutline: {fileID: 0}
   attackCooldown: 0.5
-  chaseRange: 5
   attackRange: 2.5
   attackDamage: 5
   targetMask:
@@ -131,19 +117,11 @@ MonoBehaviour:
     m_Bits: 64
   hasBonusAttack: 0
   bonusAttackChargeTime: 0
+  bonusAttackOutline: {fileID: 0}
+  creatureConfig: {fileID: 0}
 --- !u!4 &6926891204143112538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 468537720520017897}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &7134630210233334958 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 468537720520017897}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &7733166555434614161 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   m_PrefabInstance: {fileID: 468537720520017897}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8161989373486282490
