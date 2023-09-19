@@ -65,18 +65,19 @@ public class Creature : MonoBehaviour, IBonusAttack
 
     private void Awake()
     {
-        
+        health = GetComponent<Health>();
+        agent = GetComponent<NavMeshAgent>();
+        creatureCollider = GetComponent<Collider>();
     }
 
     private void OnEnable()
     {
-        
+        health.OnCreatureDied += HandleCreatureDied;
+        health.OnCreatureResurrected += HandleCreatureResurrected;
     }
 
     private void Start()
     {
-        movementTarget = designatedHoard.hoardMovementTransform;
-
         lastAttackTime = -attackCooldown;
         lastBonusAttackTime = Time.time;
 
@@ -104,6 +105,7 @@ public class Creature : MonoBehaviour, IBonusAttack
     private void Update()
     {
         if (health.IsDead()) { return; }
+        if (animator == null) { return; }
 
         animator.SetFloat(movementSpeedHash, agent.velocity.magnitude);
 
@@ -186,16 +188,10 @@ public class Creature : MonoBehaviour, IBonusAttack
         Type scriptType = Type.GetType(creatureName);
         gameObject.AddComponent(scriptType);
 
-        health = GetComponent<Health>();
-        agent = GetComponent<NavMeshAgent>();
-        creatureCollider = GetComponent<Collider>();
-
         animator = GetComponentInChildren<Animator>();
         animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
 
         animationEventReceiver.OnAttackAnimationEvent += Attack;
-        health.OnCreatureDied += HandleCreatureDied;
-        health.OnCreatureResurrected += HandleCreatureResurrected;
     }
 
     private void AITriggerBonusAttack()
