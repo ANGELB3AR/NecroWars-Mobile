@@ -49,6 +49,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [SerializeField] protected Outline bonusAttackOutline = null;
 
     [SerializeField] CreatureSO creatureConfig = null;
+    [SerializeField] BonusAttackSO bonusAttackConfig = null;
 
     protected Hoard designatedHoard;
     private float lastAttackTime;
@@ -184,6 +185,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         attackDamage = creatureConfig.attackDamage;
         hasBonusAttack = creatureConfig.hasBonusAttack;
         bonusAttackChargeTime = creatureConfig.bonusAttackChargeTime;
+        bonusAttackConfig = creatureConfig.bonusAttackConfig;
 
         health.SetMaxHealth(creatureConfig.maxHealth);
         agent.stoppingDistance = creatureConfig.stoppingDistance;
@@ -358,8 +360,14 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
 
     public virtual void BonusAttack()
     {
+        if (!bonusAttackReady) { return; }
+
         animator.SetTrigger(bonusAttackHash);
 
         lastBonusAttackTime = Time.time;
+
+        // Use switch statement to get all targets from AimType
+
+        // Use foreach loop to apply all assigned effects to the targets
     }
 }

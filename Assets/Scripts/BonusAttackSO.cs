@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 public class BonusAttackSO : SerializedScriptableObject
 {
     public AimType aimType;
+    public BonusAttackEffect[] bonusAttackEffects;
 }
 
 public enum AimType
