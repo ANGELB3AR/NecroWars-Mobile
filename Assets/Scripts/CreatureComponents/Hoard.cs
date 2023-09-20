@@ -82,9 +82,9 @@ public class Hoard : MonoBehaviour
 
         Creature newCreature = prefabInstance.GetComponent<Creature>();
 
-        newCreature.SetCreatureConfig(creatureConfig);
-
         AddToHoard(newCreature);
+
+        newCreature.SetCreatureConfig(creatureConfig);
 
         return newCreature;
     }

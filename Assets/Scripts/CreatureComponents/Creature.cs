@@ -72,7 +72,6 @@ public class Creature : MonoBehaviour, IBonusAttack
         health = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         creatureCollider = GetComponent<Collider>();
-        bonusAttackOutline = GetComponent<Outline>();
 
         targetMask = LayerMask.GetMask("Creatures");
 
@@ -89,12 +88,6 @@ public class Creature : MonoBehaviour, IBonusAttack
     {
         lastAttackTime = -attackCooldown;
         lastBonusAttackTime = Time.time;
-
-        if (bonusAttackOutline != null)
-        {
-            bonusAttackOutline.enabled = false;
-            bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
-        }
 
         StartCoroutine(SearchRoutine());
 
@@ -204,6 +197,14 @@ public class Creature : MonoBehaviour, IBonusAttack
         agent.stoppingDistance = creatureConfig.stoppingDistance;
 
         Instantiate(creatureConfig.creatureModel, this.gameObject.transform);
+
+        if (creatureConfig.hasBonusAttack)
+        {
+            bonusAttackOutline = gameObject.AddComponent<Outline>();
+            bonusAttackOutline.enabled = false;
+            bonusAttackOutline.OutlineWidth = 4f;
+            bonusAttackOutline.OutlineColor = (designatedHoard.isPlayer) ? Color.white : Color.red;
+        }
         
         animator = GetComponentInChildren<Animator>();
         animationEventReceiver = GetComponentInChildren<AnimationEventReceiver>();
