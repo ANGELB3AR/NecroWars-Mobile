@@ -36,6 +36,19 @@ public class CreatureSO : SerializedScriptableObject
     [TabGroup("Combat", "Normal Attack")]
     [PropertyTooltip("Amount of damage in hit points that normal attack will deal on each hit")]
     public float attackDamage = 5f;
+    [TabGroup("Combat", "Normal Attack")] 
+    public bool hasAttackVFX = false;
+    [TabGroup("Combat", "Normal Attack")] 
+    [ShowIf(nameof(hasAttackVFX))]
+    public ParticleSystem normalAttackVFX;
+    [TabGroup("Combat", "Normal Attack")]
+    [ShowIf(nameof(hasAttackVFX))]
+    [PropertyTooltip("Where on the creature model the VFX should play")]
+    public Vector3 attackVFXPosition;
+    [TabGroup("Combat", "Normal Attack")]
+    [ShowIf(nameof(hasAttackVFX))]
+    [PropertyTooltip("Apply a rotation to the VFX")]
+    public Vector3 attackVFXRotation;
 
     [TabGroup("Combat", "Bonus Attack")]
     [PropertyTooltip("Whether or not this creature will have a bonus attack")]

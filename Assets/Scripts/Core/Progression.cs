@@ -124,7 +124,7 @@ public class Progression : SerializedMonoBehaviour
         if (newHoard.GetCreaturesInHoard().Count == 0)
         {
             Destroy(newHoard.gameObject);
-            GenerateHoard(1);
+            //GenerateHoard(1);
         }
     }
 

@@ -33,6 +33,8 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     [PropertyTooltip("Amount of damage normal attack will deal on each hit")]
     [ProgressBar(0, 300)]
     [SerializeField] protected float attackDamage;
+    [SerializeField] private Transform normalAttackVFXTransform;
+    private ParticleSystem normalAttackVFX = null;
     
     [TabGroup("General", "Settings")]
     [PropertyTooltip("This should ALWAYS be set to Creatures")]
@@ -63,14 +65,18 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
     protected readonly int bonusAttackHash = Animator.StringToHash("bonusAttack");
+    readonly string normalAttackVFXOriginKey = "NormalAttackVFXOrigin";
 
     private void Awake()
     {
         health = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         creatureCollider = GetComponent<Collider>();
+        bonusAttackOutline = GetComponent<Outline>();
 
         targetMask = LayerMask.GetMask("Creatures");
+
+        normalAttackVFXTransform = transform.Find(normalAttackVFXOriginKey);
     }
 
     private void OnEnable()
@@ -186,6 +192,13 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         hasBonusAttack = creatureConfig.hasBonusAttack;
         bonusAttackChargeTime = creatureConfig.bonusAttackChargeTime;
         bonusAttackConfig = creatureConfig.bonusAttackConfig;
+
+        if (creatureConfig.hasAttackVFX)
+        {
+            normalAttackVFXTransform.position = creatureConfig.attackVFXPosition;
+            normalAttackVFXTransform.rotation = Quaternion.Euler(creatureConfig.attackVFXRotation);
+            normalAttackVFX = creatureConfig.normalAttackVFX;
+        }
 
         health.SetMaxHealth(creatureConfig.maxHealth);
         agent.stoppingDistance = creatureConfig.stoppingDistance;
@@ -355,6 +368,11 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
                     return;
                 }
             }
+        }
+
+        if (creatureConfig.hasAttackVFX)
+        {
+            Instantiate(normalAttackVFX, normalAttackVFXTransform.position, normalAttackVFXTransform.rotation);
         }
     }
 
