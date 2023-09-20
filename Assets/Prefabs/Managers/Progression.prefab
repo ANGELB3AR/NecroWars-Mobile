@@ -49,6 +49,8 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
+    - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
+    - {fileID: 11400000, guid: c57f9b6c9d97c894b9c934926f0dd217, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -67,7 +69,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -88,7 +90,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -112,19 +114,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 10
-      Data: 0
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -273,7 +263,7 @@ MonoBehaviour:
   playerHoard: {fileID: 5939402490721805624, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
   playerStartingHoard:
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
+  - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
-  - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
-  - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
+  - {fileID: 11400000, guid: c57f9b6c9d97c894b9c934926f0dd217, type: 2}
   creatureBasePrefab: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}

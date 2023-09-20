@@ -369,11 +369,11 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         List<Health> targetCreatures = new List<Health>();
 
         // Use switch statement to get all targets from AimType
-        switch (creatureConfig.bonusAttackConfig.aimType)
+        switch (bonusAttackConfig.aimType)
         {
             case AimType.Line_FirstHit:
                 Collider[] hitColliders = Physics.OverlapCapsule(transform.position, 
-                    transform.forward * creatureConfig.bonusAttackConfig.range, 
+                    transform.forward * bonusAttackConfig.range, 
                     1f, 
                     targetMask);
 
@@ -393,7 +393,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
                 break;
             case AimType.Line_HitAll:
                 Collider[] hitColliders1 = Physics.OverlapCapsule(transform.position, 
-                    transform.forward * creatureConfig.bonusAttackConfig.range, 
+                    transform.forward * bonusAttackConfig.range, 
                     1f, 
                     targetMask);
 
@@ -412,7 +412,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
                 break;
             case AimType.SurroundingArea:
                 Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, 
-                    creatureConfig.bonusAttackConfig.range, 
+                    bonusAttackConfig.range, 
                     targetMask);
 
                 foreach (Collider collider in hitColliders2)

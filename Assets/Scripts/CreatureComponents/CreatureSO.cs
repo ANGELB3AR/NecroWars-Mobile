@@ -44,5 +44,9 @@ public class CreatureSO : SerializedScriptableObject
     [ShowIf(nameof(hasBonusAttack))]
     [PropertyTooltip("Time in seconds for bonus attack to recharge after use")]
     public float bonusAttackChargeTime;
+    [TabGroup("Combat", "Bonus Attack")]
+    [ShowIf(nameof(hasBonusAttack))]
+    [PropertyTooltip("Configuration file for bonus attack. Use 'Create New Bonus Attack' to create a new one")]
+    [InlineEditor]
     public BonusAttackSO bonusAttackConfig;
 }

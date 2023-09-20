@@ -71,11 +71,6 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 4304348280976192202}
   m_SourcePrefab: {fileID: 100100000, guid: 24da216c34a779c4099943a1e063a904, type: 3}
---- !u!195 &1477199891628469334 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7913157223238072952, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 8741838617571841582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1665214426822856960 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7948070880293717806, guid: 24da216c34a779c4099943a1e063a904, type: 3}
@@ -87,11 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &2076976481655106921 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 7314928758502062919, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 8741838617571841582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2301596294061535389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395427679116060339, guid: 24da216c34a779c4099943a1e063a904, type: 3}
@@ -114,37 +104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91594445b20e5894e9feb3f6b4a0a5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 4160822158321692657}
-  agent: {fileID: 1477199891628469334}
-  animator: {fileID: 139822248048421002}
-  animationEventReceiver: {fileID: 1452692106767347499}
-  creatureCollider: {fileID: 2076976481655106921}
   resurrectedMaterial: {fileID: 2100000, guid: 947ee594a06796344b8a160bf79303dc, type: 2}
   attackCooldown: 2.5
   attackRange: 3
-  attackDamage: 20
+  attackDamage: 17.968166
   targetMask:
     serializedVersion: 2
     m_Bits: 64
   hasBonusAttack: 1
   bonusAttackChargeTime: 30
   bonusAttackOutline: {fileID: 1665214426822856960}
+  creatureConfig: {fileID: 0}
+  bonusAttackConfig: {fileID: 0}
   bonusAttackRange: 5
   percentageHealthToSteal: 30
   playerImpactEffect: {fileID: 6051970949436589566, guid: 6209da0533802fc4b9864163f5b617da, type: 3}
   aiImpactEffect: {fileID: 6051970949436589566, guid: e989237450d7a1d4ab7aca3dafa34860, type: 3}
   healingEffect: {fileID: 1170323598496597506, guid: 5bad5bfdec01dcb489874588ad35e789, type: 3}
---- !u!114 &4160822158321692657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4678969933692926431, guid: 24da216c34a779c4099943a1e063a904, type: 3}
-  m_PrefabInstance: {fileID: 8741838617571841582}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3051591235320824031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6c4289a9aaaae478c5947bc2264486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9196941268051394279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,17 +183,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9102521153666815597, guid: e1dd14337a5500f4c95cb419aeb0eb86, type: 3}
   m_PrefabInstance: {fileID: 9196941268051394279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1452692106767347499 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7749259671528329676, guid: e1dd14337a5500f4c95cb419aeb0eb86, type: 3}
-  m_PrefabInstance: {fileID: 9196941268051394279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61f1030db6eeb8428a6ffb2b53ba068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8754068028382619765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495021191791957650, guid: e1dd14337a5500f4c95cb419aeb0eb86, type: 3}
