@@ -79,9 +79,6 @@ public class Hoard : MonoBehaviour
     public Creature CreateNewCreature(GameObject creaturePrefab, CreatureSO creatureConfig)
     {
         GameObject prefabInstance = Instantiate(creaturePrefab, transform.position, Quaternion.identity);
-        
-        Type scriptType = Type.GetType(creatureConfig.creatureName);
-        prefabInstance.gameObject.AddComponent(scriptType);
 
         Creature newCreature = prefabInstance.GetComponent<Creature>();
 

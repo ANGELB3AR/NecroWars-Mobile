@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
-public abstract class Creature : MonoBehaviour, IBonusAttack
+public class Creature : MonoBehaviour, IBonusAttack
 {
     protected Health health;
     private NavMeshAgent agent;
@@ -376,7 +376,7 @@ public abstract class Creature : MonoBehaviour, IBonusAttack
         }
     }
 
-    public virtual void BonusAttack()
+    public void BonusAttack()
     {
         if (!bonusAttackReady) { return; }
 
