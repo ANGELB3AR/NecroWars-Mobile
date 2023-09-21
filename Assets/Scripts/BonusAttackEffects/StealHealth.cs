@@ -25,6 +25,7 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
     public ParticleSystem healVFXOnPlayerAttacker = null;
     [TabGroup("VFX", "Player Attacker")]
     [ShowIf(nameof(playerAndAIAreDifferent))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on AI creatures damaged by the Player")]
     public ParticleSystem damageVFXIfPlayerAttacks = null;
 
     // IF AI ATTACKING
@@ -33,6 +34,7 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
     public ParticleSystem healVFXOnAIAttacker = null;
     [TabGroup("VFX", "AI Attacker")]
     [ShowIf(nameof(playerAndAIAreDifferent))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on Player creatures damaged by AI")]
     public ParticleSystem damageVFXIfAIAttacks = null;
 
     // IF NOT DIFFERENT
@@ -41,6 +43,7 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
     public ParticleSystem healVFX;
     [TabGroup("VFX")]
     [HideIf(nameof(playerAndAIAreDifferent))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on any creature damaged by this effect")]
     public ParticleSystem damageVFX;
 
 
@@ -89,6 +92,8 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
     {
         if (playerAndAIAreDifferent)
         {
+            if (damageVFXIfPlayerAttacks == null || damageVFXIfAIAttacks == null) { return; }
+
             // Plays a VFX based on whether the attacking creature is the Player or AI
             Instantiate((isPlayer) ? damageVFXIfPlayerAttacks : damageVFXIfAIAttacks,
                 targetHealth.transform.position,
@@ -96,6 +101,8 @@ public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
         }
         else
         {
+            if (damageVFX == null) { return; }
+
             Instantiate(damageVFX, targetHealth.transform.position, Quaternion.identity);
         }
     }

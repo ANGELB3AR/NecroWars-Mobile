@@ -9,62 +9,46 @@ using UnityEngine.UI;
 
 public class Creature : MonoBehaviour, IBonusAttack
 {
-    protected Health health;
+    private Health health;
     private NavMeshAgent agent;
-    protected Animator animator;
-    protected AnimationEventReceiver animationEventReceiver;
+    private Animator animator;
+    private AnimationEventReceiver animationEventReceiver;
     private Collider creatureCollider;
 
     private string creatureName;
 
-    [TabGroup("General", "Settings")]
-    [PreviewField] [PropertyTooltip("This is the material the creature will have on while on the player's team")]
-    [SerializeField] protected Material resurrectedMaterial;
+    private Material resurrectedMaterial;
 
-    [TabGroup("Combat", "Normal Attack")]
-    [PropertyTooltip("Time in seconds between normal attacks")]
-    [SerializeField] private float attackCooldown;
+    private float attackCooldown;
     private float chaseRange = 5f;
-    [TabGroup("Combat", "Normal Attack")]
-    [PropertyTooltip("Distance in meters that normal attack can reach")]
-    [ProgressBar(0.1f, 4.9f)]
-    [SerializeField] protected float attackRange;
-    [TabGroup("Combat", "Normal Attack")]
-    [PropertyTooltip("Amount of damage normal attack will deal on each hit")]
-    [ProgressBar(0, 300)]
-    [SerializeField] protected float attackDamage;
-    [SerializeField] private Transform normalAttackVFXTransform;
+    private float attackRange;
+    private float attackDamage;
+    private Transform normalAttackVFXTransform;
     private ParticleSystem normalAttackVFX = null;
     
-    [TabGroup("General", "Settings")]
-    [PropertyTooltip("This should ALWAYS be set to Creatures")]
-    [SerializeField] protected LayerMask targetMask;
+    private LayerMask targetMask;
 
-    [TabGroup("Combat", "Bonus Attack")]
-    [PropertyOrder(-1)] [PropertyTooltip("Whether or not this creature will have a bonus attack")]
-    [SerializeField] protected bool hasBonusAttack;
-    [TabGroup("Combat", "Bonus Attack")]
-    [ShowIf(nameof(hasBonusAttack))] [PropertyTooltip("Time in seconds for bonus attack to recharge after use")]
-    [SerializeField] protected float bonusAttackChargeTime;
-    [TabGroup("Combat", "Bonus Attack")]
-    [ShowIf(nameof(hasBonusAttack))] [PropertyTooltip("Drag & drop the Outline component into this slot")]
-    [SerializeField] protected Outline bonusAttackOutline = null;
+    private bool hasBonusAttack;
+    private float bonusAttackChargeTime;
+    private Outline bonusAttackOutline = null;
 
+    [InlineEditor]
     [SerializeField] CreatureSO creatureConfig = null;
-    [SerializeField] BonusAttackSO bonusAttackConfig = null;
+    
+    BonusAttackSO bonusAttackConfig = null;
 
-    protected Hoard designatedHoard;
+    private Hoard designatedHoard;
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;
-    protected Creature targetCreature;
-    protected bool bonusAttackReady = false;
-    protected float lastBonusAttackTime;
+    private Creature targetCreature;
+    private bool bonusAttackReady = false;
+    private float lastBonusAttackTime;
     private float rotationSpeed = 500f;
 
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
     readonly int attackHash = Animator.StringToHash("attack");
-    protected readonly int bonusAttackHash = Animator.StringToHash("bonusAttack");
+    private readonly int bonusAttackHash = Animator.StringToHash("bonusAttack");
     readonly string normalAttackVFXOriginKey = "NormalAttackVFXOrigin";
 
     private void Awake()
@@ -373,6 +357,11 @@ public class Creature : MonoBehaviour, IBonusAttack
 
         if (creatureConfig.hasAttackVFX)
         {
+            if (normalAttackVFX == null)
+            {
+                Debug.LogError($"{creatureName} was given a normal attack VFX but a particle effect was never assigned");
+            }
+
             Instantiate(normalAttackVFX, normalAttackVFXTransform.position, normalAttackVFXTransform.rotation);
         }
     }
