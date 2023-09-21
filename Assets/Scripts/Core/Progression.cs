@@ -18,8 +18,8 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] AnimationCurve creatureDifficultyCurve;
     [SerializeField] GameObject hoardPrefab;
     [SerializeField] Hoard playerHoard;
-    [SerializeField] CreatureSO[] playerStartingHoard;
     [SerializeField] GameObject creatureBasePrefab;
+    [SerializeField] CreatureSO[] playerStartingHoard;
 
     private int currentLevel;
     private float difficultyRating;
