@@ -6,29 +6,25 @@ using UnityEngine.UI;
 
 public class PlayerHoardHealthUI : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
     [SerializeField] Slider healthBarSlider;
 
     private Hoard playerHoard;
     [SerializeField] private float maxHoardHealth = 0f;
     [SerializeField] private float currentHoardHealth = 0f;
 
+    private void Awake()
+    {
+        playerHoard = GetComponent<Hoard>();
+    }
 
     private void OnEnable()
     {
-        playerController.OnPlayerHoardInitiated += PlayerController_OnPlayerHoardInitiated;
-    }
-
-    private void PlayerController_OnPlayerHoardInitiated()
-    {
-        playerHoard = playerController.playerHoard;
-
         playerHoard.OnCreatureAddedToHoard += PlayerHoard_OnCreatureAddedToHoard;
     }
 
     private void OnDisable()
     {
-        playerController.OnPlayerHoardInitiated -= PlayerController_OnPlayerHoardInitiated;
+        playerHoard.OnCreatureAddedToHoard -= PlayerHoard_OnCreatureAddedToHoard;
     }
 
     private void PlayerHoard_OnCreatureAddedToHoard(Creature creature)
@@ -40,7 +36,7 @@ public class PlayerHoardHealthUI : MonoBehaviour
         maxHoardHealth += creatureHealth.GetMaxHealth();
         healthBarSlider.maxValue = maxHoardHealth;
 
-        currentHoardHealth += creatureHealth.GetMaxHealth();
+        currentHoardHealth += creatureHealth.GetCurrentHealth();
         healthBarSlider.value = currentHoardHealth;
     }
 

@@ -70,6 +70,84 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4628238473753459026, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8629146951132992143}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
+--- !u!4 &8052283971899311213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4628238473753459026, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
+  m_PrefabInstance: {fileID: 3424349537282538815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4415970044377926180
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8052283971899311213}
+    m_Modifications:
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369680555764116952, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369680555764116952, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614308966105654536, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+      propertyPath: m_Name
+      value: PlayerHoardHealthBar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+--- !u!4 &8629146951132992143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5370628545599297707, guid: a314e727b6499e94ea483ab53470ab07, type: 3}
+  m_PrefabInstance: {fileID: 4415970044377926180}
+  m_PrefabAsset: {fileID: 0}
