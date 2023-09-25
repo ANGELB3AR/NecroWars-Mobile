@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "NewStealHealthEffect", menuName = "Create New Bonus Attack Effect/StealHealth")]
+[CreateAssetMenu(fileName = "NewStealHealthEffect", menuName = "Bonus Attack Effect/Steal Health")]
 public class StealHealth : SerializedScriptableObject, IBonusAttackEffect
 {
     [EnumToggleButtons]

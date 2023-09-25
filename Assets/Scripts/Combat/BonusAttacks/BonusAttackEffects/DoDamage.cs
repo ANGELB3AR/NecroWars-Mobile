@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "NewDoDamageEffect", menuName = "Create New Bonus Attack Effect/DoDamage")]
+[CreateAssetMenu(fileName = "NewDoDamageEffect", menuName = "Bonus Attack Effect/Do Damage")]
 
 public class DoDamage : SerializedScriptableObject, IBonusAttackEffect
 {

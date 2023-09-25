@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
 
+[CreateAssetMenu(fileName = "NewKnockbackEffect", menuName = "Bonus Attack Effect/Knockback")]
 public class Knockback : IBonusAttackEffect
 {
     [PropertyTooltip("If checked, the amount of force calculated will diminish as targets are further away from the attacker at the time the effect is applied")]
-    [SerializeField] bool applyDiminishingForce = false;
-    [SerializeField] float power = 5f;
+    public bool applyDiminishingForce = false;
+    public float power = 5f;
     [ShowIf(nameof(applyDiminishingForce))]
     [PropertyTooltip("The radius around the attacker from which the force applied is calculated. Larger radius means greater force applied to nearby enemies")]
-    [SerializeField] float radius = 3f;
+    public float radius = 3f;
 
     public void ApplyBonusAttackEffect(Health[] targets, bool isPlayer, Creature attacker)
     {
