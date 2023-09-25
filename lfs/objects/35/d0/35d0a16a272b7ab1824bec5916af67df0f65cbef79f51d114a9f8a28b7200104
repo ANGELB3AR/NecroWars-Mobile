@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bdb4ba7582c0a4e8414c8fe64b1035, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  creatureName: Knight
+  creatureModel: {fileID: 6298783632408530869, guid: 06f71a1e7f0f19445a43c41f1cb58f09, type: 3}
+  resurrectedMaterial: {fileID: 2100000, guid: 76c31c9a8ff875646a6b72c904e9e84e, type: 2}
+  spawnWeight:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxHealth: 100
+  stoppingDistance: 2
+  attackCooldown: 0.995619
+  attackRange: 2.5
+  attackDamage: 10
+  hasAttackVFX: 0
+  normalAttackVFX: {fileID: 0}
+  attackVFXPosition: {x: 0, y: 0, z: 0}
+  attackVFXRotation: {x: 0, y: 0, z: 0}
+  hasBonusAttack: 0
+  bonusAttackChargeTime: 0
+  bonusAttackConfig: {fileID: 0}
