@@ -23,28 +23,31 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
     // IF PLAYER ATTACKING
     [TabGroup("VFX", "Player Attacker")]
     [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    [PropertyTooltip("VFX are optional. This effect will play on Player attackers")]
     public ParticleSystem attackVFXOnPlayerAttacker = null;
     [TabGroup("VFX", "Player Attacker")]
     [ShowIf(nameof(ShouldShowComplexVFXProperty))]
-    [PropertyTooltip("Damage effects are optional. This effect will play on AI creatures damaged by the Player")]
+    [PropertyTooltip("VFX are optional. This effect will play on AI creatures damaged by the Player")]
     public ParticleSystem damageVFXIfPlayerAttacks = null;
 
     // IF AI ATTACKING
     [TabGroup("VFX", "AI Attacker")]
     [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    [PropertyTooltip("VFX are optional. This effect will play on AI attackers")]
     public ParticleSystem attackVFXOnAIAttacker = null;
     [TabGroup("VFX", "AI Attacker")]
     [ShowIf(nameof(ShouldShowComplexVFXProperty))]
-    [PropertyTooltip("Damage effects are optional. This effect will play on Player creatures damaged by AI")]
+    [PropertyTooltip("VFX are optional. This effect will play on Player creatures damaged by AI")]
     public ParticleSystem damageVFXIfAIAttacks = null;
 
     // IF NOT DIFFERENT
     [TabGroup("VFX")]
     [ShowIf(nameof(ShouldShowVFXProperty))]
+    [PropertyTooltip("VFX are optional. This effect will play on any attacker")]
     public ParticleSystem attackVFX;
     [TabGroup("VFX")]
     [ShowIf(nameof(ShouldShowVFXProperty))]
-    [PropertyTooltip("Damage effects are optional. This effect will play on any creature damaged by this effect")]
+    [PropertyTooltip("VFX are optional. This effect will play on any creature damaged by this effect")]
     public ParticleSystem damageVFX;
 
 
