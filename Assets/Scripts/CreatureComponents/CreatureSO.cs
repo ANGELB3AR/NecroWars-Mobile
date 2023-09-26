@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "New Creature", menuName = "Create New Creature")]
+[CreateAssetMenu(fileName = "New Creature", menuName = "Creature")]
 public class CreatureSO : SerializedScriptableObject
 {
     [BoxGroup("Main")]
