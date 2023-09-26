@@ -15,6 +15,37 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
     [PropertyTooltip("The radius around the attacker from which the force applied is calculated. Larger radius means greater force applied to nearby enemies")]
     public float radius = 3f;
 
+    public bool hasVFX = false;
+
+    [ShowIf(nameof(hasVFX))]
+    public bool playerAndAIAreDifferent = false;
+
+    // IF PLAYER ATTACKING
+    [TabGroup("VFX", "Player Attacker")]
+    [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    public ParticleSystem attackVFXOnPlayerAttacker = null;
+    [TabGroup("VFX", "Player Attacker")]
+    [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on AI creatures damaged by the Player")]
+    public ParticleSystem damageVFXIfPlayerAttacks = null;
+
+    // IF AI ATTACKING
+    [TabGroup("VFX", "AI Attacker")]
+    [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    public ParticleSystem attackVFXOnAIAttacker = null;
+    [TabGroup("VFX", "AI Attacker")]
+    [ShowIf(nameof(ShouldShowComplexVFXProperty))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on Player creatures damaged by AI")]
+    public ParticleSystem damageVFXIfAIAttacks = null;
+
+    // IF NOT DIFFERENT
+    [TabGroup("VFX")]
+    [ShowIf(nameof(ShouldShowVFXProperty))]
+    public ParticleSystem attackVFX;
+    [TabGroup("VFX")]
+    [ShowIf(nameof(ShouldShowVFXProperty))]
+    [PropertyTooltip("Damage effects are optional. This effect will play on any creature damaged by this effect")]
+    public ParticleSystem damageVFX;
 
 
     public void ApplyBonusAttackEffect(Health[] targets, bool isPlayer, Creature attacker)
@@ -30,10 +61,31 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
             Vector3 knockbackForce = CalculateKnockbackForce(knockbackOrigin, target);
 
             Vector3 knockbackDestination = target.transform.position + knockbackForce;
+
+            // Find closest valid position on the NavMesh for the knockback destination
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(knockbackDestination, out hit, 1f, NavMesh.AllAreas))
+            {
+                knockbackDestination = hit.position;
+            }
+            else if (NavMesh.FindClosestEdge(knockbackDestination, out hit, NavMesh.AllAreas))
+            {
+                Vector3 directionToEdge = hit.position - knockbackDestination;
+
+                float knockbackDistance = directionToEdge.magnitude;
+                Vector3 limitedKnockbackForce = directionToEdge.normalized * knockbackDistance;
+
+                knockbackDestination = target.transform.position + limitedKnockbackForce;
+            }
+
             target.transform.Translate(knockbackDestination);
+
+            PlayDamageVFX(isPlayer, target);
 
             agent.enabled = true;
         }
+
+        PlayAttackVFX(isPlayer, attacker);
     }
 
     private Vector3 CalculateKnockbackForce(Vector3 knockbackOrigin, Health target)
@@ -54,4 +106,90 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
         
         return knockbackForce;
     }
+
+
+    private void PlayDamageVFX(bool isPlayer, Health targetHealth)
+    {
+        if (!hasVFX) { return; }
+
+        if (playerAndAIAreDifferent)
+        {
+            if (damageVFXIfPlayerAttacks == null || damageVFXIfAIAttacks == null) { return; }
+
+            // Plays a VFX based on whether the attacking creature is the Player or AI
+            Instantiate((isPlayer) ? damageVFXIfPlayerAttacks : damageVFXIfAIAttacks,
+                targetHealth.transform.position,
+                Quaternion.identity);
+        }
+        else
+        {
+            if (damageVFX == null) { return; }
+
+            Instantiate(damageVFX, targetHealth.transform.position, Quaternion.identity);
+        }
+
+    }
+
+    private void PlayAttackVFX(bool isPlayer, Creature attacker)
+    {
+        if (!hasVFX) { return; }
+
+        if (playerAndAIAreDifferent)
+        {
+            if (attackVFXOnPlayerAttacker == null || attackVFXOnAIAttacker == null) { return; }
+
+            // Plays a VFX based on whether the attacking creature is the Player or AI
+            Instantiate((isPlayer) ? attackVFXOnPlayerAttacker : attackVFXOnAIAttacker,
+                attacker.transform.position,
+                Quaternion.identity);
+        }
+        else
+        {
+            if (attackVFX == null) { return; }
+
+            Instantiate(attackVFX, attacker.transform.position, Quaternion.identity);
+        }
+    }
+
+    #region Custom Inspector Methods
+
+    private bool ShouldShowVFXProperty()
+    {
+        if (hasVFX)
+        {
+            if (playerAndAIAreDifferent)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool ShouldShowComplexVFXProperty()
+    {
+        if (hasVFX)
+        {
+            if (playerAndAIAreDifferent)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    #endregion
 }
