@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bdb4ba7582c0a4e8414c8fe64b1035, type: 3}
+  m_Name: BloodKnight
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  creatureName: BloodKnight
+  creatureModel: {fileID: 20665884001375673, guid: e1dd14337a5500f4c95cb419aeb0eb86, type: 3}
+  resurrectedMaterial: {fileID: 2100000, guid: 947ee594a06796344b8a160bf79303dc, type: 2}
+  spawnWeight:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxHealth: 200
+  stoppingDistance: 2
+  attackCooldown: 2.9898777
+  attackRange: 2.5
+  attackDamage: 15
+  hasAttackVFX: 0
+  normalAttackVFX: {fileID: 0}
+  attackVFXPosition: {x: 0, y: 0, z: 0}
+  attackVFXRotation: {x: 0, y: 0, z: 0}
+  hasBonusAttack: 1
+  bonusAttackChargeTime: 10
+  bonusAttackConfig: {fileID: 11400000, guid: 7a9658f2890042341a074b15b7c37fd8, type: 2}
