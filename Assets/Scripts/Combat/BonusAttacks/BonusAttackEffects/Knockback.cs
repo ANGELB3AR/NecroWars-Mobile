@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
+using DG.Tweening;
+using System;
 
 [CreateAssetMenu(fileName = "NewKnockbackEffect", menuName = "Bonus Attack Effect/Knockback")]
 public class Knockback : SerializedScriptableObject, IBonusAttackEffect
@@ -87,14 +89,21 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
                 knockbackDestination = target.transform.position + limitedKnockbackForce;
             }
 
-            target.transform.Translate(knockbackDestination);
+            //target.transform.Translate(knockbackDestination);
+            target.transform.DOMove(knockbackDestination, 1f).SetEase(Ease.OutQuad).OnComplete(RestoreTarget(target));
 
             PlayDamageVFX(isPlayer, target);
 
-            agent.enabled = true;
+            
         }
 
         PlayAttackVFX(isPlayer, attacker);
+    }
+
+    private void RestoreTarget(Health target)
+    {
+        NavMeshAgent agent = target.GetComponent<NavMeshAgent>();
+        agent.enabled = true;
     }
 
     private Vector3 CalculateKnockbackForce(Vector3 knockbackOrigin, Health target)
@@ -115,7 +124,6 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
         
         return knockbackForce;
     }
-
 
     private void PlayDamageVFX(bool isPlayer, Health targetHealth)
     {
