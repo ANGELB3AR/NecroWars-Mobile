@@ -90,11 +90,9 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
             }
 
             //target.transform.Translate(knockbackDestination);
-            target.transform.DOMove(knockbackDestination, 1f).SetEase(Ease.OutQuad).OnComplete(RestoreTarget(target));
+            target.transform.DOMove(knockbackDestination, 1f).SetEase(Ease.OutQuad).OnComplete(() => RestoreTarget(target));
 
             PlayDamageVFX(isPlayer, target);
-
-            
         }
 
         PlayAttackVFX(isPlayer, attacker);
