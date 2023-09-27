@@ -65,9 +65,15 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
 
             Vector3 knockbackDestination = target.transform.position + knockbackForce;
 
-            // Find closest valid position on the NavMesh for the knockback destination
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(knockbackDestination, out hit, 1f, NavMesh.AllAreas))
+            if (NavMesh.Raycast(target.transform.position, knockbackDestination, out hit, NavMesh.AllAreas))
+            {
+                Debug.Log("Target is off the navmesh");
+                continue;
+            }
+
+            // Find closest valid position on the NavMesh for the knockback destination
+            if (NavMesh.SamplePosition(knockbackDestination, out hit, 4f, NavMesh.AllAreas))
             {
                 knockbackDestination = hit.position;
             }
