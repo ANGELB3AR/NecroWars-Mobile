@@ -75,7 +75,7 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
             }
 
             // Find closest valid position on the NavMesh for the knockback destination
-            if (NavMesh.SamplePosition(knockbackDestination, out hit, 4f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(knockbackDestination, out hit, 1f, NavMesh.AllAreas))
             {
                 knockbackDestination = hit.position;
             }
@@ -90,7 +90,7 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
             }
 
             //target.transform.Translate(knockbackDestination);
-            target.transform.DOMove(knockbackDestination, 1f).SetEase(Ease.OutQuad).OnComplete(() => RestoreTarget(target));
+            target.transform.DOMove(knockbackDestination, 0.5f).SetEase(Ease.OutQuad).OnComplete(() => RestoreTarget(target));
 
             PlayDamageVFX(isPlayer, target);
         }
