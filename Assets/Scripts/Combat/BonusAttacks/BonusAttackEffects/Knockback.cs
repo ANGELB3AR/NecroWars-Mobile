@@ -15,6 +15,7 @@ public class Knockback : SerializedScriptableObject, IBonusAttackEffect
     public float power = 5f;
     [ShowIf(nameof(applyDiminishingForce))]
     [PropertyTooltip("The radius around the attacker from which the force applied is calculated. Larger radius means greater force applied to nearby enemies")]
+    [Min(1.1f)]
     public float radius = 3f;
 
     public bool hasVFX = false;
