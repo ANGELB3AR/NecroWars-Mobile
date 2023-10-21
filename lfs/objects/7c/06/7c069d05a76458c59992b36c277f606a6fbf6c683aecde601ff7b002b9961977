@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4317793c44a3624e970914922131f35, type: 3}
+  m_Name: NewKnockbackEffect
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  applyDiminishingForce: 1
+  power: 8
+  radius: 5
+  hasVFX: 1
+  playerAndAIAreDifferent: 0
+  attackVFXOnPlayerAttacker: {fileID: 0}
+  damageVFXIfPlayerAttacks: {fileID: 0}
+  attackVFXOnAIAttacker: {fileID: 0}
+  damageVFXIfAIAttacks: {fileID: 0}
+  attackVFX: {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  damageVFX: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
