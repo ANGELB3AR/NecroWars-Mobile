@@ -7,24 +7,37 @@ using Sirenix.OdinInspector;
 
 public class Progression : SerializedMonoBehaviour
 {
+    private HoardSpawner hoardSpawner;
+
     [Header("Testing")]
     [SerializeField] bool debugLevel = false;
     [ShowIf(nameof(debugLevel))]
     [SerializeField] int testLevel = 1;
-    [Header("Settings")]
 
+    [Header("Level Data")]
+    [ShowInInspector]
     private int currentLevel;
+    [ShowInInspector]
+    private LevelConfig currentLevelConfig;
+    [SerializeField] LevelConfig[] levelConfigs;
+
 
     public static readonly string CURRENT_LEVEL_KEY = "Level";
 
     public event Action OnHoardDefeated;
 
-    private void Start()
+
+    private void Awake()
     {
-        StartNewLevel();
+        hoardSpawner = GetComponent<HoardSpawner>();
     }
 
-    private void StartNewLevel()
+    private void Start()
+    {
+        ConfigureNewLevel();
+    }
+
+    private void ConfigureNewLevel()
     {
         currentLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
 
@@ -32,26 +45,30 @@ public class Progression : SerializedMonoBehaviour
         {
             currentLevel = testLevel;
         }
+
+        currentLevelConfig = levelConfigs[currentLevel - 1];
+
+        hoardSpawner.SetUpNewLevel(currentLevelConfig);
     }
 
 
     private void HandleHoardDied(Hoard hoard)
     {
-        currentNumberOfHoards--;
+        //currentNumberOfHoards--;
 
-        hoard.OnHoardDied -= HandleHoardDied;
+        //hoard.OnHoardDied -= HandleHoardDied;
 
-        OnHoardDefeated?.Invoke();
+        //OnHoardDefeated?.Invoke();
 
-        if (currentNumberOfHoards != 0) { return; }
+        //if (currentNumberOfHoards != 0) { return; }
 
-        GameManager.Instance.UpdateGameState(GameState.GameWon);
+        //GameManager.Instance.UpdateGameState(GameState.GameWon);
     }
 
     private void PrintLevelData()
     {
-        Debug.Log($"****LEVEL SUMMARY****\nCurrent Level: {currentLevel}\nDifficulty Rating: {difficultyRating}\nHoard Quantity: {hoardQuantity}" +
-                    $"\nHoard Capacity: {hoardCapacity}\nCreature Difficulty Rating: {creatureDifficultyRating}");
+        //Debug.Log($"****LEVEL SUMMARY****\nCurrent Level: {currentLevel}\nDifficulty Rating: {difficultyRating}\nHoard Quantity: {hoardQuantity}" +
+        //            $"\nHoard Capacity: {hoardCapacity}\nCreature Difficulty Rating: {creatureDifficultyRating}");
     }
 
     [Button]

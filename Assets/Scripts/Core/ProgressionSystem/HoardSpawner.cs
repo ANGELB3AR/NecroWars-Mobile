@@ -9,43 +9,49 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
 
+    [Header("Prefabs")]
     [SerializeField] GameObject hoardPrefab;
     [SerializeField] Hoard playerHoard;
-
     [SerializeField] GameObject creatureBasePrefab;
+    
     [SerializeField] CreatureSO[] playerStartingHoard;
 
     [SerializeField] Dictionary<int, CreatureSO> creatureDB;
 
+    public void SetUpNewLevel(LevelConfig currentLevelConfig)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void GenerateHoard(int numberOfCreaturesToGenerate)
     {
-        Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
+        //Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
 
-        GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
-        Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
+        //GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
+        //Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
 
-        newHoard.OnHoardDied += HandleHoardDied;
+        //newHoard.OnHoardDied += HandleHoardDied;
 
-        float cumulativeOdds = 0f;
+        //float cumulativeOdds = 0f;
 
-        for (int i = 0; i < numberOfCreaturesToGenerate; i++)
-        {
-            CreatureSO prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
+        //for (int i = 0; i < numberOfCreaturesToGenerate; i++)
+        //{
+        //    CreatureSO prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
 
-            float odds = prospectiveCreature.spawnWeight.Evaluate(difficultyRating) / creatureTotalWeight;
-            cumulativeOdds += odds;
+        //    float odds = prospectiveCreature.spawnWeight.Evaluate(difficultyRating) / creatureTotalWeight;
+        //    cumulativeOdds += odds;
 
-            if (cumulativeOdds <= Random.value)
-            {
-                newHoard.CreateNewCreature(creatureBasePrefab, prospectiveCreature);
-            }
-        }
+        //    if (cumulativeOdds <= Random.value)
+        //    {
+        //        newHoard.CreateNewCreature(creatureBasePrefab, prospectiveCreature);
+        //    }
+        //}
 
-        if (newHoard.GetCreaturesInHoard().Count == 0)
-        {
-            Destroy(newHoard.gameObject);
-            //GenerateHoard(1);
-        }
+        //if (newHoard.GetCreaturesInHoard().Count == 0)
+        //{
+        //    Destroy(newHoard.gameObject);
+        //    //GenerateHoard(1);
+        //}
     }
 
     private void GeneratePlayerHoard()
