@@ -9,5 +9,12 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
 
+    [SerializeField] GameObject hoardPrefab;
+    [SerializeField] Hoard playerHoard;
+
+    [SerializeField] GameObject creatureBasePrefab;
+    [SerializeField] CreatureSO[] playerStartingHoard;
+
+    [SerializeField] Dictionary<int, CreatureSO> creatureDB;
 
 }
