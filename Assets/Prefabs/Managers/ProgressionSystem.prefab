@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8390825524325512480}
   - component: {fileID: 167735057430892925}
+  - component: {fileID: 8970049216729192617}
   m_Layer: 0
-  m_Name: Progression
+  m_Name: ProgressionSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,3 +273,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
   - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
+--- !u!114 &8970049216729192617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487460943696995462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbc5e1e061f5f54fa56b504bf22561c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  minHoardPlacementBounds: {x: -45, y: -45}
+  maxHoardPlacementBounds: {x: 45, y: 45}
