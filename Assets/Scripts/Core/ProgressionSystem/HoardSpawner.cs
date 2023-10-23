@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
 
 public class HoardSpawner : SerializedMonoBehaviour
@@ -16,42 +17,36 @@ public class HoardSpawner : SerializedMonoBehaviour
     
     [SerializeField] CreatureSO[] playerStartingHoard;
 
-    [SerializeField] Dictionary<int, CreatureSO> creatureDB;
+    [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.OneLine, KeyLabel = "Difficulty Tier", ValueLabel = "Potential Hoard Configs")]
+    [SerializeField] Dictionary<int, HoardConfig[]> HoardConfigDB = new Dictionary<int, HoardConfig[]>();
 
     public void SetUpNewLevel(LevelConfig currentLevelConfig)
     {
-        throw new System.NotImplementedException();
+        HoardConfig[] currentTier;
+
+        for (int i = 0; i < currentLevelConfig.difficultyTier1Hoards; i++)
+        {
+            currentTier = HoardConfigDB[i];
+            HoardConfig hoardConfig = currentTier[Random.Range(0, currentTier.Length)];
+
+            GenerateHoard(hoardConfig);
+        }
     }
 
-    private void GenerateHoard(int numberOfCreaturesToGenerate)
+    private void GenerateHoard(HoardConfig hoardConfig)
     {
-        //Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
+        Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
 
-        //GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
-        //Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
+        GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
+        Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
 
-        //newHoard.OnHoardDied += HandleHoardDied;
-
-        //float cumulativeOdds = 0f;
-
-        //for (int i = 0; i < numberOfCreaturesToGenerate; i++)
-        //{
-        //    CreatureSO prospectiveCreature = creatureDB[Random.Range(0, Mathf.FloorToInt(creatureDifficultyRating))];
-
-        //    float odds = prospectiveCreature.spawnWeight.Evaluate(difficultyRating) / creatureTotalWeight;
-        //    cumulativeOdds += odds;
-
-        //    if (cumulativeOdds <= Random.value)
-        //    {
-        //        newHoard.CreateNewCreature(creatureBasePrefab, prospectiveCreature);
-        //    }
-        //}
-
-        //if (newHoard.GetCreaturesInHoard().Count == 0)
-        //{
-        //    Destroy(newHoard.gameObject);
-        //    //GenerateHoard(1);
-        //}
+        foreach (CreatureSO creatureType in hoardConfig.hoardConfiguration.Keys)
+        {
+            for (int i = 0; i < hoardConfig.hoardConfiguration[creatureType]; i++)
+            {
+                newHoard.CreateNewCreature(creatureBasePrefab, creatureType);
+            }
+        }
     }
 
     private void GeneratePlayerHoard()
@@ -70,6 +65,5 @@ public class HoardSpawner : SerializedMonoBehaviour
             creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
         }
     }
-
 
 }
