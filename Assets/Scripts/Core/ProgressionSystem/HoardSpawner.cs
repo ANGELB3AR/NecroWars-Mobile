@@ -26,7 +26,7 @@ public class HoardSpawner : SerializedMonoBehaviour
 
         for (int i = 0; i < currentLevelConfig.difficultyTier1Hoards; i++)
         {
-            currentTier = HoardConfigDB[i];
+            currentTier = HoardConfigDB[i+1];
             HoardConfig hoardConfig = currentTier[Random.Range(0, currentTier.Length)];
 
             GenerateHoard(hoardConfig);
