@@ -12,7 +12,7 @@ public class FollowCamInitializer : MonoBehaviour
     {
         if (followCam.m_Follow != null) { return; }
 
-        InitializeFollowCam();
+        //InitializeFollowCam();
     }
 
     private void InitializeFollowCam()

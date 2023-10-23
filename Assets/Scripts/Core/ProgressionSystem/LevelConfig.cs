@@ -7,13 +7,5 @@ using Sirenix.OdinInspector;
 public class LevelConfig : SerializedScriptableObject
 {
     [MinValue(0)]
-    public int difficultyTier1Hoards = 0;
-    [MinValue(0)]
-    public int difficultyTier2Hoards = 0;
-    [MinValue(0)]
-    public int difficultyTier3Hoards = 0;
-    [MinValue(0)]
-    public int difficultyTier4Hoards = 0;
-    [MinValue(0)]
-    public int difficultyTier5Hoards = 0;
+    public int[] difficultyTierHoards = new int[5];
 }

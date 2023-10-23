@@ -24,13 +24,18 @@ public class HoardSpawner : SerializedMonoBehaviour
     {
         HoardConfig[] currentTier;
 
-        for (int i = 0; i < currentLevelConfig.difficultyTier1Hoards; i++)
+        for (int tier = 0; tier < currentLevelConfig.difficultyTierHoards.Length; tier++)
         {
-            currentTier = HoardConfigDB[i+1];
-            HoardConfig hoardConfig = currentTier[Random.Range(0, currentTier.Length)];
+            for (int i = 0; i < currentLevelConfig.difficultyTierHoards[tier]; i++)
+            {
+                currentTier = HoardConfigDB[tier + 1];
+                HoardConfig hoardConfig = currentTier[Random.Range(0, currentTier.Length)];
 
-            GenerateHoard(hoardConfig);
+                GenerateHoard(hoardConfig);
+            }
         }
+
+        GeneratePlayerHoard();
     }
 
     private void GenerateHoard(HoardConfig hoardConfig)
@@ -65,5 +70,4 @@ public class HoardSpawner : SerializedMonoBehaviour
             creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
         }
     }
-
 }
