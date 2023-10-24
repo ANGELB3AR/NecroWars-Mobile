@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 public class Progression : SerializedMonoBehaviour
 {
     [Header("Testing")]
+    [SerializeField] bool debugging = false;
     [SerializeField] int testLevel = 1;
     [Header("Settings")]
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
@@ -20,6 +21,8 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] Hoard playerHoard;
     [SerializeField] GameObject creatureBasePrefab;
     [SerializeField] CreatureSO[] playerStartingHoard;
+
+    private HoardSpawner hoardSpawner;
 
     private int currentLevel;
     private float difficultyRating;
@@ -34,6 +37,11 @@ public class Progression : SerializedMonoBehaviour
     public Dictionary<int, CreatureSO> creatureDB;
 
     public event Action OnHoardDefeated;
+
+    private void Awake()
+    {
+        hoardSpawner = GetComponent<HoardSpawner>();
+    }
 
     private void Start()
     {
@@ -50,20 +58,25 @@ public class Progression : SerializedMonoBehaviour
         currentLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
 
 #if UNITY_EDITOR
-        currentLevel = testLevel;
+        if (debugging)
+        {
+            currentLevel = testLevel;
+        }
 #endif
 
-        CalculateDifficultySettings();
+        hoardSpawner.CreateRandomizedHoards(currentLevel);
 
-        for (int i = 0; i < hoardQuantity; i++)
-        {
-            GenerateHoard(hoardCapacity);
-        }
+        //CalculateDifficultySettings();
 
-        currentNumberOfHoards = hoardQuantity;
+        //for (int i = 0; i < hoardQuantity; i++)
+        //{
+        //    GenerateHoard(hoardCapacity);
+        //}
 
-        GeneratePlayerHoard();
-        PrintLevelData();
+        //currentNumberOfHoards = hoardQuantity;
+
+        //GeneratePlayerHoard();
+        //PrintLevelData();
     }
 
     private void CalculateDifficultySettings()

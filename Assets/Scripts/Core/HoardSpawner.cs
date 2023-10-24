@@ -32,6 +32,10 @@ public class HoardSpawner : SerializedMonoBehaviour
         }
 
         // ENTER LOGIC TO SPAWN HOARDS
+        foreach (var creature in creaturesToSpawn)
+        {
+            Debug.Log(creature.creatureName);
+        }
     }
 
     private CreatureSO SelectRandomCreature(int currentLevel, float totalWeight)
