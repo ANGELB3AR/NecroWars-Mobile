@@ -10,7 +10,7 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] Dictionary<CreatureSO, AnimationCurve> creatureSpawnCurves = new Dictionary<CreatureSO, AnimationCurve>();
 
     [SerializeField] int numberOfCreatures = 9;
-    [SerializeField] int creaturePerHoard = 3;
+    [SerializeField] int creaturesPerHoard = 3;
 
     public void CreateRandomizedHoards(int currentLevel)
     {
@@ -30,6 +30,8 @@ public class HoardSpawner : SerializedMonoBehaviour
         {
             creaturesToSpawn.Add(SelectRandomCreature(currentLevel, totalWeight));
         }
+
+        // ENTER LOGIC TO SPAWN HOARDS
     }
 
     private CreatureSO SelectRandomCreature(int currentLevel, float totalWeight)
