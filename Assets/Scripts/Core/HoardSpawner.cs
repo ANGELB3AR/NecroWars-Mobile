@@ -9,8 +9,8 @@ public class HoardSpawner : SerializedMonoBehaviour
     [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.OneLine, KeyLabel = "Creature Type", ValueLabel = "Spawn Curve")]
     [SerializeField] Dictionary<CreatureSO, AnimationCurve> creatureSpawnCurves = new Dictionary<CreatureSO, AnimationCurve>();
 
-    [SerializeField] int numberOfCreatures = 9;
-    [SerializeField] int creaturesPerHoard = 3;
+    [SerializeField] AnimationCurve creatureCountCurve;
+    [SerializeField] AnimationCurve creaturesPerHoardCurve;
 
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
@@ -33,14 +33,17 @@ public class HoardSpawner : SerializedMonoBehaviour
 
         List<CreatureSO> creaturesToSpawn = new List<CreatureSO>();
 
-        for (int i = 0; i < numberOfCreatures; i++)
+        int creatureCount = Mathf.RoundToInt(creatureCountCurve.Evaluate(currentLevel));
+        int creaturesPerHoard = Mathf.RoundToInt(creaturesPerHoardCurve.Evaluate(currentLevel));
+
+        for (int i = 0; i < creatureCount; i++)
         {
             creaturesToSpawn.Add(SelectRandomCreature(currentLevel, totalWeight));
         }
 
         // Split Creatures into Hoards
         List<List<CreatureSO>> hoards = new List<List<CreatureSO>>();
-        int hoardCount = Mathf.CeilToInt(numberOfCreatures / creaturesPerHoard);
+        int hoardCount = Mathf.CeilToInt(creatureCount / creaturesPerHoard);
 
         for (int i = 0; i < hoardCount; i++)
         {
