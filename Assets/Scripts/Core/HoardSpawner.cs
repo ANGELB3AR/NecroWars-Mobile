@@ -16,7 +16,7 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
 
     [SerializeField] GameObject hoardPrefab;
-    [SerializeField] GameObject creatureBasePrefab;
+    [SerializeField] Hoard playerHoard;
 
 
     public void CreateRandomizedHoards(int currentLevel)
@@ -74,7 +74,7 @@ public class HoardSpawner : SerializedMonoBehaviour
 
         foreach (var creature in hoard)
         {
-            newHoard.CreateNewCreature(creatureBasePrefab, creature);
+            newHoard.CreateNewCreature(creature);
         }
     }
 
@@ -99,5 +99,22 @@ public class HoardSpawner : SerializedMonoBehaviour
         }
 
         return null;
+    }
+
+    public void SpawnPlayerHoard(CreatureSO[] playerStartingHoard)
+    {
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+
+        Hoard playerHoardInstance = Instantiate(playerHoard, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Hoard>();
+
+        playerController.SetPlayerHoard(playerHoardInstance);
+
+        foreach (CreatureSO creature in playerStartingHoard)
+        {
+            Creature creatureInstance = playerHoardInstance.CreateNewCreature(creature);
+
+            creatureInstance.GetHealthComponent().SetIsResurrected(true);
+            creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
+        }
     }
 }

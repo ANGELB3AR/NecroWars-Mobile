@@ -262,9 +262,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hoardPrefab: {fileID: 8118818380258703946, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
-  playerHoard: {fileID: 5939402490721805624, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}
-  creatureBasePrefab: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   playerStartingHoard:
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
   - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
@@ -720,4 +717,4 @@ MonoBehaviour:
   minHoardPlacementBounds: {x: -45, y: -45}
   maxHoardPlacementBounds: {x: 45, y: 45}
   hoardPrefab: {fileID: 8118818380258703946, guid: e4dd98b62ffcba54ab6eacf6ddfd99da, type: 3}
-  creatureBasePrefab: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
+  playerHoard: {fileID: 5939402490721805624, guid: fe8c252cac66fc44690c0cbcac586a12, type: 3}

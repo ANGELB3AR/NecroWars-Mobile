@@ -466,4 +466,5 @@ MonoBehaviour:
   creaturesInHoard: []
   mapBounds: {x: 50, y: 50}
   randomMovementInterval: 5
+  creatureBasePrefab: {fileID: 5983122159434143473, guid: 24da216c34a779c4099943a1e063a904, type: 3}
   isPlayer: 0

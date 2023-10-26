@@ -26,7 +26,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
-        progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
+        //progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
         progressBarSlider.value = 0f;
     }
 
@@ -35,7 +35,7 @@ public class ProgressBar : MonoBehaviour
         if (progressBarSlider.maxValue > 1) { return; }
         else
         {
-            progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
+            //progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
         }
     }
 

@@ -14,6 +14,7 @@ public class Hoard : MonoBehaviour
     [SerializeField] List<Creature> creaturesInHoard = new List<Creature>();
     [SerializeField] Vector2 mapBounds = new Vector2();
     [SerializeField] float randomMovementInterval;
+    [SerializeField] GameObject creatureBasePrefab;
 
     private float timer;
     private bool canBeResurrected = false;
@@ -76,9 +77,9 @@ public class Hoard : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public Creature CreateNewCreature(GameObject creaturePrefab, CreatureSO creatureConfig)
+    public Creature CreateNewCreature(CreatureSO creatureConfig)
     {
-        GameObject prefabInstance = Instantiate(creaturePrefab, transform.position, Quaternion.identity);
+        GameObject prefabInstance = Instantiate(creatureBasePrefab, transform.position, Quaternion.identity);
 
         Creature newCreature = prefabInstance.GetComponent<Creature>();
 
