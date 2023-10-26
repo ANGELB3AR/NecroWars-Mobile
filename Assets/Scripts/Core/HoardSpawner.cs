@@ -12,6 +12,13 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] int numberOfCreatures = 9;
     [SerializeField] int creaturesPerHoard = 3;
 
+    [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
+    [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
+
+    [SerializeField] GameObject hoardPrefab;
+    [SerializeField] GameObject creatureBasePrefab;
+
+
     public void CreateRandomizedHoards(int currentLevel)
     {
         float totalWeight = 0f;
@@ -54,13 +61,21 @@ public class HoardSpawner : SerializedMonoBehaviour
 
         foreach (var hoard in hoards)
         {
-            SpawnHoard();
+            SpawnHoard(hoard);
         }
     }
 
-    private void SpawnHoard()
+    private void SpawnHoard(List<CreatureSO> hoard)
     {
-        throw new System.NotImplementedException();
+        Vector3 hoardPlacement = new Vector3(Random.Range(minHoardPlacementBounds.x, maxHoardPlacementBounds.x), 0f, Random.Range(minHoardPlacementBounds.y, maxHoardPlacementBounds.y));
+
+        GameObject newHoardInstance = Instantiate(hoardPrefab, hoardPlacement, Quaternion.identity);
+        Hoard newHoard = newHoardInstance.GetComponent<Hoard>();
+
+        foreach (var creature in hoard)
+        {
+            newHoard.CreateNewCreature(creatureBasePrefab, creature);
+        }
     }
 
     private CreatureSO SelectRandomCreature(int currentLevel, float totalWeight)
