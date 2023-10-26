@@ -31,11 +31,36 @@ public class HoardSpawner : SerializedMonoBehaviour
             creaturesToSpawn.Add(SelectRandomCreature(currentLevel, totalWeight));
         }
 
-        // ENTER LOGIC TO SPAWN HOARDS
-        foreach (var creature in creaturesToSpawn)
+        // Split Creatures into Hoards
+        List<List<CreatureSO>> hoards = new List<List<CreatureSO>>();
+        int hoardCount = Mathf.CeilToInt(numberOfCreatures / creaturesPerHoard);
+
+        for (int i = 0; i < hoardCount; i++)
         {
-            Debug.Log(creature.creatureName);
+            List<CreatureSO> hoard = new List<CreatureSO>();
+
+            for (int j = 0; j < creaturesPerHoard; j++)
+            {
+                int index = i * creaturesPerHoard + j;
+
+                if (index < creaturesToSpawn.Count)
+                {
+                    hoard.Add(creaturesToSpawn[index]);
+                }
+            }
+
+            hoards.Add(hoard);
         }
+
+        foreach (var hoard in hoards)
+        {
+            SpawnHoard();
+        }
+    }
+
+    private void SpawnHoard()
+    {
+        throw new System.NotImplementedException();
     }
 
     private CreatureSO SelectRandomCreature(int currentLevel, float totalWeight)
