@@ -55,7 +55,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   debugging: 1
-  testLevel: 250
+  testLevel: 500
   playerStartingHoard:
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
   - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
@@ -511,7 +511,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 9
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -519,8 +519,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 500
+      value: 100
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -532,7 +532,25 @@ MonoBehaviour:
     m_RotationOrder: 4
   creaturesPerHoardCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: 0.014
+      outSlope: 0.014
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 500
+      value: 10
+      inSlope: 0.014
+      outSlope: 0.014
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
