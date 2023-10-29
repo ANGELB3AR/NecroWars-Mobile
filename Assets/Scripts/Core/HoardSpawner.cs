@@ -11,6 +11,7 @@ public class HoardSpawner : SerializedMonoBehaviour
 
     [SerializeField] AnimationCurve creatureCountCurve;
     [SerializeField] AnimationCurve creaturesPerHoardCurve;
+    [SerializeField] AnimationCurve fluctuationThreshold;
 
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
     [SerializeField] Vector2 maxHoardPlacementBounds = new Vector2();
@@ -20,6 +21,28 @@ public class HoardSpawner : SerializedMonoBehaviour
 
 
     public void CreateRandomizedHoards(int currentLevel)
+    {
+        List<CreatureSO> creaturesToSpawn;
+        int creatureCount;
+        
+        // Select pseudo-random creatures to spawn
+        SelectRandomizedCreatures(currentLevel, out creaturesToSpawn, out creatureCount);
+
+        // Split Creatures into Hoards
+        List<List<CreatureSO>> hoards = SplitCreaturesIntoHoards(currentLevel, creaturesToSpawn, ref creatureCount);
+
+        // Spawn all hoards
+        foreach (var hoard in hoards)
+        {
+            SpawnHoard(hoard);
+        }
+
+#if UNITY_EDITOR
+        LogHoardData(hoards, currentLevel);
+#endif
+    }
+
+    private void SelectRandomizedCreatures(int currentLevel, out List<CreatureSO> creaturesToSpawn, out int creatureCount)
     {
         float totalWeight = 0f;
 
@@ -31,41 +54,47 @@ public class HoardSpawner : SerializedMonoBehaviour
             totalWeight += weight;
         }
 
-        List<CreatureSO> creaturesToSpawn = new List<CreatureSO>();
-
-        int creatureCount = Mathf.RoundToInt(creatureCountCurve.Evaluate(currentLevel));
-        int creaturesPerHoard = Mathf.RoundToInt(creaturesPerHoardCurve.Evaluate(currentLevel));
-
+        creaturesToSpawn = new List<CreatureSO>();
+        creatureCount = Mathf.RoundToInt(creatureCountCurve.Evaluate(currentLevel));
         for (int i = 0; i < creatureCount; i++)
         {
             creaturesToSpawn.Add(SelectRandomCreature(currentLevel, totalWeight));
         }
+    }
 
-        // Split Creatures into Hoards
+    private List<List<CreatureSO>> SplitCreaturesIntoHoards(int currentLevel, List<CreatureSO> creaturesToSpawn, ref int creatureCount)
+    {
+        int creaturesPerHoard = Mathf.RoundToInt(creaturesPerHoardCurve.Evaluate(currentLevel));
+        int creaturesPerHoardFluctuationThreshold = Mathf.RoundToInt(fluctuationThreshold.Evaluate(currentLevel));
+
         List<List<CreatureSO>> hoards = new List<List<CreatureSO>>();
         int hoardCount = Mathf.CeilToInt(creatureCount / creaturesPerHoard);
+        int totalCreaturesAdded = 0;
 
         for (int i = 0; i < hoardCount; i++)
         {
             List<CreatureSO> hoard = new List<CreatureSO>();
 
-            for (int j = 0; j < creaturesPerHoard; j++)
-            {
-                int index = i * creaturesPerHoard + j;
+            int creaturesThisHoard =
+            Mathf.Min(creatureCount,
+            Random.Range(creaturesPerHoard - creaturesPerHoardFluctuationThreshold,
+            creaturesPerHoard + creaturesPerHoardFluctuationThreshold + 1));
+            creaturesThisHoard = Mathf.Clamp(creaturesThisHoard, 1, creatureCount);
 
-                if (index < creaturesToSpawn.Count)
+            for (int j = 0; j < creaturesThisHoard; j++)
+            {
+                if (totalCreaturesAdded < creaturesToSpawn.Count)
                 {
-                    hoard.Add(creaturesToSpawn[index]);
+                    hoard.Add(creaturesToSpawn[totalCreaturesAdded]);
+                    totalCreaturesAdded++;
                 }
             }
 
+            creatureCount -= creaturesThisHoard;
             hoards.Add(hoard);
         }
 
-        foreach (var hoard in hoards)
-        {
-            SpawnHoard(hoard);
-        }
+        return hoards;
     }
 
     private void SpawnHoard(List<CreatureSO> hoard)
@@ -118,6 +147,47 @@ public class HoardSpawner : SerializedMonoBehaviour
 
             creatureInstance.GetHealthComponent().SetIsResurrected(true);
             creatureInstance.ChangeMaterial(creatureInstance.GetResurrectionMaterial());
+        }
+    }
+
+    public void LogHoardData(List<List<CreatureSO>> hoards, int currentLevel)
+    {
+        Dictionary<string, int> creatureTypeCounts = new Dictionary<string, int>();
+        int totalCreatures = 0;
+        int specifiedCreatureCount;
+        int specifiedHoardCount;
+
+        specifiedCreatureCount = Mathf.RoundToInt(creatureCountCurve.Evaluate(currentLevel));
+        specifiedHoardCount = Mathf.RoundToInt(specifiedCreatureCount / Mathf.RoundToInt(creaturesPerHoardCurve.Evaluate(currentLevel)));
+
+        Debug.Log("Level: " + currentLevel);
+        Debug.Log("Total hoards: " + hoards.Count + " (specified: " + specifiedHoardCount + ")");
+
+        // Iterate over each hoard
+        for (int i = 0; i < hoards.Count; i++)
+        {
+            List<CreatureSO> hoard = hoards[i];
+            Debug.Log("Hoard " + (i + 1) + " has " + hoard.Count + " creatures");
+
+            // Count each type of creature in the hoard
+            foreach (CreatureSO creature in hoard)
+            {
+                if (!creatureTypeCounts.ContainsKey(creature.creatureName))
+                {
+                    creatureTypeCounts[creature.creatureName] = 0;
+                }
+
+                creatureTypeCounts[creature.creatureName]++;
+                totalCreatures++;
+            }
+        }
+
+        Debug.Log("Total creatures: " + totalCreatures + " (specified: " + specifiedCreatureCount + ")");
+
+        // Log the count of each type of creature
+        foreach (KeyValuePair<string, int> entry in creatureTypeCounts)
+        {
+            Debug.Log("Creature type: " + entry.Key + ", Count: " + entry.Value);
         }
     }
 }
