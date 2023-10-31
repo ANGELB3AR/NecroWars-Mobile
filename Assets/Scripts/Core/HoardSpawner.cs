@@ -6,11 +6,18 @@ using Sirenix.OdinInspector;
 
 public class HoardSpawner : SerializedMonoBehaviour
 {
+    [PropertyTooltip("Define the likelihood of a particular creature to spawn at any given level")]
     [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.OneLine, KeyLabel = "Creature Type", ValueLabel = "Spawn Curve")]
     [SerializeField] Dictionary<CreatureSO, AnimationCurve> creatureSpawnCurves = new Dictionary<CreatureSO, AnimationCurve>();
 
+    [PropertyTooltip("Define how many total creatures will be spawned at a given level")]
     [SerializeField] AnimationCurve creatureCountCurve;
+    [PropertyTooltip("Define the average number of creatures per hoard at a given level")]
     [SerializeField] AnimationCurve creaturesPerHoardCurve;
+    [PropertyTooltip("Define a threshold of allowable fluctation for number of creatures per hoard for a " +
+        "given level. This makes it so hoards have some natural variance while maintaining an average " +
+        "number of creatures per hoard. You do not need to worry about hoards having less than 1 creature" +
+        " as the algorithm will protect against this.")]
     [SerializeField] AnimationCurve fluctuationThreshold;
 
     [SerializeField] Vector2 minHoardPlacementBounds = new Vector2();
@@ -31,7 +38,7 @@ public class HoardSpawner : SerializedMonoBehaviour
         // Split Creatures into Hoards
         List<List<CreatureSO>> hoards = SplitCreaturesIntoHoards(currentLevel, creaturesToSpawn, ref creatureCount);
 
-        // Spawn all hoards
+        // Spawn all defined hoards
         foreach (var hoard in hoards)
         {
             SpawnHoard(hoard);
