@@ -14,7 +14,7 @@ public class PlayerHoardHealthUI : MonoBehaviour
 
     private void Awake()
     {
-        playerHoard = GetComponent<Hoard>();
+        playerHoard = GetComponentInParent<Hoard>();
     }
 
     private void OnEnable()

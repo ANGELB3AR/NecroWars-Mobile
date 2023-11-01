@@ -14,8 +14,6 @@ public class CreatureSO : SerializedScriptableObject
     [BoxGroup("Main")]
     [PreviewField]
     public Material resurrectedMaterial;
-    [BoxGroup("Main")]
-    public AnimationCurve spawnWeight;
 
     [TabGroup("General Settings")]
     [PropertyTooltip("Maximum health amount at start of round")]
