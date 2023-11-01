@@ -48,18 +48,4 @@ public class Progression : SerializedMonoBehaviour
         hoardSpawner.CreateRandomizedHoards(currentLevel);
         hoardSpawner.SpawnPlayerHoard(playerStartingHoard);
     }
-
-
-    private void HandleHoardDied(Hoard hoard)
-    {
-        currentNumberOfHoards--;
-
-        hoard.OnHoardDied -= HandleHoardDied;
-
-        OnHoardDefeated?.Invoke();
-
-        if (currentNumberOfHoards != 0) { return; }
-
-        GameManager.Instance.UpdateGameState(GameState.GameWon);
-    }
 }

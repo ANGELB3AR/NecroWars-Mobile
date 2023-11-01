@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,40 +8,53 @@ public class ProgressBar : MonoBehaviour
 {
     [SerializeField] Slider progressBarSlider;
 
-    private Progression progression;
+    private HoardSpawner hoardSpawner;
+
+    private int startingHoardQuantity = 0;
+    private int currentHoardCount = 0;
 
     private void Awake()
     {
-        progression = FindObjectOfType<Progression>();
+        hoardSpawner = FindObjectOfType<HoardSpawner>();
     }
 
     private void OnEnable()
     {
-        progression.OnHoardDefeated += Progression_OnHoardDefeated;
+        hoardSpawner.OnLevelCreationComplete += HoardSpawner_OnLevelCreationComplete;
     }
 
     private void OnDisable()
     {
-        progression.OnHoardDefeated -= Progression_OnHoardDefeated;
+        hoardSpawner.OnLevelCreationComplete -= HoardSpawner_OnLevelCreationComplete;
     }
 
-    private void Start()
+    private void HoardSpawner_OnLevelCreationComplete(int hoardCount)
     {
-        //progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
+        startingHoardQuantity = hoardCount;
+        currentHoardCount = hoardCount;
+
+        Hoard[] hoards = FindObjectsOfType<Hoard>();
+
+        foreach (var hoard in hoards)
+        {
+            hoard.OnHoardDied += HandleHoardDied;
+        }
+        
+        progressBarSlider.maxValue = startingHoardQuantity;
         progressBarSlider.value = 0f;
     }
 
-    private void Update()
+    private void HandleHoardDied(Hoard hoard)
     {
-        if (progressBarSlider.maxValue > 1) { return; }
-        else
-        {
-            //progressBarSlider.maxValue = progression.GetStartingHoardQuantity();
-        }
-    }
+        currentHoardCount--;
 
-    private void Progression_OnHoardDefeated()
-    {
-        progressBarSlider.value++;
+        progressBarSlider.value = startingHoardQuantity - currentHoardCount;
+
+        hoard.OnHoardDied -= HandleHoardDied;
+
+        if (currentHoardCount == 0)
+        {
+            GameManager.Instance.UpdateGameState(GameState.GameWon);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
+using System;
 
 public class HoardSpawner : SerializedMonoBehaviour
 {
@@ -26,6 +27,8 @@ public class HoardSpawner : SerializedMonoBehaviour
     [SerializeField] GameObject hoardPrefab;
     [SerializeField] Hoard playerHoard;
 
+    public event Action<int> OnLevelCreationComplete;
+
 
     public void CreateRandomizedHoards(int currentLevel)
     {
@@ -47,6 +50,8 @@ public class HoardSpawner : SerializedMonoBehaviour
 #if UNITY_EDITOR
         LogHoardData(hoards, currentLevel);
 #endif
+
+        OnLevelCreationComplete?.Invoke(hoards.Count);
     }
 
     private void SelectRandomizedCreatures(int currentLevel, out List<CreatureSO> creaturesToSpawn, out int creatureCount)
