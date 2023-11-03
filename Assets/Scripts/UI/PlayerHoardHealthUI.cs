@@ -8,51 +8,48 @@ public class PlayerHoardHealthUI : MonoBehaviour
 {
     [SerializeField] Slider healthBarSlider;
 
-    private Hoard playerHoard;
     [SerializeField] private float maxHoardHealth = 0f;
     [SerializeField] private float currentHoardHealth = 0f;
 
-    private void Awake()
-    {
-        playerHoard = GetComponentInParent<Hoard>();
-    }
-
     private void OnEnable()
     {
-        playerHoard.OnCreatureAddedToHoard += PlayerHoard_OnCreatureAddedToHoard;
+        Health.OnPlayerCreatureHealthUpdated += OnPlayerHoardHealthChanged;
+        Health.OnPlayerHoardMaxHealthUpdated += OnPlayerHoardMaxHealthChanged;
     }
 
     private void OnDisable()
     {
-        playerHoard.OnCreatureAddedToHoard -= PlayerHoard_OnCreatureAddedToHoard;
+        Health.OnPlayerCreatureHealthUpdated -= OnPlayerHoardHealthChanged;
+        Health.OnPlayerHoardMaxHealthUpdated -= OnPlayerHoardMaxHealthChanged;
     }
 
-    private void PlayerHoard_OnCreatureAddedToHoard(Creature creature)
+    private void OnPlayerHoardMaxHealthChanged(float creatureMaxHealth)
     {
-        Health creatureHealth = creature.GetHealthComponent();
-        creatureHealth.OnHealthUpdated += Creature_OnHealthUpdated;
-        creatureHealth.OnCreatureDied += Creature_OnCreatureDied;
+        maxHoardHealth += creatureMaxHealth;
 
-        maxHoardHealth += creatureHealth.GetMaxHealth();
         healthBarSlider.maxValue = maxHoardHealth;
+    }
 
-        currentHoardHealth += creatureHealth.GetCurrentHealth();
+    private void OnPlayerHoardHealthChanged(float deltaHealth)
+    {
+        currentHoardHealth += deltaHealth;
+
         healthBarSlider.value = currentHoardHealth;
     }
 
-    private void Creature_OnCreatureDied(Creature creature)
+    public void InitializePlayerHoardHealth(CreatureSO[] playerStartingHoard)
     {
-        Health creatureHealth = creature.GetHealthComponent();
-        creatureHealth.OnHealthUpdated -= Creature_OnHealthUpdated;
-        creatureHealth.OnCreatureDied -= Creature_OnCreatureDied;
+        float health = 0;
 
-        maxHoardHealth -= creatureHealth.GetMaxHealth();
-    }
+        foreach (var creature in playerStartingHoard)
+        {
+            health += creature.maxHealth;
+        }
 
-    private void Creature_OnHealthUpdated(float changeInHealth)
-    {
-        currentHoardHealth += changeInHealth;
-        
+        maxHoardHealth = health;
+        currentHoardHealth = health;
+
+        healthBarSlider.maxValue = maxHoardHealth;
         healthBarSlider.value = currentHoardHealth;
     }
 }

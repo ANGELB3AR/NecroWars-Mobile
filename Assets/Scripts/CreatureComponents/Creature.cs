@@ -37,7 +37,7 @@ public class Creature : MonoBehaviour, IBonusAttack
     
     BonusAttackSO bonusAttackConfig = null;
 
-    private Hoard designatedHoard;
+    public Hoard designatedHoard { get; private set; }
     private float lastAttackTime;
     private Transform movementTarget;
     private bool isAttacking;

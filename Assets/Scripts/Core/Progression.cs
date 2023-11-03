@@ -15,6 +15,7 @@ public class Progression : SerializedMonoBehaviour
     [SerializeField] CreatureSO[] playerStartingHoard;
 
     private HoardSpawner hoardSpawner;
+    private PlayerHoardHealthUI playerHoardHealthUI;
 
     private int currentLevel;
 
@@ -27,6 +28,7 @@ public class Progression : SerializedMonoBehaviour
     private void Awake()
     {
         hoardSpawner = GetComponent<HoardSpawner>();
+        playerHoardHealthUI = FindFirstObjectByType<PlayerHoardHealthUI>();
     }
 
     private void Start()
@@ -47,5 +49,7 @@ public class Progression : SerializedMonoBehaviour
 
         hoardSpawner.CreateRandomizedHoards(currentLevel);
         hoardSpawner.SpawnPlayerHoard(playerStartingHoard);
+
+        playerHoardHealthUI.InitializePlayerHoardHealth(playerStartingHoard);
     }
 }

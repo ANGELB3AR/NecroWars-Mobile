@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 public class Health : MonoBehaviour
 {
     Animator animator;
+    Creature creature;
 
     [TabGroup("General Settings")] [DisallowModificationsIn(PrefabKind.Variant)]
     [SerializeField] ParticleSystem impactParticleEffect;
@@ -27,14 +27,17 @@ public class Health : MonoBehaviour
     readonly int isDeadHash = Animator.StringToHash("isDead");
     readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");
 
+    public static event Action<float> OnPlayerCreatureHealthUpdated;
+    public static event Action<float> OnPlayerHoardMaxHealthUpdated;
+    
     public event Action<Creature> OnCreatureDied;
     public event Action OnCreatureResurrected;
-    public event Action<float> OnHealthUpdated;
 
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        creature = GetComponent<Creature>();
 
         currentHealth = maxHealth;
     }
@@ -80,6 +83,11 @@ public class Health : MonoBehaviour
         animator.SetFloat(movementSpeedHash, 0f);
 
         OnCreatureDied?.Invoke(this.GetComponent<Creature>());
+
+        if (creature.designatedHoard.isPlayer)
+        {
+            OnPlayerHoardMaxHealthUpdated?.Invoke(-maxHealth);
+        }
     }
 
     public void TakeDamage(float damageAmount)
@@ -94,7 +102,11 @@ public class Health : MonoBehaviour
 
         float deltaHealth = currentHealth - originalHealth;
 
-        OnHealthUpdated?.Invoke(deltaHealth);
+        if (creature.designatedHoard.isPlayer)
+        {
+            OnPlayerCreatureHealthUpdated?.Invoke(deltaHealth);
+        }
+
 
         Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
@@ -115,7 +127,10 @@ public class Health : MonoBehaviour
        
         float deltaHealth = currentHealth - originalHealth;
 
-        OnHealthUpdated?.Invoke(deltaHealth);
+        if (creature.designatedHoard.isPlayer)
+        {
+            OnPlayerCreatureHealthUpdated?.Invoke(deltaHealth);
+        }
     }
 
     public void Resurrect()
@@ -128,5 +143,6 @@ public class Health : MonoBehaviour
         isResurrected = true;
 
         OnCreatureResurrected?.Invoke();
+        OnPlayerHoardMaxHealthUpdated?.Invoke(maxHealth);
     }
 }
