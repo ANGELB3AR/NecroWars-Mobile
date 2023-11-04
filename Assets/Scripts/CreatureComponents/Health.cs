@@ -107,7 +107,6 @@ public class Health : MonoBehaviour
             OnPlayerCreatureHealthUpdated?.Invoke(deltaHealth);
         }
 
-
         Instantiate(impactParticleEffect, transform.position, Quaternion.identity);
 
         if (currentHealth == 0)

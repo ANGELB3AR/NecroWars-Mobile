@@ -26,6 +26,11 @@ public class PlayerHoardHealthUI : MonoBehaviour
     private void OnPlayerHoardMaxHealthChanged(float creatureMaxHealth)
     {
         maxHoardHealth += creatureMaxHealth;
+        
+        if (creatureMaxHealth > 0)
+        {
+            currentHoardHealth += creatureMaxHealth;
+        }
 
         healthBarSlider.maxValue = maxHoardHealth;
     }
