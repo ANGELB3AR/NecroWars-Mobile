@@ -1,0 +1,7 @@
+Introducing the Simple Sound System, a Unity package that will revolutionize your game's audio experience. With its user-friendly interface and powerful features, this package seamlessly replaces the old Sound system. The Simple Sound System comes with features such as single-line sound playback, ScriptableObject-based management, pre-made UI elements, dynamic volume adjustment, and a save system for volumes.
+
+This package is perfect for anyone who needs a simple and flexible solution for managing sound in their Unity projects. But that's not all! In addition to the Simple Sound System, I have created several other packages that can enhance your game development experience.
+
+Check out Boxy for full inventory management, Flexible Player Kit for modular interactive objects, GridPath for efficient pathfinding, Simple Menu System for better user interfaces, Terrain Fusion for breathtaking landscapes, and Simple Saving for data management.
+
+So, what are you waiting for? Try out the Simple Sound System and see how it can improve your game's audio experience, and don't forget to check out my other packages for even more game development solutions.
