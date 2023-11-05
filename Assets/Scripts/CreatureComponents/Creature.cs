@@ -450,9 +450,16 @@ public class Creature : MonoBehaviour, IBonusAttack
                 break;
         }
 
+        // Play VFX
         foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
         {
             bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+        }
+
+        // Play SFX
+        if (bonusAttackConfig.bonusAttackSFX != null)
+        {
+            soundManager.PlaySound(bonusAttackConfig.bonusAttackSFX);
         }
     }
 }
