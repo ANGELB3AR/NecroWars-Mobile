@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Zindeaxx;
+using Zindeaxx.SoundSystem;
 
 [CreateAssetMenu(fileName = "New Creature", menuName = "Creature")]
 public class CreatureSO : SerializedScriptableObject
@@ -34,6 +36,9 @@ public class CreatureSO : SerializedScriptableObject
     [TabGroup("Combat", "Normal Attack")]
     [PropertyTooltip("Amount of damage in hit points that normal attack will deal on each hit")]
     public float attackDamage = 5f;
+    [TabGroup("Combat", "Normal Attack")]
+    [PropertyTooltip("Amount of damage in hit points that normal attack will deal on each hit")]
+    public SoundSet attackSFX = null;
     [TabGroup("Combat", "Normal Attack")] 
     public bool hasAttackVFX = false;
     [TabGroup("Combat", "Normal Attack")] 
