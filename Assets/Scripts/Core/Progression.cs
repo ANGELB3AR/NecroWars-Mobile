@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
 
 public class Progression : SerializedMonoBehaviour
@@ -19,11 +18,8 @@ public class Progression : SerializedMonoBehaviour
 
     private int currentLevel;
 
-    private int currentNumberOfHoards;
-
     public static readonly string CURRENT_LEVEL_KEY = "Level";
 
-    public event Action OnHoardDefeated;
 
     private void Awake()
     {

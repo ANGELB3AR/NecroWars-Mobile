@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using Zindeaxx.SoundSystem;
 
 public class Creature : MonoBehaviour, IBonusAttack
 {
@@ -14,6 +15,7 @@ public class Creature : MonoBehaviour, IBonusAttack
     private Animator animator;
     private AnimationEventReceiver animationEventReceiver;
     private Collider creatureCollider;
+    private SoundManager soundManager;
 
     private string creatureName;
 
@@ -56,6 +58,7 @@ public class Creature : MonoBehaviour, IBonusAttack
         health = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         creatureCollider = GetComponent<Collider>();
+        soundManager = GetComponent<SoundManager>();
 
         targetMask = LayerMask.GetMask("Creatures");
 
@@ -364,6 +367,11 @@ public class Creature : MonoBehaviour, IBonusAttack
 
             Instantiate(normalAttackVFX, normalAttackVFXTransform.position, normalAttackVFXTransform.rotation);
         }
+
+        if (creatureConfig.attackSFX != null)
+        {
+            soundManager.PlaySound(creatureConfig.attackSFX);
+        }
     }
 
     public void BonusAttack()
@@ -442,9 +450,16 @@ public class Creature : MonoBehaviour, IBonusAttack
                 break;
         }
 
+        // Play VFX
         foreach (IBonusAttackEffect bonusAttackEffect in creatureConfig.bonusAttackConfig.bonusAttackEffects)
         {
             bonusAttackEffect.ApplyBonusAttackEffect(targetCreatures.ToArray(), designatedHoard.isPlayer, this);
+        }
+
+        // Play SFX
+        if (bonusAttackConfig.bonusAttackSFX != null)
+        {
+            soundManager.PlaySound(bonusAttackConfig.bonusAttackSFX);
         }
     }
 }
