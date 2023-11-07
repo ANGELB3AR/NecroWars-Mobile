@@ -8,8 +8,14 @@ public class PlayerHoardHealthUI : MonoBehaviour
 {
     [SerializeField] Slider healthBarSlider;
 
+    [Header("Hoard Health")]
     [SerializeField] private float maxHoardHealth = 0f;
     [SerializeField] private float currentHoardHealth = 0f;
+
+    [Header("Hoard Size")]
+    [SerializeField] private RectTransform sliderRect;
+    [SerializeField] private float minSliderWidth;
+    [SerializeField] private float maxSliderWidth;
 
     private void OnEnable()
     {
