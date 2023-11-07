@@ -16,17 +16,20 @@ public class PlayerHoardHealthUI : MonoBehaviour
     [SerializeField] private RectTransform sliderRect;
     [SerializeField] private float minSliderWidth;
     [SerializeField] private float maxSliderWidth;
+    [SerializeField] private float widthInterval;
 
     private void OnEnable()
     {
         Health.OnPlayerCreatureHealthUpdated += OnPlayerHoardHealthChanged;
         Health.OnPlayerHoardMaxHealthUpdated += OnPlayerHoardMaxHealthChanged;
+        Hoard.OnPlayerHoardSizeUpdated += OnPlayerHoardSizeChanged;
     }
 
     private void OnDisable()
     {
         Health.OnPlayerCreatureHealthUpdated -= OnPlayerHoardHealthChanged;
         Health.OnPlayerHoardMaxHealthUpdated -= OnPlayerHoardMaxHealthChanged;
+        Hoard.OnPlayerHoardSizeUpdated -= OnPlayerHoardSizeChanged;
     }
 
     private void OnPlayerHoardMaxHealthChanged(float creatureMaxHealth)
@@ -46,6 +49,16 @@ public class PlayerHoardHealthUI : MonoBehaviour
         currentHoardHealth += deltaHealth;
 
         healthBarSlider.value = currentHoardHealth;
+    }
+
+    private void OnPlayerHoardSizeChanged(int hoardSize)
+    {
+        float newWidth = (float)hoardSize * widthInterval;
+        newWidth = Mathf.Clamp(newWidth, minSliderWidth, maxSliderWidth);
+
+        Vector2 size = sliderRect.sizeDelta;
+        size.x = newWidth;
+        sliderRect.sizeDelta = size;
     }
 
     public void InitializePlayerHoardHealth(CreatureSO[] playerStartingHoard)

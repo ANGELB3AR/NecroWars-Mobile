@@ -389,6 +389,7 @@ MonoBehaviour:
   sliderRect: {fileID: 5241864062322177667}
   minSliderWidth: 200
   maxSliderWidth: 1050
+  widthInterval: 30
 --- !u!1 &7971477710525771399
 GameObject:
   m_ObjectHideFlags: 0
