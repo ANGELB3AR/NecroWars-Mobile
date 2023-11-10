@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
-  m_SizeDelta: {x: 300, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8537083491766765397
 MonoBehaviour:
@@ -383,7 +383,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2313f10473ad1bf42be63e8fcdf8c7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  healthBarSlider: {fileID: 8537083491766765397}
+  maxHoardHealth: 0
+  currentHoardHealth: 0
+  sliderRect: {fileID: 5241864062322177667}
+  minSliderWidth: 200
+  maxSliderWidth: 1050
+  widthInterval: 30
 --- !u!1 &7971477710525771399
 GameObject:
   m_ObjectHideFlags: 0

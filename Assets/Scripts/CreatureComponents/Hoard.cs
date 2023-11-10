@@ -25,6 +25,8 @@ public class Hoard : MonoBehaviour
     public event Action<Hoard> OnHoardDied;
     public event Action<Creature> OnCreatureAddedToHoard;
 
+    public static event Action<int> OnPlayerHoardSizeUpdated;
+
 
     private void OnEnable()
     {
@@ -37,6 +39,11 @@ public class Hoard : MonoBehaviour
     private void Start()
     {
         creaturesAliveInHoard = creaturesInHoard.Count;
+
+        if (isPlayer)
+        {
+            OnPlayerHoardSizeUpdated?.Invoke(creaturesAliveInHoard);
+        }
     }
 
     private void OnDisable()
@@ -100,6 +107,11 @@ public class Hoard : MonoBehaviour
         creaturesInHoard.Add(creature);
         creaturesAliveInHoard++;
 
+        if (isPlayer)
+        {
+            OnPlayerHoardSizeUpdated?.Invoke(creaturesAliveInHoard);
+        }
+
         creature.GetHealthComponent().OnCreatureDied += HandleCreatureDied;
         creature.SetDesignatedHoard(this);
 
@@ -138,6 +150,8 @@ public class Hoard : MonoBehaviour
 
         if (isPlayer)
         {
+            OnPlayerHoardSizeUpdated?.Invoke(creaturesAliveInHoard);
+
             if (!creaturesInHoard.Contains(creature))
             {
                 Debug.LogError($"{creature.name} was not found in hoard");

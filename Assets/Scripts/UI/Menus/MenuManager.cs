@@ -18,7 +18,6 @@ public class MenuManager : Singleton<MenuManager>
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 
-
     private void GameManager_OnGameStateChanged(GameState gameState)
     {
         mainMenu.SetActive(gameState == GameState.MainMenu);
