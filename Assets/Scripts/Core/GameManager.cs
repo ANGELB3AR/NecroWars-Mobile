@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zindeaxx.SoundSystem;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -8,6 +9,10 @@ public class GameManager : Singleton<GameManager>
     private Hoard playerHoard;
 
     public GameState State;
+
+    [SerializeField] private SoundSet gameWinSFX;
+    [SerializeField] private SoundSet gameLoseSFX;
+
     public static readonly string GAME_SCENE = "Scene_Game";
     public static readonly string MAIN_MENU_SCENE = "Scene_MainMenu";
 
@@ -39,6 +44,7 @@ public class GameManager : Singleton<GameManager>
                 HandleGameWon();
                 break;
             case GameState.GameLost:
+                HandleGameLost();
                 break;
             default:
                 break;
@@ -60,6 +66,15 @@ public class GameManager : Singleton<GameManager>
         int nextLevel = currentLevel++;
 
         PlayerPrefs.SetInt(Progression.CURRENT_LEVEL_KEY, nextLevel);
+
+        SoundManager soundManager = FindFirstObjectByType<SoundManager>();
+        soundManager.PlaySound(gameWinSFX);
+    }
+
+    private void HandleGameLost()
+    {
+        SoundManager soundManager = FindFirstObjectByType<SoundManager>();
+        soundManager.PlaySound(gameLoseSFX);
     }
 
     private void HandleRoundStart()
