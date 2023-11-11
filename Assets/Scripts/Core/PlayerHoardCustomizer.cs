@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class PlayerHoardCustomizer : MonoBehaviour
+public class PlayerHoardCustomizer : SerializedMonoBehaviour
 {
     [SerializeField] private List<CreatureSO> playerStartingHoard = new List<CreatureSO>();
+    [SerializeField] CreatureSO startingCreature;
 
+    [Button]
     public void AddNewCreature()
     {
-
+        playerStartingHoard.Add(startingCreature);
     }
 
-    public void UpgradeCreature()
+    public void UpgradeCreature(int creatureIndex, CreatureSO newCreature)
     {
-
+        playerStartingHoard[creatureIndex] = newCreature;
     }
 }
