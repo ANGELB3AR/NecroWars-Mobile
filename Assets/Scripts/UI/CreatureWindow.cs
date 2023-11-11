@@ -20,12 +20,11 @@ public class CreatureWindow : MonoBehaviour
         playerStartingHoard = playerHoardCustomizer.GetPlayerStartingHoard();
     }
 
-    private void OnEnable()
+    public void UpdateHoardData()
     {
         foreach (var creatureConfig in playerStartingHoard)
         {
-            Instantiate(dummyCreaturePrefab, transform);
-            DummyCreature dummyCreature = dummyCreaturePrefab.GetComponent<DummyCreature>();
+            DummyCreature dummyCreature = Instantiate(dummyCreaturePrefab, transform).GetComponent<DummyCreature>();
             dummyCreature.SetCreatureConfig(creatureConfig);
         }
     }
