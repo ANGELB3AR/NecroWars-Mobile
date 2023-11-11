@@ -27,8 +27,15 @@ public class CreatureWindow : MonoBehaviour
         foreach (var creatureConfig in playerStartingHoard)
         {
             DummyCreature dummyCreature = Instantiate(dummyCreaturePrefab, dummyCreaturePlacement).GetComponent<DummyCreature>();
-            dummyCreature.transform.position = Vector3.right * dummyCreatureSpacing * dummyCreaturePlacement.childCount;
+            dummyCreature.transform.position = dummyCreaturePlacement.childCount * dummyCreatureSpacing * Vector3.right;
             dummyCreature.SetCreatureConfig(creatureConfig);
         }
+
+        ShiftDummyCreatures();
+    }
+
+    public void ShiftDummyCreatures(bool moveLeft = true)
+    {
+        dummyCreaturePlacement.Translate(Vector3.left * dummyCreatureSpacing);
     }
 }
