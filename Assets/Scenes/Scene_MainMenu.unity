@@ -1034,6 +1034,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: cameraOffset.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: cameraOffset.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: creaturePrefab
       value: 
       objectReference: {fileID: 5983122159434143473, guid: 64b09af846cf49243895563fc5057a8e, type: 3}

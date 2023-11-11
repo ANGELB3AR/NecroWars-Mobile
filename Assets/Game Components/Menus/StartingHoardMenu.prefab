@@ -426,8 +426,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3857050206759660683}
         m_TargetAssemblyTypeName: CreatureWindow, Assembly-CSharp
-        m_MethodName: ShiftDummyCreatures
-        m_Mode: 6
+        m_MethodName: GetNextChild
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1104,6 +1104,7 @@ MonoBehaviour:
   dummyCreaturePrefab: {fileID: 0}
   dummyCreaturePlacement: {fileID: 0}
   dummyCreatureSpacing: 0
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &8389023265357982518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1228,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3857050206759660683}
         m_TargetAssemblyTypeName: CreatureWindow, Assembly-CSharp
-        m_MethodName: ShiftDummyCreatures
-        m_Mode: 6
+        m_MethodName: GetPreviousChild
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

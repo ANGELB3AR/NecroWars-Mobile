@@ -6,10 +6,12 @@ public class CreatureWindow : MonoBehaviour
 {
     private PlayerHoardCustomizer playerHoardCustomizer;
     private List<CreatureSO> playerStartingHoard;
+    private int activeChild;
 
     [SerializeField] private GameObject dummyCreaturePrefab;
     [SerializeField] Transform dummyCreaturePlacement;
     [SerializeField] float dummyCreatureSpacing;
+    [SerializeField] Vector3 cameraOffset;
 
 
     private void Awake()
@@ -20,6 +22,7 @@ public class CreatureWindow : MonoBehaviour
     private void Start()
     {
         playerStartingHoard = playerHoardCustomizer.GetPlayerStartingHoard();
+        activeChild = 0;
     }
 
     public void UpdateHoardData()
@@ -34,8 +37,35 @@ public class CreatureWindow : MonoBehaviour
         ShiftDummyCreatures();
     }
 
-    public void ShiftDummyCreatures(bool moveLeft = true)
+    private void ShiftDummyCreatures()
     {
-        dummyCreaturePlacement.Translate(Vector3.left * dummyCreatureSpacing);
+        var pos = dummyCreaturePlacement.GetChild(activeChild).position;
+
+        Camera.main.transform.position = pos + cameraOffset;
     }
+
+    public void GetNextChild()
+    {
+        activeChild++;
+
+        if (activeChild > dummyCreaturePlacement.childCount - 1)
+        {
+            activeChild = 0;
+        }
+
+        ShiftDummyCreatures();
+    }
+
+    public void GetPreviousChild()
+    {
+        activeChild--;
+
+        if (activeChild < 0)
+        {
+            activeChild = dummyCreaturePlacement.childCount - 1;
+        }
+
+        ShiftDummyCreatures();
+    }
+
 }
