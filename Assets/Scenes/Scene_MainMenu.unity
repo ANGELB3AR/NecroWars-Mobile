@@ -139,6 +139,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc27cd04c08448f4b8421cf4b1ffb3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &234815584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234815585}
+  m_Layer: 0
+  m_Name: DummyCreatureTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &234815585
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234815584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &284638488
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +961,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3256255574717635970, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4547650460643647499, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1002,6 +1041,14 @@ PrefabInstance:
       propertyPath: dummyCreaturePrefab
       value: 
       objectReference: {fileID: 5983122159434143473, guid: 64b09af846cf49243895563fc5057a8e, type: 3}
+    - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: dummyCreatureSpacing
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
+      propertyPath: dummyCreaturePlacement
+      value: 
+      objectReference: {fileID: 234815585}
     - target: {fileID: 6127967994937909632, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1233,3 +1280,4 @@ SceneRoots:
   - {fileID: 7939686681853765494}
   - {fileID: 2776971873662552738}
   - {fileID: 397658523}
+  - {fileID: 234815585}

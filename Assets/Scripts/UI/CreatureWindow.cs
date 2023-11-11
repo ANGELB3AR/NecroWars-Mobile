@@ -8,6 +8,8 @@ public class CreatureWindow : MonoBehaviour
     private List<CreatureSO> playerStartingHoard;
 
     [SerializeField] private GameObject dummyCreaturePrefab;
+    [SerializeField] Transform dummyCreaturePlacement;
+    [SerializeField] float dummyCreatureSpacing;
 
 
     private void Awake()
@@ -24,7 +26,8 @@ public class CreatureWindow : MonoBehaviour
     {
         foreach (var creatureConfig in playerStartingHoard)
         {
-            DummyCreature dummyCreature = Instantiate(dummyCreaturePrefab, transform).GetComponent<DummyCreature>();
+            DummyCreature dummyCreature = Instantiate(dummyCreaturePrefab, dummyCreaturePlacement).GetComponent<DummyCreature>();
+            dummyCreature.transform.position = Vector3.right * dummyCreatureSpacing * dummyCreaturePlacement.childCount;
             dummyCreature.SetCreatureConfig(creatureConfig);
         }
     }
