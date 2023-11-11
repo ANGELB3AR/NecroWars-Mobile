@@ -346,6 +346,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  creatureUpgradeHeirarchy:
+  - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
+  - {fileID: 11400000, guid: 0a672f98b9d90a24aba6da8313f7deae, type: 2}
+  - {fileID: 11400000, guid: a4a677c62b820b94aa07d926c71ecdaa, type: 2}
+  - {fileID: 11400000, guid: c57f9b6c9d97c894b9c934926f0dd217, type: 2}
   playerStartingHoard:
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
   - {fileID: 11400000, guid: cfbd0b8e1925cc845bdfabbd4f2bd287, type: 2}
@@ -1035,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: cameraOffset.y
-      value: 0.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5714664715719601493, guid: 45355d4fa6fcfc44abedaded098500fd, type: 3}
       propertyPath: cameraOffset.z

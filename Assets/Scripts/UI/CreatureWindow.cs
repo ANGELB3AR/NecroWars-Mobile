@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CreatureWindow : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class CreatureWindow : MonoBehaviour
     [SerializeField] Transform dummyCreaturePlacement;
     [SerializeField] float dummyCreatureSpacing;
     [SerializeField] Vector3 cameraOffset;
+    [SerializeField] float cameraMovementSpeed = 0.5f;
+    [SerializeField] float activeCreatureScale = 1.75f;
 
 
     private void Awake()
@@ -25,8 +29,32 @@ public class CreatureWindow : MonoBehaviour
         activeChild = 0;
     }
 
+    private void ShiftDummyCreatures()
+    {
+        var pos = dummyCreaturePlacement.GetChild(activeChild).position;
+
+        dummyCreaturePlacement.GetChild(activeChild).DOScale(activeCreatureScale, .5f);
+        
+        Camera.main.transform.DOMove(pos + cameraOffset, cameraMovementSpeed);
+    }
+
+    private void ClearHoardFromScreen()
+    {
+        for (int i = 0; i < dummyCreaturePlacement.childCount; i++)
+        {
+            var child = dummyCreaturePlacement.GetChild(i);
+            Destroy(child.gameObject);
+        }
+    }
+
+    #region Public Methods
+
     public void UpdateHoardData()
     {
+        ClearHoardFromScreen();
+
+        playerStartingHoard = playerHoardCustomizer.GetPlayerStartingHoard();
+
         foreach (var creatureConfig in playerStartingHoard)
         {
             DummyCreature dummyCreature = Instantiate(dummyCreaturePrefab, dummyCreaturePlacement).GetComponent<DummyCreature>();
@@ -37,15 +65,10 @@ public class CreatureWindow : MonoBehaviour
         ShiftDummyCreatures();
     }
 
-    private void ShiftDummyCreatures()
-    {
-        var pos = dummyCreaturePlacement.GetChild(activeChild).position;
-
-        Camera.main.transform.position = pos + cameraOffset;
-    }
-
     public void GetNextChild()
     {
+        dummyCreaturePlacement.GetChild(activeChild).DOScale(1, cameraMovementSpeed);
+
         activeChild++;
 
         if (activeChild > dummyCreaturePlacement.childCount - 1)
@@ -58,6 +81,8 @@ public class CreatureWindow : MonoBehaviour
 
     public void GetPreviousChild()
     {
+        dummyCreaturePlacement.GetChild(activeChild).DOScale(1, cameraMovementSpeed);
+
         activeChild--;
 
         if (activeChild < 0)
@@ -68,4 +93,19 @@ public class CreatureWindow : MonoBehaviour
         ShiftDummyCreatures();
     }
 
+    public void BuyNewHoardSlot()
+    {
+        playerHoardCustomizer.AddNewCreature();
+
+        UpdateHoardData();
+    }
+
+    public void UpgradeActiveCreature()
+    {
+        playerHoardCustomizer.UpgradeCreature(activeChild);
+
+        UpdateHoardData();
+    }
+   
+    #endregion
 }
