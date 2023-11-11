@@ -35,6 +35,8 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.OptionsMenu:
                 break;
+            case GameState.StartingHoardMenu:
+                break;
             case GameState.RoundStart:
                 HandleRoundStart();
                 break;
@@ -87,6 +89,7 @@ public enum GameState
 {
     MainMenu,
     OptionsMenu,
+    StartingHoardMenu,
     RoundStart,
     Paused,
     GameWon,

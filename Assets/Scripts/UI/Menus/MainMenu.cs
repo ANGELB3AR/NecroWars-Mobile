@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.RoundStart);
     }
 
+    public void SwitchToStartingHoardMenu()
+    {
+        GameManager.Instance.UpdateGameState(GameState.StartingHoardMenu);
+    }
+
     public void PlayAd()
     {
         Debug.Log("Ads coming soon!");

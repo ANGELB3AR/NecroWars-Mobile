@@ -8,6 +8,12 @@ public class PlayerHoardCustomizer : SerializedMonoBehaviour
     [SerializeField] private List<CreatureSO> playerStartingHoard = new List<CreatureSO>();
     [SerializeField] CreatureSO startingCreature;
 
+
+    public List<CreatureSO> GetPlayerStartingHoard()
+    {
+        return playerStartingHoard;
+    }
+
     [Button]
     public void AddNewCreature()
     {
